@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:x-on="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <title>RGB || RGBA || HEX</title>
+    </head>
+    <body>
+        <main class="container" x-data="getData()">
+            <div class="row">
+                <div class="col-12 col-md-4 mt-0 mt-md-0 form-floating">
+                    <input type="text" class="form-control" id="plain_rgb" x-model="plain_rgb" placeholder="RGB" x-on:change="parseRgb(plain_rgb)" />
+                    <label for="plain_rgb">RGB</label>
+                </div>
+                <div class="col-12 col-md-4 mt-1 mt-md-0 form-floating">
+                    <input type="text" class="form-control" id="plain_rgba" x-model="plain_rgba" placeholder="RGBA" x-on:change="parseRgb(plain_rgba)" />
+                    <label for="plain_rgba">RGBA</label>
+                </div>
+                <div class="col-12 col-md-4 mt-1 mt-md-0 form-floating">
+                    <input type="text" class="form-control" id="plain_hex" x-model="plain_hex" placeholder="HEX" x-on:change="parseHex(plain_hex)" />
+                    <label for="plain_hex">HEX</label>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 col-md-3 mt-0 mt-md-0">
+                    <label class="form-label" for="rgb_red">红</label>
+                    <label>
+                        <input type="range" class="form-range" min="0" max="255" x-model="rgb_red" />
+                    </label>
+                    <input type="number" class="form-control" id="rgb_red" x-model="rgb_red" min="0" max="255" />
+                    <div class="form-text">0 到 255 间的整数，代表颜色中的红色成分</div>
+                </div>
+                <div class="col-12 col-md-3 mt-1 mt-md-0">
+                    <label class="form-label" for="rgb_green">绿</label>
+                    <label>
+                        <input type="range" class="form-range" min="0" max="255" x-model="rgb_green" />
+                    </label>
+                    <input type="number" class="form-control" id="rgb_green" x-model="rgb_green" min="0" max="255" />
+                    <div class="form-text">0 到 255 间的整数，代表颜色中的绿色成分</div>
+                </div>
+                <div class="col-12 col-md-3 mt-1 mt-md-0">
+                    <label class="form-label" for="rgb_blue">蓝</label>
+                    <input type="range" class="form-range" min="0" max="255" x-model="rgb_blue" />
+                    <input type="number" class="form-control" id="rgb_blue" x-model="rgb_blue" min="0" max="255" />
+                    <div class="form-text">0 到 255 间的整数，代表颜色中的蓝色成分</div>
+                </div>
+                <div class="col-12 col-md-3 mt-1 mt-md-0">
+                    <label class="form-label" for="rgb_alpha">透明度</label>
+                    <input type="range" class="form-range" min="0" max="255" x-model="rgb_alpha" />
+                    <input type="number" class="form-control" id="rgb_alpha" x-model="rgb_alpha" min="0" max="255" />
+                    <div class="form-text">取值 0~255 之间， 代表透明度，定义透明度 0（完全透明） ~ 255（完全不透明）</div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12 col-md-3 mt-0 mt-md-0 form-floating" x-on:click="setClipboard($event)">
+                    <input type="text" class="form-control" x-bind:value="getRgb()" placeholder="RGB" disabled />
+                    <label>RGB</label>
+                </div>
+                <div class="col-12 col-md-3 mt-1 mt-md-0 form-floating" x-on:click="setClipboard($event)">
+                    <input type="text" class="form-control" x-bind:value="getRgba()" placeholder="RGBA" disabled />
+                    <label>RGBA</label>
+                </div>
+                <div class="col-12 col-md-3 mt-1 mt-md-0 form-floating" x-on:click="setClipboard($event)">
+                    <input type="text" id="rgb_hex" class="form-control" x-bind:value="getHex()" placeholder="HEX" disabled />
+                    <label>HEX</label>
+                </div>
+                <div class="col-12 col-md-3 mt-1 mt-md-0 form-floating" x-on:click="setClipboard($event)">
+                    <input type="text" id="rgb_rgba" class="form-control" x-bind:value="getHexWithAlpha()" placeholder="HEX With Alpha" disabled />
+                    <label>HEX With Alpha</label>
+                </div>
+            </div>
+            <div class="mt-5">
+                <div x-ref="color_show" style="height: 200px"></div>
+            </div>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" crossorigin="anonymous" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/clipboard-polyfill@3.0.2/dist/main/clipboard-polyfill.min.js" crossorigin="anonymous"></script>
+        <script>
+            function getData() {
+                return {
+                    plain_rgb: null,
+                    plain_rgba: null,
+                    plain_hex: null,
+                    rgb_red: 0,
+                    rgb_green: 0,
+                    rgb_blue: 0,
+                    rgb_alpha: 255,
+                    rgb_hex: null,
+                    rgb_rgba: null,
+                    parseRgb(rgbStr) {
+                        const rgbArr = rgbStr.match(/\d+/g);
+                        this.rgb_red = rgbArr[0];
+                        this.rgb_green = rgbArr[1];
+                        this.rgb_blue = rgbArr[2];
+                    },
+                    parseHex(hexStr) {
+                        const hexArr = hexStr.match(/[\d\w]{2}/g);
+                        this.rgb_red = rgb(hexArr[0]);
+                        this.rgb_green = rgb(hexArr[1]);
+                        this.rgb_blue = rgb(hexArr[2]);
+                    },
+                    getRgb() {
+                        const rgbStr = "rgb(" + this.rgb_red + ", " + this.rgb_green + ", " + this.rgb_blue + ")";
+                        return rgbStr;
+                    },
+                    getRgba() {
+                        let alpha = Number(this.rgb_alpha / 255).toFixed(2);
+                        alpha = ".00" === alpha.slice(-3) ? parseInt(alpha) : alpha;
+                        const rgbaStr = "rgba(" + this.rgb_red + ", " + this.rgb_green + ", " + this.rgb_blue + ", " + alpha + ")";
+                        return rgbaStr;
+                    },
+                    getHex() {
+                        this.$refs.color_show.style.backgroundColor = this.getRgba();
+                        return "#" + hex(this.rgb_red) + hex(this.rgb_green) + hex(this.rgb_blue);
+                    },
+                    getHexWithAlpha() {
+                        return "#" + hex(this.rgb_red) + hex(this.rgb_green) + hex(this.rgb_blue) + hex(this.rgb_alpha);
+                    },
+                    setClipboard(e) {
+                        clipboard.writeText(e.target.value);
+                    }
+                };
+            }
+            function hex(val) {
+                return ("0" + parseInt(val).toString(16)).slice(-2);
+            }
+            function rgb(val) {
+                return parseInt(val, 16);
+            }
+        </script>
+    </body>
+</html>
