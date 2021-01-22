@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="/">Tools</a>
       <button
@@ -19,7 +19,7 @@
             <a class="nav-link" aria-current="page" href="/hash">Hash</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/rgb">RGB</a>
+            <a class="nav-link" aria-current="page" href="/color">Color</a>
           </li>
         </ul>
       </div>
