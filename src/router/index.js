@@ -11,6 +11,11 @@ const routes = [
     name: "Color",
     component: () => import("../views/Color.vue"),
   },
+  {
+    path: "/json",
+    name: "Json",
+    component: () => import("../views/Json.vue"),
+  },
 ];
 
 export default createRouter({

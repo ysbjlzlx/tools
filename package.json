@@ -8,6 +8,7 @@
   "dependencies": {
     "clipboard-polyfill": "^3.0.2",
     "crypto-js": "^4.0.0",
+    "jsoneditor": "^9.1.8",
     "vue": "^3.0.5",
     "vue-router": "^4.0.3"
   },
