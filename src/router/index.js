@@ -7,9 +7,9 @@ const routes = [
     component: () => import("../views/HelloWorld.vue"),
   },
   {
-    path: "/md5",
-    name: "MD5",
-    component: () => import("../views/MD5.vue"),
+    path: "/hash",
+    name: "Hash",
+    component: () => import("../views/Hash.vue"),
   },
 ];
 

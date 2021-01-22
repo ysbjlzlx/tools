@@ -1,12 +1,17 @@
 <template>
   <div>
-    <header></header>
+    <header>
+      <Nav></Nav>
+    </header>
     <main class="container">
       <router-view></router-view>
     </main>
     <footer></footer>
   </div>
 </template>
+<script setup>
+import Nav from "./views/layouts/Nav.vue";
+</script>
 
 <style>
 #app {
