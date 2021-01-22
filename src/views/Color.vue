@@ -2,7 +2,7 @@
     <div>
         <div class="row">
             <div class="col-12 col-md-4 mt-0 mt-md-0 form-floating">
-                <input type="text" class="form-control" id="plain_rgb" v-model="state.plain_rgb" placeholder="RGB" x-on:change="parseRgb(plain_rgb)" />
+                <input type="text" class="form-control" id="plain_rgb" v-model="state.plain_rgb" placeholder="RGB" />
                 <label for="plain_rgb">RGB</label>
             </div>
             <div class="col-12 col-md-4 mt-1 mt-md-0 form-floating">
@@ -41,7 +41,7 @@
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-12 col-md-3 mt-0 mt-md-0 form-floating" v-on:click="setClipboard($event)">
+            <div class="col-12 col-md-3 mt-0 mt-md-0 form-floating" v-on:click="setClipboard($event)" title="点击复制">
                 <input type="text" class="form-control" v-bind:value="getRgb()" placeholder="RGB" disabled />
                 <label>RGB</label>
             </div>
@@ -65,11 +65,8 @@
 </template>
 
 <script setup>
-import { defineProps, reactive } from "vue";
-
-defineProps({
-    msg: String,
-});
+import { reactive, watch } from "vue";
+import * as clipboard from "clipboard-polyfill/text";
 
 const state = reactive({
     plain_rgb: null,
@@ -80,24 +77,57 @@ const state = reactive({
     rgb_blue: 0,
     rgb_alpha: 255,
 });
+/**
+ *
+ **/
+watch(
+    () => state.plain_rgb,
+    (val) => {
+        parseRgb(val);
+    }
+);
+watch(
+    () => state.plain_rgba,
+    (val) => {
+        parseRgb(val);
+    }
+);
+watch(
+    () => state.plain_hex,
+    (val) => {
+        parseHex(val);
+    }
+);
 
-function getData() {
-    return {
-        rgb_hex: null,
-        rgb_rgba: null,
-    };
-}
 function parseRgb(rgbStr) {
-    const rgbArr = rgbStr.match(/\d+/g);
-    this.rgb_red = rgbArr[0];
-    this.rgb_green = rgbArr[1];
-    this.rgb_blue = rgbArr[2];
+    const rgbArr = rgbStr.match(/(\d+\.\d+)|(\d+)/g);
+    if (null != rgbArr && rgb.length > 0) {
+        state.rgb_red = rgbArr[0];
+    }
+    if (null != rgbArr && rgb.length > 1) {
+        state.rgb_green = rgbArr[1];
+    }
+    if (null != rgbArr && rgb.length > 2) {
+        state.rgb_blue = rgbArr[2];
+    }
+    if (null != rgbArr && rgb.length > 3) {
+        state.rgb_alpha = parseInt(rgbArr[3] * 255);
+    }
 }
 function parseHex(hexStr) {
     const hexArr = hexStr.match(/[\d\w]{2}/g);
-    this.rgb_red = rgb(hexArr[0]);
-    this.rgb_green = rgb(hexArr[1]);
-    this.rgb_blue = rgb(hexArr[2]);
+    if (null != hexArr && hexArr.length > 0) {
+        state.rgb_red = rgb(hexArr[0]);
+    }
+    if (null != hexArr && hexArr.length > 1) {
+        state.rgb_green = rgb(hexArr[1]);
+    }
+    if (null != hexArr && hexArr.length > 2) {
+        state.rgb_blue = rgb(hexArr[2]);
+    }
+    if (null != hexArr && hexArr.length > 3) {
+        state.rgb_alpha = rgb(hexArr[3]);
+    }
 }
 function getRgb() {
     const rgbStr = "rgb(" + state.rgb_red + ", " + state.rgb_green + ", " + state.rgb_blue + ")";
@@ -123,5 +153,11 @@ function hex(val) {
 }
 function rgb(val) {
     return parseInt(val, 16);
+}
+function empty(val) {
+    if ("undefined" === typeof val || null == val || "" === val) {
+        return true;
+    }
+    return false;
 }
 </script>
