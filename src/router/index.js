@@ -16,6 +16,11 @@ const routes = [
     name: "Json",
     component: () => import("../views/Json.vue"),
   },
+  {
+    path: "/datetime",
+    name: "Datetime",
+    component: () => import("../views/Datetime.vue"),
+  },
 ];
 
 export default createRouter({

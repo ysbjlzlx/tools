@@ -22,7 +22,10 @@
                         <a class="nav-link" aria-current="page" href="/color">Color</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/JSON">Json</a>
+                        <a class="nav-link" aria-current="page" href="/json">JSON</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/datetime">Datetime</a>
                     </li>
                 </ul>
             </div>
