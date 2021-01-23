@@ -7,6 +7,7 @@
 import { onMounted, reactive, ref } from "vue";
 import JSONEditor from "jsoneditor";
 import "jsoneditor/dist/jsoneditor.min.css";
+import "jsoneditor/dist/img/jsoneditor-icons.svg";
 
 const state = reactive({ plain: null });
 const jsoneditor = ref(null);
