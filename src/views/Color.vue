@@ -1,16 +1,12 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-12 col-md-4 mt-0 mt-md-0 form-floating">
+            <div class="col-12 col-md-6 mt-0 mt-md-0 form-floating">
                 <input type="text" class="form-control" id="plain_rgb" v-model="state.plain_rgb" placeholder="RGB" />
                 <label for="plain_rgb">RGB</label>
             </div>
-            <div class="col-12 col-md-4 mt-1 mt-md-0 form-floating">
-                <input type="text" class="form-control" id="plain_rgba" v-model="state.plain_rgba" placeholder="RGBA" x-on:change="parseRgb(plain_rgba)" />
-                <label for="plain_rgba">RGBA</label>
-            </div>
-            <div class="col-12 col-md-4 mt-1 mt-md-0 form-floating">
-                <input type="text" class="form-control" id="plain_hex" v-model="state.plain_hex" placeholder="HEX" x-on:change="parseHex(plain_hex)" />
+            <div class="col-12 col-md-6 mt-1 mt-md-0 form-floating">
+                <input type="text" class="form-control" id="plain_hex" v-model="state.plain_hex" placeholder="HEX" />
                 <label for="plain_hex">HEX</label>
             </div>
         </div>
@@ -87,12 +83,6 @@ watch(
     }
 );
 watch(
-    () => state.plain_rgba,
-    (val) => {
-        parseRgb(val);
-    }
-);
-watch(
     () => state.plain_hex,
     (val) => {
         parseHex(val);
@@ -101,16 +91,16 @@ watch(
 
 function parseRgb(rgbStr) {
     const rgbArr = rgbStr.match(/(\d+\.\d+)|(\d+)/g);
-    if (null != rgbArr && rgb.length > 0) {
+    if (null != rgbArr && rgbArr.length > 0) {
         state.rgb_red = rgbArr[0];
     }
-    if (null != rgbArr && rgb.length > 1) {
+    if (null != rgbArr && rgbArr.length > 1) {
         state.rgb_green = rgbArr[1];
     }
-    if (null != rgbArr && rgb.length > 2) {
+    if (null != rgbArr && rgbArr.length > 2) {
         state.rgb_blue = rgbArr[2];
     }
-    if (null != rgbArr && rgb.length > 3) {
+    if (null != rgbArr && rgbArr.length > 3) {
         state.rgb_alpha = parseInt(rgbArr[3] * 255);
     }
 }
