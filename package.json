@@ -1,6 +1,6 @@
 {
-  "name": "my-vue-app",
-  "version": "0.0.0",
+  "name": "tools",
+  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build"
@@ -8,14 +8,15 @@
   "dependencies": {
     "clipboard-polyfill": "^3.0.2",
     "crypto-js": "^4.0.0",
+    "date-fns": "^2.16.1",
     "jsoneditor": "^9.1.8",
     "vue": "^3.0.5",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.0.1",
-    "@vitejs/plugin-vue": "^1.1.0",
+    "@vitejs/plugin-vue": "^1.1.1",
     "@vue/compiler-sfc": "^3.0.5",
-    "vite": "^2.0.0-beta.37"
+    "vite": "^2.0.0-beta.44"
   }
 }

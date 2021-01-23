@@ -13,10 +13,10 @@ endOfLine: lf
 
 overrides:
   - files: "*.html"
-    options: 
+    options:
       printWidth: 180
-      tabWidth: 4
+      tabWidth: 2
   - files: "*.vue"
-    options: 
+    options:
       printWidth: 180
-      tabWidth: 4
+      tabWidth: 2
