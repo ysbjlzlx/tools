@@ -9,14 +9,14 @@
     "clipboard-polyfill": "^3.0.2",
     "crypto-js": "^4.0.0",
     "date-fns": "^2.16.1",
-    "jsoneditor": "^9.1.8",
+    "jsoneditor": "^9.1.9",
     "vue": "^3.0.5",
     "vue-router": "^4.0.3"
   },
   "devDependencies": {
     "@types/crypto-js": "^4.0.1",
-    "@vitejs/plugin-vue": "^1.1.1",
+    "@vitejs/plugin-vue": "^1.1.2",
     "@vue/compiler-sfc": "^3.0.5",
-    "vite": "^2.0.0-beta.44"
+    "vite": "^2.0.0-beta.46"
   }
 }
