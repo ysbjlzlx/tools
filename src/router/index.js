@@ -20,6 +20,10 @@ const routes = [
     path: "/datetime",
     name: "Datetime",
     component: () => import("../views/Datetime.vue"),
+  },  {
+    path: "/encode/base64",
+    name: "Base64",
+    component: () => import("../views/encode/Base64.vue"),
   },
 ];
 
