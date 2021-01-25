@@ -25,6 +25,7 @@
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Encode </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="/encode/base64">Base64</a></li>
+              <li><a class="dropdown-item" href="/encode/urlencode">URLEncode</a></li>
             </ul>
           </li>
           <li class="nav-item">

@@ -31,6 +31,12 @@ const routes = [
     name: "Base64",
     component: () => import("../views/encode/Base64.vue"),
   },
+  {
+    path: "/encode/urlencode",
+    name: "URLEncode",
+    component: () => import("../views/encode/URLEncode.vue"),
+  },
+  
 ];
 
 export default createRouter({
