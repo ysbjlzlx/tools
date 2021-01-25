@@ -21,6 +21,12 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/datetime">Datetime</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Encode </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/encode/base64">Base64</a></li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/hash">Hash</a>
           </li>

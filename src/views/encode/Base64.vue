@@ -6,13 +6,14 @@
     </div>
     <div class="col-2">
       <div>
-        <button type="button" class="btn btn-primary" v-on:click="base64Encode">BASE64 编码 <i class="bi bi-arrow-right-short"></i></button>
+        <button type="button" class="btn btn-primary" v-on:click="base64Encode">编码 <i class="bi bi-arrow-right" aria-hidden="true"></i></button>
       </div>
       <div class="mt-1">
-        <button type="button" class="btn btn-primary" v-on:click="base64Decode"><i class="bi bi-arrow-left-short"></i> BASE64 解码</button>
+        <button type="button" class="btn btn-primary" v-on:click="base64Decode"><i class="bi bi-arrow-left" aria-hidden="true"></i> 解码</button>
       </div>
     </div>
     <div class="col-5">
+      <label class="form-label">Base64 文本</label>
       <textarea class="form-control" rows="16" v-model="state.encoded"></textarea>
     </div>
   </div>

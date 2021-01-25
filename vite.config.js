@@ -9,6 +9,6 @@ export default {
   },
   plugins: [vue()],
   optimizeDeps: {
-    include: ["jsoneditor"],
+    include: ["jsoneditor", "clipboard-polyfill/text"],
   },
 };
