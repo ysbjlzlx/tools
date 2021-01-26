@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div ref="jsoneditor" id="jsoneditor" style="width: 100%; height: 800px"></div>
+    <div ref="jsoneditor" id="jsoneditor" style="width: 100%; height: 500px"></div>
   </div>
-  <div class="border rounded mt-2 p-1">
-    <div class="btn-group">
-      <button class="btn btn-outline-primary" v-on:click="clearCacheJson" title="删除所有"><i class="bi bi-trash"></i> 删除所有</button>
-    </div>
+  <div class="btn-group mt-2">
+    <button class="btn btn-outline-primary" v-on:click="clearCacheJson" title="删除所有"><i class="bi bi-trash"></i> 删除所有</button>
+  </div>
+  <div class="border rounded mt-2 p-1" style="max-height: 300px; overflow-y: scroll">
     <table class="table table-sm">
       <tbody>
         <tr v-for="(item, index) in state.cache_json" :key="index">
