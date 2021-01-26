@@ -52,18 +52,10 @@ onMounted(() => {
   };
   state.editor = new JSONEditor(jsoneditor.value, options);
 
-  // set json
-  const initialJson = {
-    Array: [1, 2, 3],
-    Boolean: true,
-    Null: null,
-    Number: 123,
-    Object: { a: "b", c: "d" },
-    String: "Hello World",
-  };
-  state.editor.set(initialJson);
-
   state.cache_json = getCache();
+  if (state.cache_json[0]) {
+    state.editor.setText(state.cache_json[0]);
+  }
 });
 function getCache() {
   const cache_json_str = window.localStorage.getItem("cache_json");
