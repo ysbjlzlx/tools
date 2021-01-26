@@ -10,6 +10,7 @@
     "crypto-js": "^4.0.0",
     "date-fns": "^2.16.1",
     "jsoneditor": "^9.1.9",
+    "lodash": "^4.17.20",
     "vue": "^3.0.5",
     "vue-router": "^4.0.3"
   },

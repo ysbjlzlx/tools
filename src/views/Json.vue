@@ -2,14 +2,20 @@
   <div>
     <div ref="jsoneditor" id="jsoneditor" style="width: 100%; height: 800px"></div>
   </div>
-  <div class="border rounded mt-2 p-1 table-responsive">
+  <div class="border rounded mt-2 p-1">
     <div class="btn-group">
-      <button class="btn btn-outline-primary" v-on:click="clearCacheJson">删除所有</button>
+      <button class="btn btn-outline-primary" v-on:click="clearCacheJson" title="删除所有"><i class="bi bi-trash"></i> 删除所有</button>
     </div>
-    <table class="table">
+    <table class="table table-sm">
       <tbody>
         <tr v-for="(item, index) in state.cache_json" :key="index">
           <td v-text="item"></td>
+          <td>
+            <div class="btn-group">
+              <button type="button" class="btn btn-outline-primary btn-sm" title="编辑" v-on:click="edit(item)"><i class="bi bi-code"></i></button>
+              <button type="button" class="btn btn-outline-primary btn-sm" title="删除" v-on:click="cache_json_delete(index)"><i class="bi bi-trash"></i></button>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -18,10 +24,12 @@
 <script setup>
 import { onMounted, reactive, ref, watch } from "vue";
 import JSONEditor from "jsoneditor";
+import { remove } from "lodash";
 
 const state = reactive({
   plain: null,
   cache_json: [],
+  editor: null,
 });
 const jsoneditor = ref(null);
 
@@ -37,10 +45,12 @@ onMounted(() => {
     language: "zh-CN",
     mode: "code",
     onChangeText(jsonString) {
-      state.cache_json.push(jsonString);
+      if ("" != jsonString) {
+        state.cache_json.unshift(jsonString);
+      }
     },
   };
-  const editor = new JSONEditor(jsoneditor.value, options);
+  state.editor = new JSONEditor(jsoneditor.value, options);
 
   // set json
   const initialJson = {
@@ -51,7 +61,7 @@ onMounted(() => {
     Object: { a: "b", c: "d" },
     String: "Hello World",
   };
-  editor.set(initialJson);
+  state.editor.set(initialJson);
 
   state.cache_json = getCache();
 });
@@ -69,5 +79,13 @@ function getCache() {
 function clearCacheJson() {
   state.cache_json = [];
   window.localStorage.setItem("cache_json", JSON.stringify(state.cache_json));
+}
+function edit(jsonString) {
+  state.editor.setText(jsonString);
+}
+function cache_json_delete(val) {
+  remove(state.cache_json, function (value, index) {
+    return val === index;
+  });
 }
 </script>
