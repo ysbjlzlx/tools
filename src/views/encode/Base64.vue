@@ -25,15 +25,13 @@ const state = reactive({
   encoded: "",
 });
 function base64Encode() {
-  state.encoded = empty(state.plain) ? "" : enc.Base64.stringify(enc.Utf8.parse(state.plain));
+  if (state.plain && "" !== state.plain) {
+    state.encoded = enc.Base64.stringify(enc.Utf8.parse(state.plain));
+  }
 }
 function base64Decode() {
-  state.plain = empty(state.encoded) ? "" : enc.Utf8.stringify(enc.Base64.parse(state.encoded));
-}
-function empty(val) {
-  if ("undefined" === typeof val || null == val || "" === val) {
-    return true;
+  if (state.encoded && "" !== state.encoded) {
+    state.plain = enc.Utf8.stringify(enc.Base64.parse(state.encoded));
   }
-  return false;
 }
 </script>
