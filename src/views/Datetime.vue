@@ -6,7 +6,7 @@
         <label>时间戳</label>
       </div>
       <div class="col-12 mt-1 col-md-6 mt-md-0 form-floating">
-        <input type="text" class="form-control" placeholder="日期时间" />
+        <input type="text" class="form-control" v-bind:value="getDatetime()" placeholder="日期时间" />
         <label>日期时间</label>
       </div>
     </div>
@@ -16,15 +16,15 @@
         <label>日期时间</label>
       </div>
       <div class="col-12 mt-0 col-md-6 mt-md-0 form-floating">
-        <input type="text" class="form-control" placeholder="时间戳" />
+        <input type="text" class="form-control" v-bind:value="getTimestamp()" placeholder="时间戳" />
         <label>时间戳</label>
       </div>
     </div>
   </div>
 </template>
 <script setup>
-import { onMounted, reactive, watch } from "vue";
-import { getUnixTime, format, fromUnixTime } from "date-fns";
+import { onMounted, reactive } from "vue";
+import { getUnixTime, format, fromUnixTime, parse } from "date-fns";
 
 const state = reactive({
   timestamp: null,
@@ -40,5 +40,7 @@ function getDatetime() {
   return format(date, "uuuu-MM-dd HH:mm:ss");
 }
 function getTimestamp() {
+  const date = parse(state.datetime, "uuuu-MM-dd HH:mm:ss", new Date());
+  return getUnixTime(date);
 }
 </script>
