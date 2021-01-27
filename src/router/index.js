@@ -36,6 +36,11 @@ const routes = [
     name: "URLEncode",
     component: () => import("../views/encode/URLEncode.vue"),
   },
+  {
+    path: "/image/placeholder",
+    name: "ImagePlaceholder",
+    component: () => import("../views/image/Placeholder.vue"),
+  },
   
 ];
 
