@@ -2,23 +2,26 @@
   <div>
     <div ref="jsoneditor" id="jsoneditor" style="width: 100%; height: 500px"></div>
   </div>
-  <div class="btn-group mt-2">
-    <button class="btn btn-outline-primary" v-on:click="clearCacheJson" title="删除所有"><i class="bi bi-trash"></i> 删除所有</button>
-  </div>
-  <div class="border rounded mt-2 p-1" style="max-height: 300px; overflow-y: scroll">
-    <table class="table table-sm">
-      <tbody>
-        <tr v-for="(item, index) in state.cache_json" :key="index">
-          <td v-text="item"></td>
-          <td>
-            <div class="btn-group">
-              <button type="button" class="btn btn-outline-primary btn-sm" title="编辑" v-on:click="edit(item)"><i class="bi bi-code"></i></button>
-              <button type="button" class="btn btn-outline-primary btn-sm" title="删除" v-on:click="cache_json_delete(index)"><i class="bi bi-trash"></i></button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="border rounded mt-2 pt-1 pl-1">
+    <div class="btn-group">
+      <button class="btn btn-outline-primary" v-on:click="clearCacheJson" title="删除所有"><i class="bi bi-trash"></i> 删除所有</button>
+    </div>
+    <hr class="dropdown-divider" />
+    <div class="mt-2 p-1" style="max-height: 300px; overflow-y: scroll">
+      <table class="table table-sm table-hover">
+        <tbody>
+          <tr v-for="(item, index) in state.cache_json" :key="index">
+            <td class="col-11" v-text="item"></td>
+            <td class="col-1">
+              <div class="btn-group">
+                <button type="button" class="btn btn-outline-primary btn-sm" title="编辑" v-on:click="edit(item)"><i class="bi bi-code"></i></button>
+                <button type="button" class="btn btn-outline-primary btn-sm" title="删除" v-on:click="cache_json_delete(index)"><i class="bi bi-trash"></i></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 <script setup>
