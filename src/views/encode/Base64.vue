@@ -1,18 +1,18 @@
 <template>
   <div class="mt-1">
     <div class="form-floating">
-      <textarea class="form-control" style="height: 100px" v-model="state.plain" :placeholder="t('base64.plain_text')"></textarea>
-      <label>{{ t("base64.plain_text") }}</label>
+      <textarea class="form-control" style="height: 100px" v-model="state.plain" :placeholder="t('common.text_plain')"></textarea>
+      <label>{{ t("common.text_plain") }}</label>
     </div>
     <div class="border rounded mt-2">
       <div class="btn-group">
-        <button type="button" class="btn btn-outline-primary" v-on:click="base64Encode"><i class="bi bi-arrow-down" aria-hidden="true"></i> {{ t("common.encode") }} </button>
+        <button type="button" class="btn btn-outline-primary" v-on:click="base64Encode"><i class="bi bi-arrow-down" aria-hidden="true"></i> {{ t("common.encode") }}</button>
         <button type="button" class="btn btn-outline-primary" v-on:click="base64Decode"><i class="bi bi-arrow-up" aria-hidden="true"></i> {{ t("common.decode") }}</button>
       </div>
     </div>
     <div class="form-floating mt-2">
-      <textarea class="form-control" style="height: 100px" v-model="state.encoded" :placeholder="t('base64.base64_text')"></textarea>
-      <label>{{ t("base64.base64_text") }}</label>
+      <textarea class="form-control" style="height: 100px" v-model="state.encoded" :placeholder="t('common.text_base64')"></textarea>
+      <label>{{ t("common.text_base64") }}</label>
     </div>
   </div>
 </template>

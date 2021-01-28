@@ -2,7 +2,8 @@ common:
   encode: Encode
   decode: Decode
   text: Text
-  text_palin: Plain text
+  text_plain: Plain text
+  text_base64: BASE64 text
   weight: Weight
   height: Height
 nav:
@@ -26,9 +27,6 @@ color:
 datetime:
   timestamp: Timestamp
   datetime: Datetime
-base64:
-  plain_text: Plain text
-  base64_text: BASE64 text
 placeholder:
   bg_color: Background color
   text_color: Text color

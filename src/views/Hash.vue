@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="form-floating">
-      <input class="form-control" type="text" v-model="state.plain" :placeholder="t('common.text_palin')" />
-      <label>{{ t("common.text_palin") }}</label>
+      <input class="form-control" type="text" v-model="state.plain" :placeholder="t('common.text_plain')" />
+      <label>{{ t("common.text_plain") }}</label>
     </div>
     <div class="mt-2 form-floating">
       <input class="form-control" type="text" :value="getMd5()" disabled placeholder="MD5" />
