@@ -31,6 +31,12 @@
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/hash">Hash</a>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Image</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="/image/placeholder">Placeholder</a></li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/json">JSON</a>
           </li>
