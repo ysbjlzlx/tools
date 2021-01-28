@@ -2,22 +2,22 @@
   <div>
     <div class="row mt-2">
       <div class="col-12 mt-0 col-md-6 mt-md-0 form-floating">
-        <input type="text" class="form-control" v-model="state.timestamp" placeholder="时间戳" />
-        <label>时间戳</label>
+        <input type="text" class="form-control" v-model="state.timestamp" :placeholder="t('datetime.timestamp')" />
+        <label>{{ t("datetime.timestamp") }}</label>
       </div>
       <div class="col-12 mt-1 col-md-6 mt-md-0 form-floating">
-        <input type="text" class="form-control" v-bind:value="getDatetime()" placeholder="日期时间" />
-        <label>日期时间</label>
+        <input type="text" class="form-control" v-bind:value="getDatetime()" :placeholder="t('datetime.datetime')" />
+        <label>{{ t("datetime.datetime") }}</label>
       </div>
     </div>
     <div class="row mt-2">
       <div class="col-12 mt-1 col-md-6 mt-md-0 form-floating">
-        <input type="text" class="form-control" v-model="state.datetime" placeholder="日期时间" />
-        <label>日期时间</label>
+        <input type="text" class="form-control" v-model="state.datetime" :placeholder="t('datetime.datetime')" />
+        <label>{{ t("datetime.datetime") }}</label>
       </div>
       <div class="col-12 mt-0 col-md-6 mt-md-0 form-floating">
-        <input type="text" class="form-control" v-bind:value="getTimestamp()" placeholder="时间戳" />
-        <label>时间戳</label>
+        <input type="text" class="form-control" v-bind:value="getTimestamp()" :placeholder="t('datetime.timestamp')" />
+        <label>{{ t("datetime.timestamp") }}</label>
       </div>
     </div>
   </div>
@@ -25,6 +25,9 @@
 <script setup>
 import { onMounted, reactive } from "vue";
 import { getUnixTime, format, fromUnixTime, parse } from "date-fns";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ useScope: "global" });
 
 const state = reactive({
   timestamp: null,

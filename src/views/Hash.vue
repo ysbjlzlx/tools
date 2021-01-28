@@ -1,24 +1,24 @@
 <template>
   <div>
     <div class="form-floating">
-      <input class="form-control" type="text" v-model="state.plain" placeholder="原始值" />
-      <label>原始值</label>
+      <input class="form-control" type="text" v-model="state.plain" :placeholder="t('common.text_palin')" />
+      <label>{{ t("common.text_palin") }}</label>
     </div>
     <div class="mt-2 form-floating">
-      <input class="form-control" type="text" :value="getMd5()" disabled placeholder="MD5 结果" />
-      <label>MD5 结果</label>
+      <input class="form-control" type="text" :value="getMd5()" disabled placeholder="MD5" />
+      <label>MD5</label>
     </div>
     <div class="mt-2 form-floating">
-      <input class="form-control" type="text" :value="getSha1()" disabled placeholder="SHA1 结果" />
-      <label>SHA1 结果</label>
+      <input class="form-control" type="text" :value="getSha1()" disabled placeholder="SHA1" />
+      <label>SHA1</label>
     </div>
     <div class="mt-2 form-floating">
-      <input class="form-control" type="text" :value="getSha256()" disabled placeholder="SHA256 结果" />
-      <label>SHA256 结果</label>
+      <input class="form-control" type="text" :value="getSha256()" disabled placeholder="SHA256" />
+      <label>SHA256</label>
     </div>
     <div class="mt-2 form-floating">
-      <input class="form-control" type="text" :value="getSha512()" disabled placeholder="SHA512 结果" />
-      <label>SHA512 结果</label>
+      <input class="form-control" type="text" :value="getSha512()" disabled placeholder="SHA512" />
+      <label>SHA512</label>
     </div>
   </div>
 </template>
@@ -26,6 +26,9 @@
 <script setup>
 import { reactive } from "vue";
 import { MD5, SHA1, SHA256, SHA512 } from "crypto-js";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ useScope: "global" });
 
 const state = reactive({ plain: null });
 

@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="form-floating">
-      <textarea class="form-control" style="height: 100px" v-model="state.plain" placeholder="原始 URI"></textarea>
-      <label>原始 URL</label>
+      <textarea class="form-control" style="height: 100px" v-model="state.plain" placeholder="URL"></textarea>
+      <label>URL</label>
     </div>
     <div class="border rounded mt-2">
       <div class="btn-group" role="group">
-        <button type="button" class="btn btn-outline-primary" v-on:click="encode"><i class="bi bi-arrow-down"></i> 编码</button>
-        <button type="button" class="btn btn-outline-primary" v-on:click="decode"><i class="bi bi-arrow-up"></i>还原</button>
+        <button type="button" class="btn btn-outline-primary" v-on:click="encode"><i class="bi bi-arrow-down"></i> {{ t("common.encode") }}</button>
+        <button type="button" class="btn btn-outline-primary" v-on:click="decode"><i class="bi bi-arrow-up"></i> {{ t("common.decode") }}</button>
       </div>
     </div>
     <div class="form-floating mt-2">
@@ -22,6 +22,9 @@
 </template>
 <script setup>
 import { reactive, watch } from "vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ useScope: "global" });
 
 const state = reactive({
   plain: "",

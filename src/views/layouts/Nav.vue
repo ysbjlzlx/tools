@@ -22,23 +22,29 @@
             <a class="nav-link" aria-current="page" href="/datetime">Datetime</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Encode </a>
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ t("nav.encode") }}</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/encode/base64">Base64</a></li>
-              <li><a class="dropdown-item" href="/encode/urlencode">URLEncode</a></li>
+              <li>
+                <a class="dropdown-item" href="/encode/base64">{{ t("nav.base64") }}</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="/encode/urlencode">{{ t("nav.urlencode") }}</a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/hash">Hash</a>
+            <a class="nav-link" aria-current="page" href="/hash">{{ t("nav.hash") }}</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Image</a>
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ t("nav.image") }}</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/image/placeholder">Placeholder</a></li>
+              <li>
+                <a class="dropdown-item" href="/image/placeholder">{{ t("nav.placeholder") }}</a>
+              </li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/json">JSON</a>
+            <a class="nav-link" aria-current="page" href="/json">{{ t("nav.json") }}</a>
           </li>
         </ul>
       </div>
