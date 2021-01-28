@@ -16,7 +16,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/color">Color</a>
+            <a class="nav-link" aria-current="page" href="/color">{{ t("nav.color") }}</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="/datetime">Datetime</a>
@@ -45,3 +45,8 @@
     </div>
   </nav>
 </template>
+<script setup>
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ useScope: "global" });
+</script>
