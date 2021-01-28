@@ -17,6 +17,6 @@ export default {
     }),
   ],
   optimizeDeps: {
-    include: ["jsoneditor", "clipboard-polyfill/text", "vue-i18n"],
+    include: ["jsoneditor", "clipboard-polyfill/text"],
   },
 };

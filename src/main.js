@@ -2,8 +2,8 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import { createI18n } from "vue-i18n";
-import en from "./locales/en.yaml";
-import zh_hans_cn from "./locales/zh-Hans-CN.yaml";
+import en from "./locales/en.json";
+import zh_hans_cn from "./locales/zh-Hans-CN.json";
 
 const i18n = createI18n({
   locale: "zh-Hans-CN",
@@ -14,8 +14,7 @@ const i18n = createI18n({
   },
 });
 router.beforeEach((to, from, next) => {
-  const lang = window.localStorage.getItem("lang");
-  to.query.lang = lang;
+  to.query.lang = window.localStorage.getItem("lang");
   next();
 });
 router.afterEach((to, from, next) => {
