@@ -47,12 +47,35 @@
             <a class="nav-link" aria-current="page" href="/json">{{ t("nav.json") }}</a>
           </li>
         </ul>
+        <div class="d-flex">
+          <select class="form-select" v-model="state.lang" aria-label="Language select">
+            <option value="zh-Hans-CN">简体中文</option>
+            <option value="en">English</option>
+          </select>
+        </div>
       </div>
     </div>
   </nav>
 </template>
 <script setup>
+import { reactive, onMounted, watch } from "vue";
 import { useI18n } from "vue-i18n";
 
+const state = reactive({
+  lang: "zh-Hans-CN",
+});
 const { t } = useI18n({ useScope: "global" });
+
+onMounted(() => {
+  const lang = window.localStorage.getItem("lang");
+  if (lang) {
+    state.lang = lang;
+  }
+});
+watch(
+  () => state.lang,
+  (val) => {
+    window.localStorage.setItem("lang", val);
+  }
+);
 </script>
