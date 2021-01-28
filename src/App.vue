@@ -11,9 +11,6 @@
 </template>
 <script setup>
 import Nav from "./views/layouts/Nav.vue";
-import { useI18n } from "vue-i18n";
-
-const { locale } = useI18n({ useScope: "global" });
 </script>
 
 <style>
@@ -23,6 +20,6 @@ const { locale } = useI18n({ useScope: "global" });
   font-size: 14px;
   line-height: 22px;
   font-weight: 400;
-  color: black 85%;
+  color: #000000da;
 }
 </style>

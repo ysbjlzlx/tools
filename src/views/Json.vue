@@ -48,7 +48,7 @@ onMounted(() => {
     language: "zh-CN",
     mode: "code",
     onChangeText(jsonString) {
-      if ("" != jsonString) {
+      if ("" !== jsonString) {
         state.cache_json.unshift(jsonString);
       }
     },
