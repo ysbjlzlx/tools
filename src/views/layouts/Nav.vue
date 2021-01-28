@@ -48,7 +48,7 @@
           </li>
         </ul>
         <div class="d-flex">
-          <select class="form-select" v-model="state.lang" aria-label="Language select">
+          <select class="form-select" v-model="state.lang" @change="onLangChanged()" aria-label="Language select">
             <option value="zh-Hans-CN">简体中文</option>
             <option value="en">English</option>
           </select>
@@ -60,6 +60,8 @@
 <script setup>
 import { reactive, onMounted, watch } from "vue";
 import { useI18n } from "vue-i18n";
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 const state = reactive({
   lang: "zh-Hans-CN",
@@ -78,4 +80,7 @@ watch(
     window.localStorage.setItem("lang", val);
   }
 );
+function onLangChanged() {
+  router.go(0);
+}
 </script>
