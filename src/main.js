@@ -3,13 +3,20 @@ import App from "./App.vue";
 import router from "./router";
 import { createI18n } from "vue-i18n";
 import en from "./locales/en.yaml";
+import zh_hans_cn from "./locales/zh-Hans-CN.yaml";
 
 const i18n = createI18n({
-  legacy: false,
-  locale: "en",
+  locale: "zh-Hans",
+  fallbackLocale: "en",
   messages: {
     en,
+    "zh-Hans": zh_hans_cn,
   },
+});
+router.afterEach((to, from, next) => {
+  if (to.query.lang) {
+    i18n.global.locale = to.query.lang;
+  }
 });
 
 const app = createApp(App);

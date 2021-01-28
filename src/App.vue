@@ -11,6 +11,9 @@
 </template>
 <script setup>
 import Nav from "./views/layouts/Nav.vue";
+import { useI18n } from "vue-i18n";
+
+const { locale } = useI18n({ useScope: "global" });
 </script>
 
 <style>
