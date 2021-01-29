@@ -2,6 +2,7 @@
   <div class="toast-container position-absolute p-3 top-0 end-0">
     <div ref="toast" class="toast">
       <div class="toast-header">
+        <span class="rounded me-2"><i class="bi bi-x-octagon"></i></span>
         <strong class="me-auto" v-text="title"></strong>
         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
