@@ -13,7 +13,6 @@ export default {
     vue(),
     vueI18n({
       include: path.resolve(__dirname, "./src/locales/**"),
-      compositionOnly: false,
     }),
   ],
   optimizeDeps: {

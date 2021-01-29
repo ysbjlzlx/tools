@@ -1,0 +1,33 @@
+common:
+  encode: 编码
+  decode: 解码
+  text: 文本
+  text_plain: 原始文本
+  text_base64: BASE64 文本
+  weight: 宽度
+  height: 高度
+nav:
+  color: Color
+  encode: Encode
+  base64: Base64
+  urlencode: URLEncode
+  hash: Hash
+  image: Image
+  placeholder: Placeholder
+  json: JSON
+color:
+  red: 红 (R)
+  green: 绿 (G)
+  blue: 蓝 (B)
+  alpha: 透明度 (A)
+  red_desc: 0 到 255 间的整数，代表颜色中的红色成分
+  green_desc: 0 到 255 间的整数，代表颜色中的绿色成分
+  blue_desc: 0 到 255 间的整数，代表颜色中的蓝色成分
+  alpha_desc: 0 到 255 间的整数， 代表颜色的透明度，定义 0（完全透明） ~ 255（完全不透明）
+datetime:
+  timestamp: 时间戳
+  datetime: 日期时间
+placeholder:
+  bg_color: 背景颜色
+  text_color: 文本颜色
+  placeholder_img: 占位图
