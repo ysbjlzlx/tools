@@ -15,6 +15,7 @@ nav:
   image: Image
   placeholder: Placeholder
   json: JSON
+  development: 开发中
 color:
   red: 红 (R)
   green: 绿 (G)

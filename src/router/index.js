@@ -41,7 +41,11 @@ const routes = [
     name: "ImagePlaceholder",
     component: () => import("../views/image/Placeholder.vue"),
   },
-  
+  {
+    path: "/transform/json2yaml",
+    name: "Json2yaml",
+    component: () => import("../views/transform/Json2yaml.vue"),
+  },
 ];
 
 export default createRouter({

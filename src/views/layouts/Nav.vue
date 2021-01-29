@@ -46,6 +46,14 @@
           <li class="nav-item">
             <router-link class="nav-link" aria-current="page" to="/json">{{ t("nav.json") }}</router-link>
           </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">开发中</a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li>
+                <router-link class="dropdown-item" to="/transform/json2yaml">JSON2YAML</router-link>
+              </li>
+            </ul>
+          </li>
         </ul>
         <div class="d-flex">
           <select class="form-select" v-model="state.lang" @change="onLangChanged()" aria-label="Language select">

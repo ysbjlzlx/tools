@@ -16,7 +16,8 @@
     "hash": "Hash",
     "image": "Image",
     "placeholder": "Placeholder",
-    "json": "JSON"
+    "json": "JSON",
+    "development": "开发中"
   },
   "color": {
     "red": "红 (R)",
