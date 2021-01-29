@@ -10,9 +10,10 @@
   </div>
 </template>
 <script setup>
-import { defineProps, onMounted, reactive, ref, watch } from "vue";
+import { defineProps, onMounted, reactive, ref, watch, defineEmit } from "vue";
 const state = reactive({
   dd: null,
+  show: props.show,
 });
 
 const props = defineProps({
@@ -20,14 +21,17 @@ const props = defineProps({
   content: String,
   show: Boolean,
 });
+const emit = defineEmit(["hidden"]);
 
 const toast = ref(null);
 
 onMounted(() => {
   state.dd = new bootstrap.Toast(toast.value);
+  toast.value.addEventListener("hidden.bs.toast", () => {
+    emit("hidden");
+  });
 });
 watch([() => props.title, () => props.content, () => props.show], (val) => {
-  console.log(val);
   if (true === val[2]) {
     state.dd.show();
   }

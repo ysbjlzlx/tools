@@ -11,7 +11,7 @@
         <label>YAML</label>
       </div>
     </div>
-    <Toast :title="state.toast.title" :content="state.toast.content" :show="state.toast.show"></Toast>
+    <Toast :title="state.toast.title" :content="state.toast.content" :show="state.toast.show" @hidden="state.toast.show = false"></Toast>
   </div>
 </template>
 <script setup>
@@ -36,10 +36,12 @@ watch(
       state.yaml = YAML.stringify(json);
     } catch (e) {
       if (e instanceof SyntaxError) {
-        state.toast.title = new Date().getTime() + " JSON 格式错误";
+        state.toast.title = "Tools";
+        state.toast.content = "JSON 格式错误";
         state.toast.show = true;
+      } else {
+        console.warn(e);
       }
-      console.log(e);
     }
   }
 );
