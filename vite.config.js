@@ -8,6 +8,8 @@ import vueI18n from "@intlify/vite-plugin-vue-i18n";
 export default {
   alias: {
     "/@": __dirname,
+    "/@src": path.resolve(__dirname, "./src"),
+    "/@jsoneditor": path.resolve(__dirname, "./node_modules/jsoneditor"),
   },
   plugins: [
     vue(),

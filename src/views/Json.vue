@@ -28,7 +28,8 @@
 import { onMounted, reactive, ref, watch } from "vue";
 import JSONEditor from "jsoneditor";
 import { remove } from "lodash";
-import "jsoneditor/dist/jsoneditor.min.css";
+import "/@jsoneditor/dist/jsoneditor.min.css";
+import "/@jsoneditor/dist/img/jsoneditor-icons.svg";
 
 const state = reactive({
   plain: null,
