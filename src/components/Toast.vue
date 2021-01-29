@@ -32,7 +32,8 @@ onMounted(() => {
   });
 });
 watch([() => props.title, () => props.content, () => props.show], (val) => {
-  if (true === val[2]) {
+  const [title, content, show = false] = val;
+  if (true === show) {
     state.dd.show();
   }
 });
