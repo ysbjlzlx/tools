@@ -8,3 +8,4 @@
 * https://github.com/josdejong/jsoneditor
 * https://github.com/lodash/lodash
 * https://github.com/twbs/bootstrap
+* https://github.com/eemeli/yaml
