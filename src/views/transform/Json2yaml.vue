@@ -11,15 +11,22 @@
         <label>YAML</label>
       </div>
     </div>
+    <Toast :title="state.toast.title" :content="state.toast.content" :show="state.toast.show"></Toast>
   </div>
 </template>
 <script setup>
+import Toast from "/@/src/components/Toast.vue";
 import { reactive, watch } from "vue";
 import * as YAML from "yaml";
 
 const state = reactive({
   json: "",
   yaml: "",
+  toast: {
+    title: "",
+    content: "",
+    show: false,
+  },
 });
 watch(
   () => state.json,
@@ -29,7 +36,8 @@ watch(
       state.yaml = YAML.stringify(json);
     } catch (e) {
       if (e instanceof SyntaxError) {
-        console.log(e);
+        state.toast.title = new Date().getTime() + " JSON 格式错误";
+        state.toast.show = true;
       }
       console.log(e);
     }
