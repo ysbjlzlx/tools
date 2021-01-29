@@ -84,4 +84,4 @@ function cache_json_delete(val) {
   });
 }
 </script>
-<style src="/@jsoneditor/dist/jsoneditor.min.css"></style>
+<style src="/@jsoneditor/dist/jsoneditor.css"></style>
