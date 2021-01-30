@@ -11,18 +11,16 @@ const i18n = createI18n({
   locale: "zh-Hans-CN",
   fallbackLocale: "en",
   messages: {
-    en,
+    en: en,
     "zh-Hans-CN": zh_hans_cn,
     "zh-Hans-HK": zh_hans_hk,
   },
 });
-router.beforeEach((to, from, next) => {
-  to.query.lang = window.localStorage.getItem("lang");
-  next();
-});
+
 router.afterEach((to, from, next) => {
-  if (to.query.lang) {
-    i18n.global.locale = to.query.lang;
+  const lang = window.localStorage.getItem("lang");
+  if (lang && i18n.global.availableLocales.includes(lang)) {
+    i18n.global.locale = lang;
   }
 });
 
