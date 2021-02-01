@@ -1,0 +1,1 @@
+import{o as e,c as r,a as t}from"./app.7f32141c.js";const o='{"title":"Tools","description":"","frontmatter":{},"headers":[{"level":2,"title":"第三方依赖","slug":"第三方依赖"}],"relativePath":"index.md","lastUpdated":1611933609869}',a={},l=t('',3);a.render=function(t,o,a,h,i,n){return e(),r("div",null,[l])};export default a;export{o as __pageData};
