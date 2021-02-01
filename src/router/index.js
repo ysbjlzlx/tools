@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import i18n from "../locales";
 
 const routes = [
   {
@@ -48,7 +49,16 @@ const routes = [
   },
 ];
 
-export default createRouter({
+const router = createRouter({
   history: createWebHistory(),
   routes,
 });
+
+router.afterEach((to, from, next) => {
+  const lang = window.localStorage.getItem("lang");
+  if (lang && i18n.global.availableLocales.includes(lang)) {
+    i18n.global.locale = lang;
+  }
+});
+
+export default router;
