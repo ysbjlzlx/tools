@@ -4,7 +4,6 @@ import zh_hans_cn from "./zh-Hans-CN.json";
 import zh_hans_hk from "./zh-Hans-HK.yaml";
 
 const i18n = createI18n({
-  legacy: false,
   locale: "zh-Hans-CN",
   fallbackLocale: "en",
   messages: {
