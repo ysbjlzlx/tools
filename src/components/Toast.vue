@@ -1,5 +1,5 @@
 <template>
-  <div class="toast-container position-absolute p-3 top-0 end-0">
+  <div class="toast-container position-absolute p-3 top-0 end-0" v-show="props.show">
     <div ref="toast" class="toast">
       <div class="toast-header">
         <span class="rounded me-2"><i class="bi bi-x-octagon"></i></span>
