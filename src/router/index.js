@@ -54,7 +54,21 @@ const router = createRouter({
   routes,
 });
 
-router.afterEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
+  const lang = window.localStorage.getItem("lang");
+  if (lang && i18n.global.availableLocales.includes(lang)) {
+    i18n.global.locale = lang;
+  }
+  next();
+});
+router.beforeResolve((to, from, next) => {
+  const lang = window.localStorage.getItem("lang");
+  if (lang && i18n.global.availableLocales.includes(lang)) {
+    i18n.global.locale = lang;
+  }
+  next();
+});
+router.afterEach((to, from) => {
   const lang = window.localStorage.getItem("lang");
   if (lang && i18n.global.availableLocales.includes(lang)) {
     i18n.global.locale = lang;
