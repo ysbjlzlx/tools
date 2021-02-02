@@ -47,7 +47,7 @@
             <router-link class="nav-link" aria-current="page" to="/json">{{ t("nav.json") }}</router-link>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">开发中</a>
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ t("nav.development") }}</a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
               <li>
                 <router-link class="dropdown-item" to="/transform/json2yaml">JSON2YAML</router-link>
