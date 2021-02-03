@@ -20,6 +20,7 @@
 <script setup>
 import Toast from "/@/src/components/Toast.vue";
 import { reactive, watch } from "vue";
+import { ElMessage } from "element-plus";
 import YAML from "yaml";
 
 const state = reactive({
@@ -40,6 +41,10 @@ const json2yaml = () => {
       state.toast.title = "Tools";
       state.toast.content = "JSON 格式错误";
       state.toast.show = true;
+      ElMessage.warning({
+        message: "JSON 格式错误",
+        type: "error",
+      });
     } else {
       console.warn(e);
     }
@@ -60,3 +65,4 @@ const yaml2json = () => {
   }
 };
 </script>
+<style src="/@/node_modules/element-plus/lib/theme-chalk/el-message.css"></style>
