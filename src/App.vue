@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <header>
-      <Nav></Nav>
-    </header>
-    <main class="container">
-      <router-view></router-view>
-    </main>
-    <footer></footer>
-  </div>
+  <header>
+    <Nav></Nav>
+  </header>
+  <main class="container flex-shrink-0">
+    <router-view></router-view>
+  </main>
+  <footer class="footer mt-auto">
+    <Footer></Footer>
+  </footer>
 </template>
 <script setup>
 import Nav from "./views/layouts/Nav.vue";

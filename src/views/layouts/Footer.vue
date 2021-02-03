@@ -1,12 +1,10 @@
 <template>
-  <div class="fixed-bottom justify-content-center">
-    <div class="container text-center">
-      <ul>
-        <li>
-          <a href="https://github.com/ysbjlzlx/tools" target="_blank">GitHub</a>
-        </li>
-      </ul>
-    </div>
+  <div class="container text-center">
+    <ul>
+      <li>
+        <a href="https://github.com/ysbjlzlx/tools" target="_blank">GitHub</a>
+      </li>
+    </ul>
   </div>
 </template>
 <script setup>
