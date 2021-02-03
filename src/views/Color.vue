@@ -37,10 +37,13 @@
       </div>
     </div>
     <div class="row mt-5">
-      <div class="col-12 col-md-3 mt-0 mt-md-0 form-floating" v-on:click="setClipboard($event)" title="点击复制">
-        <input type="text" class="form-control" v-bind:value="getRgb()" placeholder="RGB" disabled />
-        <label>RGB</label>
-      </div>
+      <el-tooltip effect="dark" content="点击复制" placement="top-start">
+        <div class="col-12 col-md-3 mt-0 mt-md-0 form-floating" v-on:click="setClipboard($event)" title="点击复制">
+          <input type="text" class="form-control" v-bind:value="getRgb()" placeholder="RGB" disabled />
+          <label>RGB</label>
+        </div>
+      </el-tooltip>
+
       <div class="col-12 col-md-3 mt-1 mt-md-0 form-floating" v-on:click="setClipboard($event)" title="点击复制">
         <input type="text" class="form-control" v-bind:value="getRgba()" placeholder="RGBA" disabled />
         <label>RGBA</label>
@@ -64,6 +67,7 @@
 import { reactive, watch, onMounted } from "vue";
 import * as clipboard from "clipboard-polyfill/text";
 import { useI18n } from "vue-i18n";
+import { ElTooltip } from "element-plus";
 
 const { t } = useI18n({ useScope: "global" });
 

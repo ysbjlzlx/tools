@@ -53,4 +53,3 @@ const yaml2json = () => {
   }
 };
 </script>
-<style src="/@/node_modules/element-plus/lib/theme-chalk/el-message.css"></style>
