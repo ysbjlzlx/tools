@@ -41,15 +41,15 @@
         <input type="text" class="form-control" v-bind:value="getRgb()" placeholder="RGB" disabled />
         <label>RGB</label>
       </div>
-      <div class="col-12 col-md-3 mt-1 mt-md-0 form-floating" v-on:click="setClipboard($event)">
+      <div class="col-12 col-md-3 mt-1 mt-md-0 form-floating" v-on:click="setClipboard($event)" title="点击复制">
         <input type="text" class="form-control" v-bind:value="getRgba()" placeholder="RGBA" disabled />
         <label>RGBA</label>
       </div>
-      <div class="col-12 col-md-3 mt-1 mt-md-0 form-floating" v-on:click="setClipboard($event)">
+      <div class="col-12 col-md-3 mt-1 mt-md-0 form-floating" v-on:click="setClipboard($event)" title="点击复制">
         <input type="text" id="rgb_hex" class="form-control" v-bind:value="getHex()" placeholder="HEX" disabled />
         <label>HEX</label>
       </div>
-      <div class="col-12 col-md-3 mt-1 mt-md-0 form-floating" v-on:click="setClipboard($event)">
+      <div class="col-12 col-md-3 mt-1 mt-md-0 form-floating" v-on:click="setClipboard($event)" title="点击复制">
         <input type="text" id="rgb_rgba" class="form-control" v-bind:value="getHexWithAlpha()" placeholder="HEX With Alpha" disabled />
         <label>HEX With Alpha</label>
       </div>
@@ -61,7 +61,7 @@
 </template>
 
 <script setup>
-import { reactive, watch } from "vue";
+import { reactive, watch, onMounted } from "vue";
 import * as clipboard from "clipboard-polyfill/text";
 import { useI18n } from "vue-i18n";
 
@@ -76,6 +76,8 @@ const state = reactive({
   rgb_blue: 0,
   rgb_alpha: 255,
 });
+
+onMounted(() => {});
 /**
  *
  **/
