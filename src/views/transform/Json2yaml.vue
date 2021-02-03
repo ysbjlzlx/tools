@@ -14,11 +14,9 @@
         <label>YAML</label>
       </div>
     </div>
-    <Toast :title="state.toast.title" :content="state.toast.content" :show="state.toast.show" @hidden="state.toast.show = false"></Toast>
   </div>
 </template>
 <script setup>
-import Toast from "/@/src/components/Toast.vue";
 import { reactive, watch } from "vue";
 import { ElMessage } from "element-plus";
 import YAML from "yaml";
@@ -26,11 +24,6 @@ import YAML from "yaml";
 const state = reactive({
   json: "",
   yaml: "",
-  toast: {
-    title: "",
-    content: "",
-    show: false,
-  },
 });
 const json2yaml = () => {
   try {
@@ -38,12 +31,9 @@ const json2yaml = () => {
     state.yaml = YAML.stringify(json);
   } catch (e) {
     if (e instanceof SyntaxError) {
-      state.toast.title = "Tools";
-      state.toast.content = "JSON 格式错误";
-      state.toast.show = true;
       ElMessage.warning({
+        showClose: true,
         message: "JSON 格式错误",
-        type: "error",
       });
     } else {
       console.warn(e);
@@ -56,9 +46,7 @@ const yaml2json = () => {
     state.json = JSON.stringify(yaml);
   } catch (e) {
     if (e instanceof SyntaxError) {
-      state.toast.title = "Tools";
-      state.toast.content = "JSON 格式错误";
-      state.toast.show = true;
+      console.warn(e);
     } else {
       console.warn(e);
     }
