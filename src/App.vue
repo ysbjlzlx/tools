@@ -11,6 +11,7 @@
 </template>
 <script setup>
 import Nav from "./views/layouts/Nav.vue";
+import Footer from "./views/layouts/Footer.vue";
 </script>
 
 <style>
