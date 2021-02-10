@@ -19,7 +19,7 @@
   </div>
   <el-slider v-model="state.length"></el-slider>
   <div class="form-floating">
-    <input type="text" class="form-control" v-bind:value="make().join('')" />
+    <textarea rows="16" class="form-control" v-bind:value="make().join('')" />
   </div>
 </template>
 <script setup>
@@ -97,7 +97,7 @@ onMounted(() => {
   console.log(pwd.join(""));
 });
 function make() {
-  const haystack = [].concat(numberChar, lowerCaseChar, upperCaseChar, symbolChar);
+  const haystack = [].concat(state.numberChar.split(""), state.lowerCaseChar.split(""), state.upperCaseChar.split(""), state.symbolChar.split(""));
   const tmp = [];
   for (let i = 0; i < state.length; i++) {
     const index = getRandomIntInclusive(0, haystack.length);
