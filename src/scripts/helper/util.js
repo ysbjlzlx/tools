@@ -1,6 +1,6 @@
 /**
  * 为数组添加删除方法
- * @param b 接收一个数组元素
+ * @param {string} b 接收一个数组元素
  * @return boolean
  */
 Array.prototype.remove = function (b) {
@@ -14,7 +14,7 @@ Array.prototype.remove = function (b) {
 
 /**
  * 为window.location 添加查询params的方法
- * @param b 接收一个字符串
+ * @param {string} b 接收一个字符串
  * @return null|string
  */
 window.location.query = function (b) {
@@ -26,7 +26,9 @@ window.location.query = function (b) {
 
 /**
  * Gets a param from the search part of a URL by name.
+ * @link https://developers.google.com/web/updates/2016/01/urlsearchparams?hl=en
  * @link https://github.com/google/ioweb2015/blob/21d7a80aefd6a76474fcdb700ac9965cd4c7800f/app/scripts/helper/util.js#L142-L156
+ *
  * @param {string} param URL parameter to look for.
  *
  * @return {string|undefined} undefined if the URL parameter does not exist.
