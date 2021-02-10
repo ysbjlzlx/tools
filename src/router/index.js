@@ -47,6 +47,11 @@ const routes = [
     name: "Json2yaml",
     component: () => import("../views/transform/Json2yaml.vue"),
   },
+  {
+    path: "/password/make",
+    name: "PasswordMake",
+    component: () => import("../views/password/make.vue"),
+  },
 ];
 
 const router = createRouter({
