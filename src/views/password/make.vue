@@ -100,11 +100,16 @@ function make() {
   const haystack = [].concat(state.numberChar.split(""), state.lowerCaseChar.split(""), state.upperCaseChar.split(""), state.symbolChar.split(""));
   const tmp = [];
   for (let i = 0; i < state.length; i++) {
-    const index = getRandomIntInclusive(0, haystack.length);
+    const index = getRandomInt(0, haystack.length);
     tmp.push(haystack[index]);
-    console.log(haystack[index]);
   }
   return tmp;
+}
+// 不含最大值，含最小值的随机数
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 // 同时包含最小值和最大值的随机数
 function getRandomIntInclusive(min, max) {
