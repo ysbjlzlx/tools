@@ -10,6 +10,7 @@ export default {
     "/@": __dirname,
     "/@src": path.resolve(__dirname, "./src"),
     "/@jsoneditor": path.resolve(__dirname, "./node_modules/jsoneditor"),
+    "@element-plus": path.resolve(__dirname, "./node_modules/element-plus"),
   },
   plugins: [
     vue(),

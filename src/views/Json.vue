@@ -2,29 +2,35 @@
   <div>
     <div ref="jsoneditor" id="jsoneditor" style="width: 100%; height: 500px"></div>
   </div>
-  <div class="border rounded mt-2 pt-1 pl-1">
-    <div class="btn-group">
-      <button class="btn btn-outline-primary" v-on:click="clearCacheJson" title="删除所有"><i class="bi bi-trash"></i> 删除所有</button>
-    </div>
-    <hr class="dropdown-divider" />
-    <div class="mt-2 p-1" style="max-height: 300px; overflow-y: scroll">
-      <table class="table table-sm table-hover">
-        <tbody>
-          <tr v-for="(item, index) in state.cache_json" :key="index">
-            <td class="col-11" v-text="item"></td>
-            <td class="col-1">
-              <div class="btn-group">
-                <button type="button" class="btn btn-outline-primary btn-sm" title="编辑" v-on:click="edit(item)"><i class="bi bi-code"></i></button>
-                <button type="button" class="btn btn-outline-primary btn-sm" title="删除" v-on:click="cache_json_delete(index)"><i class="bi bi-trash"></i></button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+  <div class="mt-1" size="mini">
+    <el-button type="primary" v-on:click="clearCacheJson">删除所有</el-button>
   </div>
+  <el-table v-bind:data="pagination.rows" type="index" size="mini" height="300">
+    <el-table-column>
+      <template #default="scope">
+        {{ scope.row }}
+      </template>
+    </el-table-column>
+    <el-table-column label="操作" width="180" fixed="right">
+      <template #default="scope">
+        <el-button-group>
+          <el-button type="primary" title="编辑" v-on:click="edit(scope.row)"><i class="bi bi-code"></i></el-button>
+          <el-button type="warning" title="删除" v-on:click="cache_json_delete(scope.$index)"><i class="bi bi-trash"></i></el-button>
+        </el-button-group>
+      </template>
+    </el-table-column>
+  </el-table>
+  <el-pagination
+    layout="total, sizes, prev, pager, next, jumper"
+    :total="state.cache_json.length"
+    :page-size="pagination.pageSize"
+    @size-change="handlePaginationSizeChange"
+    @current-change="handlePaginationCurrentChange"
+  >
+  </el-pagination>
 </template>
 <script setup>
+import { ElTable, ElTableColumn, ElButtonGroup, ElButton, ElPagination } from "element-plus";
 import { onMounted, reactive, ref, watch } from "vue";
 import JSONEditor from "jsoneditor";
 import { remove } from "lodash";
@@ -34,15 +40,25 @@ const state = reactive({
   cache_json: [],
   editor: null,
 });
+const pagination = reactive({
+  data: [],
+  rows: [],
+  total: 0,
+  pageSize: 10,
+  pageSizes: [10, 20, 50, 100],
+  currentPage: 1,
+});
 const jsoneditor = ref(null);
 
 watch(
   () => state.cache_json,
   (val) => {
+    initPagination();
     window.localStorage.setItem("cache_json", JSON.stringify(val));
   },
   { deep: true }
 );
+
 onMounted(() => {
   const options = {
     language: "zh-CN",
@@ -79,9 +95,26 @@ function edit(jsonString) {
   state.editor.setText(jsonString);
 }
 function cache_json_delete(val) {
+  console.log(val);
   remove(state.cache_json, function (value, index) {
     return val === index;
   });
 }
+const initPagination = () => {
+  const offset = (pagination.currentPage - 1) * pagination.pageSize;
+  const limit = pagination.pageSize;
+  pagination.rows = state.cache_json.slice(offset, offset + limit);
+};
+const handlePaginationSizeChange = (val) => {
+  console.log(val);
+  const offset = (pagination.currentPage - 1) * val;
+  const limit = val;
+  pagination.rows = state.cache_json.slice(offset, offset + limit);
+};
+const handlePaginationCurrentChange = (val) => {
+  const offset = (val - 1) * pagination.pageSize;
+  const limit = pagination.pageSize;
+  pagination.rows = state.cache_json.slice(offset, offset + limit);
+};
 </script>
 <style src="/@jsoneditor/dist/jsoneditor.css"></style>
