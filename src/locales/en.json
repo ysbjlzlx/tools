@@ -17,7 +17,8 @@
     "image": "Image",
     "placeholder": "Placeholder",
     "json": "JSON",
-    "development": "In Process"
+    "development": "In Process",
+    "transform": "Transform"
   },
   "color": {
     "red": "Red (R)",
