@@ -13,19 +13,19 @@
   <div>
     <h2>options</h2>
     <div class="form-floating">
-      <input type="text" class="form-control" v-model="this.state.numberChar" />
+      <input type="text" class="form-control" v-model="state.numberChar" />
       <label>number chars</label>
     </div>
     <div class="form-floating">
-      <input type="text" class="form-control" v-model="this.state.lowerCaseChar" />
+      <input type="text" class="form-control" v-model="state.lowerCaseChar" />
       <label>lower case chars</label>
     </div>
     <div class="form-floating">
-      <input type="text" class="form-control" v-model="this.state.upperCaseChar" />
+      <input type="text" class="form-control" v-model="state.upperCaseChar" />
       <label>upper case chars</label>
     </div>
     <div class="form-floating">
-      <input type="text" class="form-control" v-model="this.state.symbolChar" />
+      <input type="text" class="form-control" v-model="state.symbolChar" />
       <label>symbol chars</label>
     </div>
   </div>
