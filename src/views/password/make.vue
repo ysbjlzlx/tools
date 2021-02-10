@@ -2,12 +2,12 @@
   <div>
     <h2>password</h2>
     <div class="form-floating">
-      <textarea class="form-control" style="height: 100px" v-bind:value="make().join('')" placeholder="password"></textarea>
+      <textarea class="form-control" style="height: 100px" v-model="state.password" placeholder="password"></textarea>
       <label>password</label>
     </div>
     <el-button-group class="mt-1">
-      <el-button type="primary">copy</el-button>
-      <el-button type="info">refresh</el-button>
+      <el-button type="primary" v-on:click="copy()">copy</el-button>
+      <el-button type="info" v-on:click="refresh()">refresh</el-button>
     </el-button-group>
   </div>
   <div>
@@ -33,7 +33,8 @@
 </template>
 <script setup>
 import { onMounted, reactive } from "vue";
-import { ElSlider, ElButtonGroup, ElButton } from "element-plus";
+import { ElSlider, ElButtonGroup, ElButton, ElMessage } from "element-plus";
+import * as clipboard from "clipboard-polyfill/text";
 const numberChar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const lowerCaseChar = [
   "a",
@@ -102,8 +103,7 @@ const state = reactive({
   password: "",
 });
 onMounted(() => {
-  const pwd = make();
-  console.log(pwd.join(""));
+  refresh();
 });
 function make() {
   const haystack = [].concat(state.numberChar.split(""), state.lowerCaseChar.split(""), state.upperCaseChar.split(""), state.symbolChar.split(""));
@@ -114,6 +114,17 @@ function make() {
   }
   return tmp;
 }
+function copy() {
+  clipboard.writeText(state.password);
+  ElMessage.success({
+    showClose: true,
+    message: "复制成功",
+  });
+}
+function refresh() {
+  state.password = make().join("");
+}
+
 /**
  * 生成整数随机数
  * 不含最大值，含最小值的随机数
