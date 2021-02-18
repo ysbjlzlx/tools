@@ -13,20 +13,20 @@
     "crypto-js": "^4.0.0",
     "date-fns": "^2.17.0",
     "element-plus": "^1.0.2-beta.32",
-    "jsoneditor": "^9.1.9",
+    "jsoneditor": "^9.1.10",
     "lodash": "^4.17.20",
     "vue": "^3.0.5",
-    "vue-i18n": "^9.0.0-rc.5",
+    "vue-i18n": "^9.0.0-rc.7",
     "vue-router": "^4.0.3",
     "yaml": "^2.0.0-3"
   },
   "devDependencies": {
-    "@intlify/vite-plugin-vue-i18n": "^1.0.0-beta.16",
+    "@intlify/vite-plugin-vue-i18n": "^1.0.0-beta.17",
     "@types/crypto-js": "^4.0.1",
     "@types/lodash": "^4.14.168",
     "@vitejs/plugin-vue": "^1.1.4",
     "@vue/compiler-sfc": "^3.0.5",
-    "vite": "^2.0.0-beta.67",
+    "vite": "^2.0.1",
     "vitepress": "^0.11.5"
   }
 }
