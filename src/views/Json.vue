@@ -63,7 +63,8 @@ onMounted(() => {
   const options = {
     language: "zh-CN",
     mode: "code",
-    onChangeText(jsonString) {
+    onValidate(json) {
+      const jsonString = JSON.stringify(json);
       if ("" !== jsonString) {
         state.cache_json.unshift(jsonString);
       }
