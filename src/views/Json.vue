@@ -117,4 +117,4 @@ const handlePaginationCurrentChange = (val) => {
   pagination.rows = state.cache_json.slice(offset, offset + limit);
 };
 </script>
-<style src="/@jsoneditor/dist/jsoneditor.css"></style>
+<style src="jsoneditor/dist/jsoneditor.css"></style>
