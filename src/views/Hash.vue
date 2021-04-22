@@ -1,5 +1,15 @@
 <template>
   <div>
+    <label>{{ t("common.text_plain") }}</label>
+    <el-input v-model="state.plain" :placeholder="t('common.text_plain')" />
+  </div>
+  <div></div>
+  <el-block show-margin>
+    <label>MD5</label>
+    <el-input v-model="state.plain" :placeholder="t('common.text_plain')" disabled />
+  </el-block>
+
+  <div>
     <div class="form-floating">
       <input class="form-control" type="text" v-model="state.plain" :placeholder="t('common.text_plain')" />
       <label>{{ t("common.text_plain") }}</label>
@@ -27,6 +37,8 @@
 import { reactive } from "vue";
 import { MD5, SHA1, SHA256, SHA512 } from "crypto-js";
 import { useI18n } from "vue-i18n";
+import { ElInput } from "element-plus";
+import ElBlock from "/@/src/components/ElBlock.vue";
 
 const { t } = useI18n({ useScope: "global" });
 
