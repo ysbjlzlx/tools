@@ -1,9 +1,9 @@
 <template>
-  <el-container>
+  <el-container style="min-height: 100vh">
     <el-header>
       <Nav></Nav>
     </el-header>
-    <el-main>
+    <el-main style="flex: 1">
       <router-view></router-view>
     </el-main>
     <el-footer>
@@ -25,5 +25,11 @@ import Footer from "./views/layouts/Footer.vue";
   line-height: 22px;
   font-weight: 400;
   color: #000000da;
+  min-height: 100vh;
+}
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
 }
 </style>
