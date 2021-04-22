@@ -1,28 +1,25 @@
 <template>
   <div>
-    <div class="form-floating">
-      <textarea class="form-control" style="height: 100px" v-model="state.plain" placeholder="URL"></textarea>
-      <label>URL</label>
-    </div>
-    <div class="border rounded mt-2">
-      <div class="btn-group" role="group">
-        <button type="button" class="btn btn-outline-primary" v-on:click="encode"><i class="bi bi-arrow-down"></i> {{ t("common.encode") }}</button>
-        <button type="button" class="btn btn-outline-primary" v-on:click="decode"><i class="bi bi-arrow-up"></i> {{ t("common.decode") }}</button>
-      </div>
-    </div>
-    <div class="form-floating mt-2">
-      <textarea class="form-control" style="height: 100px" v-model="state.encodeURI" placeholder="encodeURI"></textarea>
-      <label>encodeURI</label>
-    </div>
-    <div class="form-floating mt-1">
-      <textarea class="form-control" style="height: 100px" v-model="state.encodeURIComponent" placeholder="encodeURIComponent"></textarea>
-      <label>encodeURIComponent</label>
-    </div>
+    <label>URL</label>
+    <el-input type="textarea" :rows="5" v-model="state.plain" placeholder="URL" />
+  </div>
+  <div>
+    <el-button type="primary" v-on:click="encode" icon="el-icon-bottom">{{ t("common.encode") }}</el-button>
+    <el-button type="primary" v-on:click="decode" icon="el-icon-top">{{ t("common.decode") }}</el-button>
+  </div>
+  <div>
+    <label>encodeURI</label>
+    <el-input type="textarea" :rows="5" v-model="state.encodeURI" placeholder="encodeURI" />
+  </div>
+  <div>
+    <label>encodeURIComponent</label>
+    <el-input type="textarea" :rows="5" v-model="state.encodeURIComponent" placeholder="encodeURIComponent" />
   </div>
 </template>
 <script setup>
 import { reactive, watch } from "vue";
 import { useI18n } from "vue-i18n";
+import { ElInput, ElButton } from "element-plus";
 
 const { t } = useI18n({ useScope: "global" });
 
