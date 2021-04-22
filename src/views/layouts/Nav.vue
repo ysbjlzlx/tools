@@ -1,80 +1,48 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="/">Tools</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <router-link class="nav-link" aria-current="page" to="/color">{{ t("nav.color") }}</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" aria-current="page" to="/datetime">Datetime</router-link>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ t("nav.encode") }}</a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li>
-                <router-link class="dropdown-item" to="/encode/base64">{{ t("nav.base64") }}</router-link>
-              </li>
-              <li>
-                <router-link class="dropdown-item" to="/encode/urlencode">{{ t("nav.urlencode") }}</router-link>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" aria-current="page" to="/hash">{{ t("nav.hash") }}</router-link>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ t("nav.image") }}</a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li>
-                <router-link class="dropdown-item" to="/image/placeholder">{{ t("nav.placeholder") }}</router-link>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" aria-current="page" to="/json">{{ t("nav.json") }}</router-link>
-          </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ t("nav.transform") }}</a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li>
-                        <router-link class="dropdown-item" to="/transform/json2yaml">JSON2YAML</router-link>
-                    </li>
-                </ul>
-            </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ t("nav.development") }}</a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li>
-                <router-link class="dropdown-item" to="/password/make">Make Password</router-link>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <div class="d-flex">
-          <select class="form-select" v-model="state.lang" @change="onLangChanged()" aria-label="Language select">
-            <option value="zh-Hans-CN">简体中文</option>
-            <option value="en">English</option>
-          </select>
-        </div>
-      </div>
-    </div>
-  </nav>
+  <el-menu mode="horizontal" router>
+    <el-menu-item index="/">Tools</el-menu-item>
+    <el-menu-item index="/color">{{ t("nav.color") }}</el-menu-item>
+    <el-menu-item index="/datetime"> Datetime </el-menu-item>
+    <el-submenu index="/encode">
+      <template #title>{{ t("nav.encode") }}</template>
+      <el-menu-item index="/encode/base64">{{ t("nav.base64") }}</el-menu-item>
+      <el-menu-item index="/encode/urlencode">
+        {{ t("nav.urlencode") }}
+      </el-menu-item>
+    </el-submenu>
+    <el-menu-item index="/hash">
+      {{ t("nav.hash") }}
+    </el-menu-item>
+    <el-submenu index="/image">
+      <template #title>{{ t("nav.image") }}</template>
+      <el-menu-item index="/image/placeholder">
+        {{ t("nav.placeholder") }}
+      </el-menu-item>
+    </el-submenu>
+    <el-menu-item index="/json">
+      {{ t("nav.json") }}
+    </el-menu-item>
+    <el-submenu index="/transform">
+      <template #title>{{ t("nav.transform") }}</template>
+      <el-menu-item index="/transform/json2yaml"> JSON2YAML </el-menu-item>
+    </el-submenu>
+    <el-submenu index="/password">
+      <template #title>
+        {{ t("nav.development") }}
+      </template>
+      <el-menu-item index="/password/make"> Make Password </el-menu-item>
+    </el-submenu>
+    <el-menu-item>
+      <el-select v-model="state.lang" v-on:change="onLangChanged">
+        <el-option value="zh-Hans-CN" label="简体中文" />
+        <el-option value="en" label="English" />
+      </el-select>
+    </el-menu-item>
+  </el-menu>
 </template>
 <script setup>
 import { reactive, onMounted, watch } from "vue";
+import { ElMenu, ElMenuItem, ElSubmenu, ElSelect, ElOption } from "element-plus";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 const router = useRouter();
@@ -96,7 +64,7 @@ watch(
     window.localStorage.setItem("lang", val);
   }
 );
-function onLangChanged() {
+function onLangChanged(val) {
   router.go(0);
 }
 </script>
