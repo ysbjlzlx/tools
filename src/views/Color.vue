@@ -1,62 +1,53 @@
 <template>
+  <el-row :gutter="5">
+    <el-col :span="12">
+      <el-input v-model="state.plain_rgb" placeholder="RGB" />
+    </el-col>
+    <el-col :span="12">
+      <el-input v-model="state.plain_hex" placeholder="HEX" />
+    </el-col>
+  </el-row>
+  <el-row :gutter="2">
+    <el-col :span="6">
+      {{ t("color.red") }}
+      <el-slider v-model="state.rgb_red" :min="0" :max="255" />
+      {{ t("color.red_desc") }}
+    </el-col>
+    <el-col :span="6">
+      {{ t("color.green") }}
+      <el-slider v-model="state.rgb_green" :min="0" :max="255" />
+      {{ t("color.green_desc") }}
+    </el-col>
+    <el-col :span="6">
+      {{ t("color.blue") }}
+      <el-slider v-model="state.rgb_blue" :min="0" :max="255" />
+      {{ t("color.blue_desc") }}
+    </el-col>
+    <el-col :span="6">
+      {{ t("color.alpha") }}
+      <el-slider v-model="state.rgb_alpha" :min="0" :max="255" />
+      {{ t("color.alpha_desc") }}
+    </el-col>
+  </el-row>
+  <el-row :gutter="2">
+    <el-col :span="6">
+      <label>RGB</label>
+      <el-input v-bind:value="getRgb()" placeholder="RGB" disabled />
+    </el-col>
+    <el-col :span="6">
+      <label>RGBA</label>
+      <el-input v-bind:value="getRgba()" placeholder="RGBA" disabled />
+    </el-col>
+    <el-col :span="6">
+      <label>HEX</label>
+      <el-input v-bind:value="getHex()" placeholder="HEX" disabled />
+    </el-col>
+    <el-col :span="6">
+      <label>HEX With Alpha</label>
+      <el-input v-bind:value="getHexWithAlpha()" placeholder="HEX With Alpha" disabled />
+    </el-col>
+  </el-row>
   <div>
-    <div class="row">
-      <div class="col-12 col-md-6 mt-0 mt-md-0 form-floating">
-        <input type="text" class="form-control" id="plain_rgb" v-model="state.plain_rgb" placeholder="RGB" />
-        <label for="plain_rgb">RGB</label>
-      </div>
-      <div class="col-12 col-md-6 mt-1 mt-md-0 form-floating">
-        <input type="text" class="form-control" id="plain_hex" v-model="state.plain_hex" placeholder="HEX" />
-        <label for="plain_hex">HEX</label>
-      </div>
-    </div>
-    <div class="row mt-5">
-      <div class="col-12 col-md-3 mt-0 mt-md-0">
-        <label class="form-label" for="rgb_red">{{ t("color.red") }}</label>
-        <input type="range" class="form-range" min="0" max="255" v-model="state.rgb_red" />
-        <input type="number" class="form-control" id="rgb_red" v-model="state.rgb_red" min="0" max="255" />
-        <div class="form-text">{{ t("color.red_desc") }}</div>
-      </div>
-      <div class="col-12 col-md-3 mt-1 mt-md-0">
-        <label class="form-label" for="rgb_green">{{ t("color.green") }}</label>
-        <input type="range" class="form-range" min="0" max="255" v-model="state.rgb_green" />
-        <input type="number" class="form-control" id="rgb_green" v-model="state.rgb_green" min="0" max="255" />
-        <div class="form-text">{{ t("color.green_desc") }}</div>
-      </div>
-      <div class="col-12 col-md-3 mt-1 mt-md-0">
-        <label class="form-label" for="rgb_blue">{{ t("color.blue") }}</label>
-        <input type="range" class="form-range" min="0" max="255" v-model="state.rgb_blue" />
-        <input type="number" class="form-control" id="rgb_blue" v-model="state.rgb_blue" min="0" max="255" />
-        <div class="form-text">{{ t("color.blue_desc") }}</div>
-      </div>
-      <div class="col-12 col-md-3 mt-1 mt-md-0">
-        <label class="form-label" for="rgb_alpha">{{ t("color.alpha") }}</label>
-        <input type="range" class="form-range" min="0" max="255" v-model="state.rgb_alpha" />
-        <input type="number" class="form-control" id="rgb_alpha" v-model="state.rgb_alpha" min="0" max="255" />
-        <div class="form-text">{{ t("color.alpha_desc") }}</div>
-      </div>
-    </div>
-    <div class="row mt-5">
-      <el-tooltip effect="dark" content="点击复制" placement="top-start">
-        <div class="col-12 col-md-3 mt-0 mt-md-0 form-floating" v-on:click="setClipboard($event)" title="点击复制">
-          <input type="text" class="form-control" v-bind:value="getRgb()" placeholder="RGB" disabled />
-          <label>RGB</label>
-        </div>
-      </el-tooltip>
-
-      <div class="col-12 col-md-3 mt-1 mt-md-0 form-floating" v-on:click="setClipboard($event)" title="点击复制">
-        <input type="text" class="form-control" v-bind:value="getRgba()" placeholder="RGBA" disabled />
-        <label>RGBA</label>
-      </div>
-      <div class="col-12 col-md-3 mt-1 mt-md-0 form-floating" v-on:click="setClipboard($event)" title="点击复制">
-        <input type="text" id="rgb_hex" class="form-control" v-bind:value="getHex()" placeholder="HEX" disabled />
-        <label>HEX</label>
-      </div>
-      <div class="col-12 col-md-3 mt-1 mt-md-0 form-floating" v-on:click="setClipboard($event)" title="点击复制">
-        <input type="text" id="rgb_rgba" class="form-control" v-bind:value="getHexWithAlpha()" placeholder="HEX With Alpha" disabled />
-        <label>HEX With Alpha</label>
-      </div>
-    </div>
     <div class="mt-5">
       <div style="height: 200px" :style="{ backgroundColor: getRgba() }"></div>
     </div>
@@ -67,7 +58,7 @@
 import { reactive, watch, onMounted } from "vue";
 import * as clipboard from "clipboard-polyfill/text";
 import { useI18n } from "vue-i18n";
-import { ElTooltip } from "element-plus";
+import { ElTooltip, ElInput, ElInputNumber, ElRow, ElCol, ElSlider, ElSpace } from "element-plus";
 
 const { t } = useI18n({ useScope: "global" });
 
