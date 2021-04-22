@@ -14,8 +14,8 @@
     <el-table-column label="操作" width="180" fixed="right">
       <template #default="scope">
         <el-button-group>
-          <el-button type="primary" title="编辑" v-on:click="edit(scope.row)"><i class="bi bi-code"></i></el-button>
-          <el-button type="warning" title="删除" v-on:click="cache_json_delete(scope.$index)"><i class="bi bi-trash"></i></el-button>
+          <el-button type="primary" icon="el-icon-edit" v-on:click="edit(scope.row)" size="mini">编辑</el-button>
+          <el-button type="danger" icon="el-icon-delete" v-on:click="cache_json_delete(scope.$index)" size="mini">删除</el-button>
         </el-button-group>
       </template>
     </el-table-column>
