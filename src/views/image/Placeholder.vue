@@ -1,32 +1,34 @@
 <template>
+  <el-row :gutter="5">
+    <el-col :span="8">
+      <label>{{ t("common.weight") }}</label>
+      <br />
+      <el-input type="number" v-model="state.weight" :placeholder="t('common.weight')" />
+    </el-col>
+    <el-col :span="8">
+      <label>{{ t("common.height") }}</label>
+      <br />
+      <el-input type="number" v-model="state.height" :placeholder="t('common.height')" />
+    </el-col>
+    <el-col :span="8">
+      <label>{{ t("common.text") }}</label>
+      <br />
+      <el-input v-model="state.text" :placeholder="t('common.text')" />
+    </el-col>
+  </el-row>
+  <el-row :gutter="5">
+    <el-col :span="12">
+      <label>{{ t("placeholder.bg_color") }}</label>
+      <br />
+      <el-color-picker v-model="state.bgColor" />
+    </el-col>
+    <el-col :span="12">
+      <label>{{ t("placeholder.text_color") }}</label>
+      <br />
+      <el-color-picker v-model="state.textColor" />
+    </el-col>
+  </el-row>
   <div class="mt-1">
-    <div class="row">
-      <div class="col form-floating">
-        <input type="number" class="form-control" v-model="state.weight" :placeholder="t('common.weight')" />
-        <label>{{ t("common.weight") }}</label>
-      </div>
-      <div class="col form-floating">
-        <input type="number" class="form-control" v-model="state.height" :placeholder="t('common.height')" />
-        <label>{{ t("common.height") }}</label>
-      </div>
-    </div>
-    <div class="row mt-1">
-      <div class="form-floating">
-        <textarea class="form-control" v-model="state.text" :placeholder="t('common.text')"></textarea>
-        <label>{{ t("common.text") }}</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col">
-        <label class="form-label">{{ t("placeholder.bg_color") }}</label>
-        <input type="color" class="form-control form-control-color" v-model="state.bgColor" />
-      </div>
-      <div class="col">
-        <label class="form-label">{{ t("placeholder.text_color") }}</label>
-        <input type="color" class="form-control form-control-color" v-model="state.textColor" />
-      </div>
-    </div>
-
     <div class="border rounded mt-5">
       <img class="mx-auto d-block" v-bind:src="generateUrl()" v-bind:style="{ wieght: state.weight }" :title="t('placeholder.placeholder_img')" />
     </div>
@@ -39,6 +41,7 @@
 import { reactive } from "vue";
 import * as clipboard from "clipboard-polyfill/text";
 import { useI18n } from "vue-i18n";
+import { ElRow, ElCol, ElInput, ElForm, ElFormItem, ElInputNumber, ElColorPicker } from "element-plus";
 
 const { t } = useI18n({ useScope: "global" });
 
