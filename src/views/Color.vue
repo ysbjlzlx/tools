@@ -47,10 +47,8 @@
       <el-input v-bind:value="getHexWithAlpha()" placeholder="HEX With Alpha" disabled />
     </el-col>
   </el-row>
-  <div>
-    <div class="mt-5">
-      <div style="height: 200px" :style="{ backgroundColor: getRgba() }"></div>
-    </div>
+  <div class="mt-5">
+    <div style="height: 200px" :style="{ backgroundColor: getRgba() }"></div>
   </div>
 </template>
 
