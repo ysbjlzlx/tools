@@ -1,9 +1,8 @@
 <template>
   <div>
-    <h2>password</h2>
     <div class="form-floating">
-      <textarea class="form-control" style="height: 100px" v-model="state.password" placeholder="password"></textarea>
       <label>password</label>
+      <el-input type="textarea" v-model="state.password" placeholder="password" />
     </div>
     <el-button-group class="mt-1">
       <el-button type="primary" v-on:click="copy()">copy</el-button>
@@ -12,28 +11,28 @@
   </div>
   <div>
     <h2>options</h2>
-    <div class="form-floating">
-      <input type="text" class="form-control" v-model="state.numberChar" />
-      <label>number chars</label>
-    </div>
-    <div class="form-floating">
-      <input type="text" class="form-control" v-model="state.lowerCaseChar" />
-      <label>lower case chars</label>
-    </div>
-    <div class="form-floating">
-      <input type="text" class="form-control" v-model="state.upperCaseChar" />
-      <label>upper case chars</label>
-    </div>
-    <div class="form-floating">
-      <input type="text" class="form-control" v-model="state.symbolChar" />
-      <label>symbol chars</label>
-    </div>
+    <el-form label-width="80" label-position="top">
+      <el-form-item label="number chars">
+        <el-input type="text" v-model="state.numberChar" />
+      </el-form-item>
+      <el-form-item label="lower case chars">
+        <el-input type="text" v-model="state.lowerCaseChar" />
+      </el-form-item>
+      <el-form-item label="upper case chars">
+        <el-input type="text" v-model="state.upperCaseChar" />
+      </el-form-item>
+      <el-form-item label="symbol chars">
+        <el-input type="text" class="form-control" v-model="state.symbolChar" />
+      </el-form-item>
+      <el-form-item label="length">
+        <el-slider v-model="state.length" v-on:change="refresh" :min="6" :max="128" show-input></el-slider>
+      </el-form-item>
+    </el-form>
   </div>
-  <el-slider v-model="state.length" :min="8" :max="128"></el-slider>
 </template>
 <script setup>
 import { onMounted, reactive } from "vue";
-import { ElSlider, ElButtonGroup, ElButton, ElMessage } from "element-plus";
+import { ElSlider, ElButtonGroup, ElButton, ElMessage, ElInput, ElForm, ElFormItem } from "element-plus";
 import * as clipboard from "clipboard-polyfill/text";
 const numberChar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const lowerCaseChar = [
