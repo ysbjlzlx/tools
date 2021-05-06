@@ -11,9 +11,9 @@
   "dependencies": {
     "clipboard-polyfill": "^3.0.3",
     "crypto-js": "^4.0.0",
-    "date-fns": "^2.21.1",
-    "element-plus": "^1.0.2-beta.40",
-    "jsoneditor": "^9.4.0",
+    "date-fns": "^2.21.2",
+    "element-plus": "^1.0.2-beta.41",
+    "jsoneditor": "^9.4.1",
     "lodash": "^4.17.21",
     "vue": "^3.0.11",
     "vue-i18n": "^9.1.6",
@@ -24,12 +24,12 @@
     "@intlify/vite-plugin-vue-i18n": "^1.0.0-beta.17",
     "@types/crypto-js": "^4.0.1",
     "@types/lodash": "^4.14.168",
-    "@vitejs/plugin-vue": "^1.2.1",
+    "@vitejs/plugin-vue": "^1.2.2",
     "@vue/compiler-sfc": "^3.0.11",
     "autoprefixer": "^10.2.5",
-    "postcss": "^8.2.12",
-    "tailwindcss": "^2.1.1",
-    "vite": "^2.2.1",
+    "postcss": "^8.2.14",
+    "tailwindcss": "^2.1.2",
+    "vite": "^2.2.4",
     "vitepress": "^0.12.2"
   }
 }
