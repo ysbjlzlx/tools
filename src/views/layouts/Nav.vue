@@ -1,43 +1,44 @@
 <template>
-  <el-menu mode="horizontal" router>
-    <el-menu-item index="/">Tools</el-menu-item>
-    <el-menu-item index="/color">{{ t("nav.color") }}</el-menu-item>
-    <el-menu-item index="/datetime"> Datetime </el-menu-item>
-    <el-submenu index="/encode">
+  <el-menu mode="horizontal" @select="handleMenuSeclect">
+    <el-menu-item index="1" :route="{ path: '/' }">Tools</el-menu-item>
+    <el-menu-item index="2" :route="{ path: '/color' }">{{ t("nav.color") }}</el-menu-item>
+    <el-menu-item index="3" :route="{ path: '/datetime' }"> Datetime </el-menu-item>
+    <el-submenu index="4">
       <template #title>{{ t("nav.encode") }}</template>
-      <el-menu-item index="/encode/base64">{{ t("nav.base64") }}</el-menu-item>
-      <el-menu-item index="/encode/urlencode">
+      <el-menu-item index="4-1" :route="{ path: '/encode/base64' }">{{ t("nav.base64") }}</el-menu-item>
+      <el-menu-item index="4-2" :route="{ path: '/encode/urlencode' }">
         {{ t("nav.urlencode") }}
       </el-menu-item>
     </el-submenu>
-    <el-menu-item index="/hash">
+    <el-menu-item index="5" :route="{ path: '/hash' }">
       {{ t("nav.hash") }}
     </el-menu-item>
-    <el-submenu index="/image">
+    <el-submenu index="6">
       <template #title>{{ t("nav.image") }}</template>
-      <el-menu-item index="/image/placeholder">
+      <el-menu-item index="6-1" :route="{ path: '/image/placeholder' }">
         {{ t("nav.placeholder") }}
       </el-menu-item>
     </el-submenu>
-    <el-menu-item index="/json">
+    <el-menu-item index="7" :route="{ path: '/json' }">
       {{ t("nav.json") }}
     </el-menu-item>
-    <el-submenu index="/transform">
+    <el-submenu index="8">
       <template #title>{{ t("nav.transform") }}</template>
-      <el-menu-item index="/transform/json2yaml"> JSON2YAML </el-menu-item>
+      <el-menu-item index="8-1" :route="{ path: '/transform/json2yaml' }"> JSON2YAML </el-menu-item>
     </el-submenu>
-    <el-submenu index="/password">
+    <el-submenu index="9">
       <template #title>
         {{ t("nav.development") }}
       </template>
-      <el-menu-item index="/password/make"> Make Password </el-menu-item>
+      <el-menu-item index="9-1" :route="{ path: '/password/make' }"> Make Password </el-menu-item>
     </el-submenu>
-    <el-menu-item>
-      <el-select v-model="state.lang" v-on:change="onLangChanged">
-        <el-option value="zh-Hans-CN" label="简体中文" />
-        <el-option value="en" label="English" />
-      </el-select>
-    </el-menu-item>
+    <el-submenu index="lang" style="float: right">
+      <template #title>
+        {{ state.lang }}
+      </template>
+      <el-menu-item index="zh-Hans-CN">简体中文</el-menu-item>
+      <el-menu-item index="en">English</el-menu-item>
+    </el-submenu>
   </el-menu>
 </template>
 <script setup>
@@ -66,5 +67,13 @@ watch(
 );
 function onLangChanged(val) {
   router.go(0);
+}
+function handleMenuSeclect(index, indexPath, { route }) {
+  if (route) {
+    router.push(route);
+  } else if ("lang" === indexPath.shift()) {
+    state.lang = index;
+    onLangChanged();
+  }
 }
 </script>
