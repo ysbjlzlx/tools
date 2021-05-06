@@ -1,24 +1,24 @@
 <template>
-  <div class="mt-2">
-    <div class="btn-group">
-      <button role="button" class="btn btn-outline-primary" v-on:click="json2yaml()">JSON <i class="bi bi-arrow-right"></i> YAML</button>
-      <button role="button" class="btn btn-outline-primary" v-on:click="yaml2json()">YAML <i class="bi bi-arrow-right"></i> JSON</button>
-    </div>
-    <div class="row mt-2">
-      <div class="col form-floating">
-        <textarea class="form-control" style="height: 512px" v-model="state.json" placeholder="JSON"></textarea>
+  <div>
+    <el-button-group>
+      <el-button v-on:click="json2yaml()">JSON <i class="el el-icon-right"></i> YAML</el-button>
+      <el-button v-on:click="yaml2json()">YAML <i class="el el-icon-right"></i> JSON</el-button>
+    </el-button-group>
+    <el-row :gutter="5">
+      <el-col :span="12">
         <label>JSON</label>
-      </div>
-      <div class="col form-floating">
-        <textarea class="form-control" style="height: 512px" v-model="state.yaml" placeholder="YAML"></textarea>
+        <el-input type="textarea" rows="20" v-model="state.json" placeholder="JSON" />
+      </el-col>
+      <el-col :span="12">
         <label>YAML</label>
-      </div>
-    </div>
+        <el-input type="textarea" rows="20" v-model="state.yaml" placeholder="YAML" />
+      </el-col>
+    </el-row>
   </div>
 </template>
 <script setup>
 import { reactive, watch } from "vue";
-import { ElMessage } from "element-plus";
+import { ElMessage, ElInput, ElButton, ElButtonGroup, ElRow, ElCol } from "element-plus";
 import YAML from "yaml";
 
 const state = reactive({
