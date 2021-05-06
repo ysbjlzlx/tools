@@ -43,7 +43,6 @@
 </template>
 <script setup>
 import { reactive, onMounted, watch } from "vue";
-import { ElMenu, ElMenuItem, ElSubmenu, ElSelect, ElOption } from "element-plus";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 const router = useRouter();
