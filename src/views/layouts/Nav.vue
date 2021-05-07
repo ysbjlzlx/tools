@@ -34,15 +34,15 @@
     </el-submenu>
     <el-submenu index="lang" style="float: right">
       <template #title>
-        {{ state.lang }}
+        {{ lang.label }}
       </template>
-      <el-menu-item index="zh-Hans-CN">简体中文</el-menu-item>
-      <el-menu-item index="en">English</el-menu-item>
+      <el-menu-item v-for="option in langOptions" :key="option.lang" :index="option.lang">{{ option.label }}</el-menu-item>
     </el-submenu>
   </el-menu>
 </template>
 <script setup>
-import { reactive, onMounted, watch } from "vue";
+import _ from "lodash";
+import { reactive, onMounted, watch, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 const router = useRouter();
@@ -51,6 +51,11 @@ const state = reactive({
   lang: "zh-Hans-CN",
 });
 const { t } = useI18n({ useScope: "global" });
+
+const langOptions = [
+  { lang: "zh-Hans-CN", label: "简体中文" },
+  { lang: "en", label: "English" },
+];
 
 onMounted(() => {
   const lang = window.localStorage.getItem("lang");
@@ -75,4 +80,9 @@ function handleMenuSeclect(index, indexPath, { route }) {
     onLangChanged();
   }
 }
+const lang = computed(() => {
+  return _.find(langOptions, (item) => {
+    return item.lang == state.lang;
+  });
+});
 </script>
