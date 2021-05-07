@@ -7,14 +7,7 @@ import vueI18n from "@intlify/vite-plugin-vue-i18n";
  */
 export default {
   resolve: {
-    alias: [
-      { find: "/@", replacement: __dirname },
-      { find: "/@src", replacement: path.resolve(__dirname, "./src") },
-      {
-        find: "@element-plus",
-        replacement: path.resolve(__dirname, "./node_modules/element-plus"),
-      },
-    ],
+    alias: [{ find: "@", replacement: path.resolve(__dirname, "./src") }],
   },
   plugins: [
     vue(),

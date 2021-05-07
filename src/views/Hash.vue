@@ -23,8 +23,6 @@
 import { reactive } from "vue";
 import { MD5, SHA1, SHA256, SHA512 } from "crypto-js";
 import { useI18n } from "vue-i18n";
-import { ElInput, ElForm, ElFormItem } from "element-plus";
-import ElBlock from "/@/src/components/ElBlock.vue";
 
 const { t } = useI18n({ useScope: "global" });
 
