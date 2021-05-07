@@ -11,12 +11,9 @@
     </el-footer>
   </el-container>
 </template>
-<script>
+<script setup>
 import Nav from "./views/layouts/Nav.vue";
 import Footer from "./views/layouts/Footer.vue";
-export default {
-  components: { Nav, Footer },
-};
 </script>
 
 <style>

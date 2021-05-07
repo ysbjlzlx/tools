@@ -41,13 +41,12 @@
 import { reactive } from "vue";
 import * as clipboard from "clipboard-polyfill/text";
 import { useI18n } from "vue-i18n";
-import { ElRow, ElCol, ElInput, ElForm, ElFormItem, ElInputNumber, ElColorPicker } from "element-plus";
 
 const { t } = useI18n({ useScope: "global" });
 
 const state = reactive({
   weight: 150,
-  height: null,
+  height: 150,
   text: null,
   extension: null,
   bgColor: "#cccccc",

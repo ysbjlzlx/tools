@@ -41,7 +41,7 @@
   </el-menu>
 </template>
 <script setup>
-import _ from "lodash";
+import { find } from "lodash";
 import { reactive, onMounted, watch, computed } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
@@ -81,7 +81,7 @@ function handleMenuSeclect(index, indexPath, { route }) {
   }
 }
 const lang = computed(() => {
-  return _.find(langOptions, (item) => {
+  return find(langOptions, (item) => {
     return item.lang == state.lang;
   });
 });
