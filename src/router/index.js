@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import NProgress from "nprogress";
 import i18n from "../locales";
 
 const routes = [
@@ -59,11 +60,17 @@ const router = createRouter({
   routes,
 });
 
+router.beforeEach((to, from, next) => {
+  NProgress.start();
+  next();
+});
+
 router.afterEach((to, from) => {
   const lang = window.localStorage.getItem("lang");
   if (lang && i18n.global.availableLocales.includes(lang)) {
     i18n.global.locale = lang;
   }
+  NProgress.done();
 });
 
 export default router;
