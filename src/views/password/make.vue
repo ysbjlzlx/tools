@@ -32,7 +32,7 @@
 </template>
 <script setup>
 import { onMounted, reactive } from "vue";
-import { ElSlider, ElButtonGroup, ElButton, ElMessage, ElInput, ElForm, ElFormItem } from "element-plus";
+import ElMessage from "element-plus/es/el-message";
 import * as clipboard from "clipboard-polyfill/text";
 const numberChar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const lowerCaseChar = [

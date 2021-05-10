@@ -52,7 +52,7 @@
 import { reactive, computed } from "vue";
 import * as clipboard from "clipboard-polyfill/text";
 import { useI18n } from "vue-i18n";
-import { ElMessage } from "element-plus";
+import ElMessage from "element-plus/es/el-message";
 
 const { t } = useI18n({ useScope: "global" });
 const extensionOptions = [
