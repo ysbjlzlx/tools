@@ -37,6 +37,7 @@
   "placeholder": {
     "bg_color": "Background color",
     "text_color": "Text color",
-    "placeholder_img": "Placeholder image"
+    "placeholder_img": "Placeholder image",
+    "extension": "Extension"
   }
 }

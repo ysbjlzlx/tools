@@ -37,6 +37,7 @@
   "placeholder": {
     "bg_color": "背景颜色",
     "text_color": "文本颜色",
-    "placeholder_img": "占位图"
+    "placeholder_img": "占位图",
+    "extension": "后缀名"
   }
 }

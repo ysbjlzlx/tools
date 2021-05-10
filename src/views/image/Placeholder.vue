@@ -16,16 +16,25 @@
       <el-input v-model="state.text" :placeholder="t('common.text')" />
     </el-col>
   </el-row>
-  <el-row :gutter="5">
-    <el-col :span="12">
+  <el-row :gutter="5" class="mt-5">
+    <el-col :span="8">
       <label>{{ t("placeholder.bg_color") }}</label>
       <br />
       <el-color-picker v-model="state.bgColor" />
     </el-col>
-    <el-col :span="12">
+    <el-col :span="8">
       <label>{{ t("placeholder.text_color") }}</label>
       <br />
       <el-color-picker v-model="state.textColor" />
+    </el-col>
+    <el-col :span="8">
+      <label>{{ t("placeholder.extension") }}</label>
+      <br />
+      <el-select v-model="state.extension">
+        <el-option v-for="item in extensionOptions" :key="item.value" :value="item.value">
+          {{ item.label }}
+        </el-option>
+      </el-select>
     </el-col>
   </el-row>
   <div class="mt-1">
@@ -48,12 +57,18 @@ import { useI18n } from "vue-i18n";
 import { ElMessage } from "element-plus";
 
 const { t } = useI18n({ useScope: "global" });
+const extensionOptions = [
+  { value: ".png", label: ".PNG" },
+  { value: ".jpg", label: ".JPG" },
+  { value: ".jpeg", label: ".JPEG" },
+  { value: ".gif", label: ".GIF" },
+];
 
 const state = reactive({
   weight: 150,
   height: 150,
   text: null,
-  extension: null,
+  extension: ".png",
   bgColor: "#cccccc",
   textColor: "#969696",
 });
@@ -68,6 +83,7 @@ const generationUrl = computed(() => {
   if (state.text && "string" === typeof state.text && "" !== state.text) {
     host = host + "?text=" + encodeURIComponent(state.text);
   }
+  host = host + state.extension;
   return host;
 });
 function onClickUrl() {
