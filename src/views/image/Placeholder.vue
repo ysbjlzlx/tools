@@ -31,9 +31,7 @@
       <label>{{ t("placeholder.extension") }}</label>
       <br />
       <el-select v-model="state.extension">
-        <el-option v-for="item in extensionOptions" :key="item.value" :value="item.value">
-          {{ item.label }}
-        </el-option>
+        <el-option v-for="item in extensionOptions" :key="item.value" :value="item.value" :label="item.label" />
       </el-select>
     </el-col>
   </el-row>
