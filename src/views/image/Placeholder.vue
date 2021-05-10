@@ -30,17 +30,22 @@
   </el-row>
   <div class="mt-1">
     <div class="border rounded mt-5">
-      <img class="mx-auto d-block" v-bind:src="generateUrl()" v-bind:style="{ wieght: state.weight }" :title="t('placeholder.placeholder_img')" />
+      <img class="mx-auto d-block" v-bind:src="generationUrl" v-bind:style="{ wieght: state.weight }" :title="t('placeholder.placeholder_img')" />
     </div>
     <div class="border rounded mt-2 p-2">
-      <span v-text="generateUrl()" v-on:click="onClickUrl()"></span>
+      <el-input v-model="generationUrl">
+        <template #append>
+          <el-button @click="onClickUrl()">复制</el-button>
+        </template>
+      </el-input>
     </div>
   </div>
 </template>
 <script setup>
-import { reactive } from "vue";
+import { reactive, computed } from "vue";
 import * as clipboard from "clipboard-polyfill/text";
 import { useI18n } from "vue-i18n";
+import { ElMessage } from "element-plus";
 
 const { t } = useI18n({ useScope: "global" });
 
@@ -52,7 +57,7 @@ const state = reactive({
   bgColor: "#cccccc",
   textColor: "#969696",
 });
-function generateUrl() {
+const generationUrl = computed(() => {
   let host = "https://via.placeholder.com";
   host = host + "/" + state.weight;
   if (state.height && "" !== state.height) {
@@ -64,8 +69,12 @@ function generateUrl() {
     host = host + "?text=" + encodeURIComponent(state.text);
   }
   return host;
-}
+});
 function onClickUrl() {
-  clipboard.writeText(generateUrl());
+  clipboard.writeText(generationUrl.value);
+  ElMessage.success({
+    showClose: true,
+    message: "复制成功",
+  });
 }
 </script>
