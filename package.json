@@ -11,8 +11,8 @@
   "dependencies": {
     "clipboard-polyfill": "^3.0.3",
     "crypto-js": "^4.0.0",
-    "date-fns": "^2.21.2",
-    "element-plus": "^1.0.2-beta.41",
+    "date-fns": "^2.21.3",
+    "element-plus": "^1.0.2-beta.42",
     "jsoneditor": "^9.4.1",
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
