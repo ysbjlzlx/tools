@@ -9,7 +9,7 @@
   </el-row>
 </template>
 <script setup>
-import { ref, onMounted, reactive, watch, computed } from "vue";
+import { onMounted, reactive, watch, computed } from "vue";
 import * as QRCode from "easyqrcodejs";
 const state = reactive({
   QRCodeObject: null,
@@ -21,7 +21,6 @@ const QRCodeOption = computed(() => {
     text: state.text,
     width: 300,
     height: 300,
-    dotScale: "0.5",
   };
 });
 onMounted(() => {
