@@ -15,7 +15,7 @@ const state = reactive({
   QRCodeObject: null,
   text: null,
 });
-const QRCodeRef = ref("qrcode");
+const qrcode = ref(null);
 const QRCodeOption = computed(() => {
   return {
     text: state.text,
@@ -25,13 +25,13 @@ const QRCodeOption = computed(() => {
   };
 });
 onMounted(() => {
-  state.QRCodeObject = new QRCode(QRCodeRef.value, QRCodeOption.value);
+  state.QRCodeObject = new QRCode(qrcode.value, QRCodeOption.value);
 });
 watch(
   () => state.text,
   (val) => {
     state.QRCodeObject.clear();
-    new QRCode(QRCodeRef.value, QRCodeOption.value);
+    new QRCode(qrcode.value, QRCodeOption.value);
   }
 );
 </script>
