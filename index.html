@@ -9,11 +9,22 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <style>
+      #cnzz_stat_icon_1279958844 {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
     <script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
-    <script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1279958844&web_id=1279958844"></script>
+    <script type="text/javascript">
+      document.write(
+        unescape(
+          "%3Cspan id='cnzz_stat_icon_1279958844'%3E%3C/span%3E%3Cscript src='https://v1.cnzz.com/stat.php%3Fid%3D1279958844' type='text/javascript'%3E%3C/script%3E"
+        )
+      );
+    </script>
   </body>
 </html>
