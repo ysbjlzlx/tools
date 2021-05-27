@@ -4,18 +4,18 @@
       <el-input type="textarea" rows="15" v-model="state.text" :show-word-limit="true" maxlength="250" placeholder="在这里输入文本"></el-input>
     </el-col>
     <el-col :span="8">
-      <div ref="qrcode" id="qrcode" style="width: 300px; height: 300px"></div>
+      <div id="qrcode" style="width: 300px; height: 300px"></div>
     </el-col>
   </el-row>
 </template>
 <script setup>
 import { ref, onMounted, reactive, watch, computed } from "vue";
-import QRCode from "easyqrcodejs";
+import * as QRCode from "easyqrcodejs";
 const state = reactive({
   QRCodeObject: null,
   text: null,
 });
-const qrcode = ref(null);
+
 const QRCodeOption = computed(() => {
   return {
     text: state.text,
@@ -25,13 +25,13 @@ const QRCodeOption = computed(() => {
   };
 });
 onMounted(() => {
-  state.QRCodeObject = new QRCode(qrcode.value, QRCodeOption.value);
+  state.QRCodeObject = new QRCode(document.getElementById("qrcode"), QRCodeOption.value);
 });
 watch(
   () => state.text,
   (val) => {
     state.QRCodeObject.clear();
-    new QRCode(qrcode.value, QRCodeOption.value);
+    state.QRCodeObject = new QRCode(document.getElementById("qrcode"), QRCodeOption.value);
   }
 );
 </script>
