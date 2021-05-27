@@ -18,6 +18,7 @@
       <el-menu-item index="6-1" :route="{ path: '/image/placeholder' }">
         {{ t("nav.placeholder") }}
       </el-menu-item>
+      <el-menu-item index="6-2" :route="{ path: '/image/qrcode' }"> 二维码 </el-menu-item>
     </el-submenu>
     <el-menu-item index="7" :route="{ path: '/json' }">
       {{ t("nav.json") }}
