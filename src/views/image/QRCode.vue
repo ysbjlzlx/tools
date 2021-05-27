@@ -10,7 +10,7 @@
 </template>
 <script setup>
 import { onMounted, reactive, watch, computed } from "vue";
-import * as QRCode from "easyqrcodejs";
+import QRCode from "easyqrcodejs";
 const state = reactive({
   QRCodeObject: null,
   text: null,
