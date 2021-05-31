@@ -2,36 +2,31 @@
   <div>
     <div class="form-floating">
       <label>password</label>
-      <el-input type="textarea" v-model="state.password" placeholder="password" />
+      <el-input type="text" v-model="state.password" placeholder="password" :show-word-limit="true" :maxlength="256" />
     </div>
     <el-button-group class="mt-1">
       <el-button type="primary" v-on:click="copy()">copy</el-button>
       <el-button type="info" v-on:click="refresh()">refresh</el-button>
     </el-button-group>
   </div>
-  <div>
-    <h2>options</h2>
+  <div class="mt-5">
+    <h2>Options</h2>
     <el-form label-width="80" label-position="top">
-      <el-form-item label="number chars">
-        <el-input type="text" v-model="state.numberChar" />
-      </el-form-item>
-      <el-form-item label="lower case chars">
-        <el-input type="text" v-model="state.lowerCaseChar" />
-      </el-form-item>
-      <el-form-item label="upper case chars">
-        <el-input type="text" v-model="state.upperCaseChar" />
-      </el-form-item>
-      <el-form-item label="symbol chars">
-        <el-input type="text" class="form-control" v-model="state.symbolChar" />
+      <el-form-item>
+        <el-checkbox v-model="option.number">数字 0 ~ 9</el-checkbox>
+        <el-checkbox v-model="option.lowerCaseChar">小写字母 a ~ z</el-checkbox>
+        <el-checkbox v-model="option.upperCaseChar">大写字母 A ~ Z</el-checkbox>
+        <el-checkbox v-model="option.symbolChar">字符</el-checkbox>
+        <el-input type="text" class="form-control" v-model="state.symbolChar" :disabled="!option.symbolChar" />
       </el-form-item>
       <el-form-item label="length">
-        <el-slider v-model="state.length" v-on:change="refresh" :min="6" :max="128" show-input></el-slider>
+        <el-slider v-model="state.length" :min="6" :max="128" :marks="state.marks" show-input></el-slider>
       </el-form-item>
     </el-form>
   </div>
 </template>
 <script setup>
-import { onMounted, reactive } from "vue";
+import { onMounted, reactive, watch } from "vue";
 import ElMessage from "element-plus/es/el-message";
 import * as clipboard from "clipboard-polyfill/text";
 const numberChar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -94,18 +89,40 @@ const upperCaseChar = [
 const symbolChar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "-", "="];
 
 const state = reactive({
-  numberChar: numberChar.join(""),
-  lowerCaseChar: lowerCaseChar.join(""),
-  upperCaseChar: upperCaseChar.join(""),
   symbolChar: symbolChar.join(""),
-  length: 8,
+  length: 16,
   password: "",
+  marks: {
+    6: "6",
+    8: "8",
+    16: "16",
+    64: "64",
+    128: "128",
+  },
+});
+const option = reactive({
+  number: true,
+  lowerCaseChar: true,
+  upperCaseChar: true,
+  symbolChar: true,
 });
 onMounted(() => {
   refresh();
 });
 function make() {
-  const haystack = [].concat(state.numberChar.split(""), state.lowerCaseChar.split(""), state.upperCaseChar.split(""), state.symbolChar.split(""));
+  let haystack = [];
+  if (option.number) {
+    haystack = haystack.concat(numberChar);
+  }
+  if (option.lowerCaseChar) {
+    haystack = haystack.concat(lowerCaseChar);
+  }
+  if (option.upperCaseChar) {
+    haystack = haystack.concat(upperCaseChar);
+  }
+  if (option.symbolChar) {
+    haystack = haystack.concat(state.symbolChar.split(""));
+  }
   const tmp = [];
   for (let i = 0; i < state.length; i++) {
     const index = getRandomInt(0, haystack.length);
@@ -123,6 +140,13 @@ function copy() {
 function refresh() {
   state.password = make().join("");
 }
+watch(
+  [() => option, () => state.length],
+  () => {
+    refresh();
+  },
+  { deep: true }
+);
 
 /**
  * 生成整数随机数
