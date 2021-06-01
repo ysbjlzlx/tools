@@ -6,7 +6,14 @@
     "text_plain": "原始文本",
     "text_base64": "BASE64 文本",
     "weight": "宽度",
-    "height": "高度"
+    "height": "高度",
+    "QRCode": "二维码",
+    "copy": "复制",
+    "refresh": "刷新",
+    "password": "密码",
+    "length": "长度",
+    "option": "选项",
+    "options": "选项"
   },
   "nav": {
     "color": "Color",
@@ -39,5 +46,11 @@
     "text_color": "文本颜色",
     "placeholder_img": "占位图",
     "extension": "后缀名"
+  },
+  "password": {
+    "numeric": "数字",
+    "lowercase": "小写字母",
+    "captial": "大写字母",
+    "symbol": "符号"
   }
 }

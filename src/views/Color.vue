@@ -56,7 +56,6 @@
 import { reactive, watch, onMounted } from "vue";
 import * as clipboard from "clipboard-polyfill/text";
 import { useI18n } from "vue-i18n";
-import { ElTooltip, ElInput, ElInputNumber, ElRow, ElCol, ElSlider, ElSpace } from "element-plus";
 
 const { t } = useI18n({ useScope: "global" });
 

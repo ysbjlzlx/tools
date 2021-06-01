@@ -6,7 +6,14 @@
     "text_plain": "Plain text",
     "text_base64": "BASE64 text",
     "weight": "Weight",
-    "height": "Height"
+    "height": "Height",
+    "QRCode": "QRCode",
+    "copy": "Copy",
+    "refresh": "Refresh",
+    "password": "Password",
+    "length": "Length",
+    "option": "Option",
+    "options": "Options"
   },
   "nav": {
     "color": "Color",
@@ -39,5 +46,11 @@
     "text_color": "Text color",
     "placeholder_img": "Placeholder image",
     "extension": "Extension"
+  },
+  "password": {
+    "numeric": "Numeric",
+    "lowercase": "Lowercase",
+    "captial": "Captial",
+    "symbol": "Symbol"
   }
 }

@@ -1,25 +1,25 @@
 <template>
   <div>
     <div class="form-floating">
-      <label>password</label>
+      <label>{{ t("common.password") }}</label>
       <el-input type="text" v-model="state.password" placeholder="password" :show-word-limit="true" :maxlength="256" />
     </div>
     <el-button-group class="mt-1">
-      <el-button type="primary" v-on:click="copy()">copy</el-button>
-      <el-button type="info" v-on:click="refresh()">refresh</el-button>
+      <el-button type="primary" v-on:click="copy()">{{ t("common.copy") }}</el-button>
+      <el-button type="info" v-on:click="refresh()">{{ t("common.refresh") }}</el-button>
     </el-button-group>
   </div>
   <div class="mt-5">
-    <h2>Options</h2>
+    <h2>{{ t("common.option") }}</h2>
     <el-form label-width="80" label-position="top">
       <el-form-item>
-        <el-checkbox v-model="option.number">数字 0 ~ 9</el-checkbox>
-        <el-checkbox v-model="option.lowerCaseChar">小写字母 a ~ z</el-checkbox>
-        <el-checkbox v-model="option.upperCaseChar">大写字母 A ~ Z</el-checkbox>
-        <el-checkbox v-model="option.symbolChar">字符</el-checkbox>
+        <el-checkbox v-model="option.number">{{ t("password.numeric") }} 0 ~ 9</el-checkbox>
+        <el-checkbox v-model="option.lowerCaseChar">{{ t("password.lowercase") }} a ~ z</el-checkbox>
+        <el-checkbox v-model="option.upperCaseChar">{{ t("password.captial") }} A ~ Z</el-checkbox>
+        <el-checkbox v-model="option.symbolChar">{{ t("password.symbol") }}</el-checkbox>
         <el-input type="text" class="form-control" v-model="state.symbolChar" :disabled="!option.symbolChar" />
       </el-form-item>
-      <el-form-item label="length">
+      <el-form-item :label="t('common.length')">
         <el-slider v-model="state.length" :min="6" :max="128" :marks="state.marks" show-input></el-slider>
       </el-form-item>
     </el-form>
@@ -29,6 +29,10 @@
 import { onMounted, reactive, watch } from "vue";
 import ElMessage from "element-plus/es/el-message";
 import * as clipboard from "clipboard-polyfill/text";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ useScope: "global" });
+
 const numberChar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 const lowerCaseChar = [
   "a",
@@ -141,7 +145,7 @@ function refresh() {
   state.password = make().join("");
 }
 watch(
-  [() => option, () => state.length],
+  [() => option, () => state.length, () => state.symbolChar],
   () => {
     refresh();
   },
