@@ -35,7 +35,7 @@
     </el-submenu>
     <el-submenu index="lang" style="float: right">
       <template #title>
-        {{ lang.label }}
+        <i class="bi bi-translate" style="font-size: 1.5em"></i>
       </template>
       <el-menu-item v-for="option in langOptions" :key="option.lang" :index="option.lang">{{ option.label }}</el-menu-item>
     </el-submenu>
