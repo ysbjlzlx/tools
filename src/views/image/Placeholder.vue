@@ -35,18 +35,36 @@
       </el-select>
     </el-col>
   </el-row>
-  <div class="mt-1">
-    <div class="border rounded mt-5">
-      <img class="mx-auto d-block" v-bind:src="generationUrl" v-bind:style="{ wieght: state.weight }" :title="t('placeholder.placeholder_img')" />
-    </div>
-    <div class="border rounded mt-2 p-2">
-      <el-input v-model="generationUrl">
-        <template #append>
-          <el-button @click="onClickUrl()">复制</el-button>
-        </template>
-      </el-input>
-    </div>
-  </div>
+  <el-row :gutter="5" class="mt-5">
+    <el-col :span="12">
+      <div class="mt-1">
+        <div class="border rounded mt-5">
+          <img class="mx-auto d-block" v-bind:src="generationUrl" v-bind:style="{ wieght: state.weight }" :title="t('placeholder.placeholder_img')" />
+        </div>
+        <div class="border rounded mt-2 p-2">
+          <el-input v-model="generationUrl">
+            <template #append>
+              <el-button @click="onClickUrl(generationUrl)">{{ t("common.copy") }}</el-button>
+            </template>
+          </el-input>
+        </div>
+      </div>
+    </el-col>
+    <el-col :span="12">
+      <div class="mt-1">
+        <div class="border rounded mt-5">
+          <img class="mx-auto d-block" v-bind:src="dummyimageUrl" v-bind:style="{ wieght: state.weight }" :title="t('placeholder.placeholder_img')" />
+        </div>
+        <div class="border rounded mt-2 p-2">
+          <el-input v-model="dummyimageUrl">
+            <template #append>
+              <el-button @click="onClickUrl(dummyimageUrl)">{{ t("common.copy") }}</el-button>
+            </template>
+          </el-input>
+        </div>
+      </div>
+    </el-col>
+  </el-row>
 </template>
 <script setup>
 import { reactive, computed } from "vue";
@@ -84,8 +102,22 @@ const generationUrl = computed(() => {
   host = host + state.extension;
   return host;
 });
-function onClickUrl() {
-  clipboard.writeText(generationUrl.value);
+const dummyimageUrl = computed(() => {
+  let host = "https://dummyimage.com";
+  host = host + "/" + state.weight;
+  if (state.height && "" !== state.height) {
+    host = host + "x" + state.height;
+  }
+  host = host + "/" + state.bgColor.substring(1);
+  host = host + "/" + state.textColor.substring(1);
+  if (state.text && "string" === typeof state.text && "" !== state.text) {
+    host = host + "?text=" + encodeURIComponent(state.text);
+  }
+  host = host + state.extension;
+  return host;
+});
+function onClickUrl(text) {
+  clipboard.writeText(text);
   ElMessage.success({
     showClose: true,
     message: "复制成功",
