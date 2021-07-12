@@ -58,6 +58,11 @@ const routes = [
     name: "PasswordMake",
     component: () => import("../views/password/make.vue"),
   },
+  {
+    path: "/password/otp",
+    name: "PasswordOtp",
+    component: () => import("../views/otp.vue"),
+  },
 ];
 
 const router = createRouter({

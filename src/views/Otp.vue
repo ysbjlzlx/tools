@@ -1,10 +1,32 @@
-<template></template>
+<template>
+  <div>
+    <el-row :gutter="5">
+      <el-col :span="8">
+        <el-input v-model="state.issuer" label="Issuer" />
+      </el-col>
+      <el-col :span="8">
+        <el-input v-model="state.account" label="Account" />
+      </el-col>
+      <el-col :span="8">
+        <el-input v-model="state.secret" label="Secret key" />
+      </el-col>
+    </el-row>
+    <el-row :gutter="5">
+      <el-col :span="8">
+        <el-select v-model="state.type">
+          <el-option v-for="item in typeOptions" :key="item.value" :value="item.value" :label="item.label" />
+        </el-select>
+      </el-col>
+      <el-col :span="8"> </el-col>
+      <el-col :span="8"> </el-col>
+    </el-row>
+  </div>
+</template>
 <script setup>
-import { random } from "lodash";
 import { reactive } from "vue";
-import util from "../scripts/helper/util";
+import { getRandomInt } from "../scripts/helper/util";
 const state = reactive({
-  type: null,
+  type: "totp",
   issuer: null,
   account: null,
   secret: null,
@@ -14,8 +36,8 @@ const state = reactive({
   period: null,
 });
 const typeOptions = [
-  { value: "totp", lable: "TOTP" },
-  { value: "hotp", lable: "HOTP" },
+  { value: "totp", label: "TOTP" },
+  { value: "hotp", label: "HOTP" },
 ];
 const algorithmOptions = [
   { value: "SHA1", label: "SHA1" },
@@ -36,7 +58,7 @@ const randomOptions = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L
 const generateSecret = (randomOptions, length = 16) => {
   const secret = [];
   for (let i = 0; i < length; i++) {
-    random = util.getRandomInt(0, randomOptions.length);
+    const random = getRandomInt(0, randomOptions.length);
     secret.push(randomOptions[random]);
   }
   return secret.join("");

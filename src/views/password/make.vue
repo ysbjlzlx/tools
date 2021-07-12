@@ -30,7 +30,7 @@ import { onMounted, reactive, watch } from "vue";
 import ElMessage from "element-plus/es/el-message";
 import * as clipboard from "clipboard-polyfill/text";
 import { useI18n } from "vue-i18n";
-import util from "../../scripts/helper/util";
+import { getRandomInt } from "../../scripts/helper/util";
 
 const { t } = useI18n({ useScope: "global" });
 
@@ -80,7 +80,7 @@ function make() {
   }
   const tmp = [];
   for (let i = 0; i < state.length; i++) {
-    const index = util.getRandomInt(0, haystack.length);
+    const index = getRandomInt(0, haystack.length);
     tmp.push(haystack[index]);
   }
   return tmp;

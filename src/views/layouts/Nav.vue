@@ -32,6 +32,7 @@
         {{ t("nav.development") }}
       </template>
       <el-menu-item index="9-1" :route="{ path: '/password/make' }"> Make Password </el-menu-item>
+      <el-menu-item index="9-2" :route="{ path: '/password/otp' }"> OTP </el-menu-item>
     </el-submenu>
     <el-submenu index="lang" style="float: right">
       <template #title>
