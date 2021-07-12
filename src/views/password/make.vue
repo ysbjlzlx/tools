@@ -90,7 +90,7 @@ const upperCaseChar = [
   "Y",
   "Z",
 ];
-const symbolChar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "_", "+", "-", "="];
+const symbolChar = ["!", "@", "#", "$", "%", "^", "&", "*"];
 
 const state = reactive({
   symbolChar: symbolChar.join(""),
