@@ -2,13 +2,13 @@
   <div>
     <el-row :gutter="5">
       <el-col :span="8">
-        <el-input v-model="state.issuer" label="Issuer" />
+        <el-input v-model="state.issuer" label="Issuer" placeholder="Issuer" />
       </el-col>
       <el-col :span="8">
-        <el-input v-model="state.account" label="Account" />
+        <el-input v-model="state.account" label="Account" placeholder="Account name" />
       </el-col>
       <el-col :span="8">
-        <el-input v-model="state.secret" label="Secret key" />
+        <el-input v-model="state.secret" label="Secret key" placeholder="Secret key" />
       </el-col>
     </el-row>
     <el-row :gutter="5">
@@ -20,10 +20,15 @@
       <el-col :span="8"> </el-col>
       <el-col :span="8"> </el-col>
     </el-row>
+    <el-row :gutter="5">
+      <el-col :span="24">
+        <el-input v-bind:value="otpUrl" />
+      </el-col>
+    </el-row>
   </div>
 </template>
 <script setup>
-import { reactive } from "vue";
+import { reactive, computed } from "vue";
 import { getRandomInt } from "../scripts/helper/util";
 const state = reactive({
   type: "totp",
@@ -63,4 +68,21 @@ const generateSecret = (randomOptions, length = 16) => {
   }
   return secret.join("");
 };
+
+const otpUrl = computed(() => {
+  let url = `otpauth://${state.type}`;
+  if (state.issuer && "" !== state.issuer) {
+    const issuer = encodeURIComponent(state.issuer);
+    url += issuer;
+  }
+  if (state.account && "" !== state.account) {
+    const account = encodeURIComponent(state.account);
+    url += `:${account}`;
+  }
+  const params = new URLSearchParams();
+  params.append("secret", state.secret);
+
+  url += `?${params.toString()}`;
+  return url;
+});
 </script>
