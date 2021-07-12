@@ -30,6 +30,7 @@ import { onMounted, reactive, watch } from "vue";
 import ElMessage from "element-plus/es/el-message";
 import * as clipboard from "clipboard-polyfill/text";
 import { useI18n } from "vue-i18n";
+import util from "../../scripts/helper/util";
 
 const { t } = useI18n({ useScope: "global" });
 
@@ -79,7 +80,7 @@ function make() {
   }
   const tmp = [];
   for (let i = 0; i < state.length; i++) {
-    const index = getRandomInt(0, haystack.length);
+    const index = util.getRandomInt(0, haystack.length);
     tmp.push(haystack[index]);
   }
   return tmp;
@@ -101,30 +102,4 @@ watch(
   },
   { deep: true }
 );
-
-/**
- * 生成整数随机数
- * 不含最大值，含最小值的随机数
- * @param min 最小值（包含）
- * @param max 最大值（不包含）
- * @return {number}
- */
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-/**
- * 生成整数随机数
- * 同时包含最小值和最大值的随机数
- * @param min 最小值（包含）
- * @param max 最大值（包含）
- * @return {number}
- */
-function getRandomIntInclusive(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
 </script>

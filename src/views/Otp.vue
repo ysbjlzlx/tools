@@ -2,6 +2,7 @@
 <script setup>
 import { random } from "lodash";
 import { reactive } from "vue";
+import util from "../scripts/helper/util";
 const state = reactive({
   type: null,
   issuer: null,
@@ -35,22 +36,9 @@ const randomOptions = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L
 const generateSecret = (randomOptions, length = 16) => {
   const secret = [];
   for (let i = 0; i < length; i++) {
-    random = getRandomInt(0, randomOptions.length);
+    random = util.getRandomInt(0, randomOptions.length);
     secret.push(randomOptions[random]);
   }
   return secret.join("");
 };
-
-/**
- * 生成整数随机数
- * 不含最大值，含最小值的随机数
- * @param min 最小值（包含）
- * @param max 最大值（不包含）
- * @return {number}
- */
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
 </script>
