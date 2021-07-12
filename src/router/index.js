@@ -61,7 +61,7 @@ const routes = [
   {
     path: "/password/otp",
     name: "PasswordOtp",
-    component: () => import("../views/otp.vue"),
+    component: () => import("../views/Otp.vue"),
   },
 ];
 
