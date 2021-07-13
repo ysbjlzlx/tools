@@ -17,11 +17,6 @@ export default {
     }),
   ],
   optimizeDeps: {
-    include: [
-      "jsoneditor",
-      "clipboard-polyfill/text",
-      "easyqrcodejs",
-      "otpauth",
-    ],
+    include: ["jsoneditor", "clipboard-polyfill/text", "easyqrcodejs"],
   },
 };
