@@ -1,5 +1,6 @@
 import { getRandomInt } from "../scripts/helper/util";
-import { TOTP } from "otpauth";
+import { TOTP, Secret } from "otpauth";
+import { size } from "lodash";
 
 class Otp {
   type;
@@ -18,15 +19,10 @@ class Otp {
     this.secret = secret;
   }
 
-  static generateSecret(length = 16) {
-    // prettier-ignore
-    const randomOptions = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", 2, 3, 4, 5, 6, 7];
-    const secret = [];
-    for (let i = 0; i < length; i++) {
-      const random = getRandomInt(0, randomOptions.length);
-      secret.push(randomOptions[random]);
-    }
-    return secret.join("");
+  static generateSecret() {
+    const secret = new Secret();
+    console.log(secret.base32);
+    return secret.base32;
   }
   toString() {
     if (this.secret != null) {

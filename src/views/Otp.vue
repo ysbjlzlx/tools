@@ -10,14 +10,7 @@
       <el-col :span="8">
         <el-input v-model="state.secret" label="Secret key" placeholder="Secret key" :maxlength="32" show-word-limit>
           <template #append>
-            <el-button
-              icon="el-icon-refresh"
-              @click="
-                {
-                  state.secret = Otp.generateSecret();
-                }
-              "
-            ></el-button>
+            <el-button icon="el-icon-refresh" @click="refreshSecret()"></el-button>
           </template>
         </el-input>
       </el-col>
@@ -33,7 +26,7 @@
     </el-row>
     <el-row :gutter="5">
       <el-col :span="24">
-        <el-input v-bind:value="otpUrl" />
+        <el-input v-bind:value="state.url" />
       </el-col>
     </el-row>
     <el-row :gutter="5">
@@ -46,8 +39,10 @@
 <script setup>
 import { reactive, computed, onMounted, watch } from "vue";
 import QRCode from "easyqrcodejs";
-import Otp from "../scripts/Otp";
+import { TOTP, Secret } from "otpauth";
 const state = reactive({
+  totp: null,
+  url: null,
   type: "totp",
   issuer: null,
   account: null,
@@ -79,15 +74,25 @@ const periodOptions = [
 onMounted(() => {
   state.issuer = "Issuer";
   state.account = "Account";
-  state.secret = Otp.generateSecret();
+  refreshSecret();
 });
+const refreshSecret = () => {
+  let secret = new Secret();
+  state.secret = secret.base32;
+  refreshTotp();
+};
+const refreshTotp = () => {
+  let totp = new TOTP({
+    issuer: state.issuer,
+    label: state.account,
+    secret: state.secret,
+  });
+  state.totp = totp;
+  state.url = totp.toString();
+};
 
-const otpUrl = computed(() => {
-  const otp = new Otp(state.type, state.issuer, state.account, state.secret);
-  return otp.toString();
-});
 watch(
-  () => otpUrl.value,
+  () => state.url,
   (val) => {
     if (state.QRCode != null) {
       state.QRCode.clear();
