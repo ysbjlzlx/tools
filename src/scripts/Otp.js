@@ -1,4 +1,5 @@
 import { getRandomInt } from "../scripts/helper/util";
+import { TOTP } from "otpauth";
 
 class Otp {
   type;
@@ -28,6 +29,18 @@ class Otp {
     return secret.join("");
   }
   toString() {
+    if (this.secret != null) {
+      const totp = new TOTP({
+        issuer: this.issuer,
+        label: this.account,
+        secret: this.secret,
+        algorithm: this.algorithm,
+        digits: this.digits,
+        period: this.period,
+      });
+      console.log(totp.generate());
+      console.log(totp.toString());
+    }
     let url = `otpauth://${this.type}/`;
     if (this.issuer != null && this.issuer !== "") {
       url += this.issuer;
