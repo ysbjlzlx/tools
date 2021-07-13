@@ -8,12 +8,23 @@
         <el-input v-model="state.account" label="Account" placeholder="Account name" />
       </el-col>
       <el-col :span="8">
-        <el-input v-model="state.secret" label="Secret key" placeholder="Secret key" />
+        <el-input v-model="state.secret" label="Secret key" placeholder="Secret key" :maxlength="32" show-word-limit>
+          <template #append>
+            <el-button
+              icon="el-icon-refresh"
+              @click="
+                {
+                  state.secret = Otp.generateSecret();
+                }
+              "
+            ></el-button>
+          </template>
+        </el-input>
       </el-col>
     </el-row>
     <el-row :gutter="5">
       <el-col :span="8">
-        <el-select v-model="state.type">
+        <el-select v-model="state.type" disabled>
           <el-option v-for="item in typeOptions" :key="item.value" :value="item.value" :label="item.label" />
         </el-select>
       </el-col>
@@ -25,11 +36,17 @@
         <el-input v-bind:value="otpUrl" />
       </el-col>
     </el-row>
+    <el-row :gutter="5">
+      <el-col :span="24">
+        <div id="qrcode" style="width: 300px; height: 300px"></div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 <script setup>
-import { reactive, computed } from "vue";
-import { getRandomInt } from "../scripts/helper/util";
+import { reactive, computed, onMounted, watch } from "vue";
+import QRCode from "easyqrcodejs";
+import Otp from "../scripts/Otp";
 const state = reactive({
   type: "totp",
   issuer: null,
@@ -39,6 +56,7 @@ const state = reactive({
   digits: null,
   counter: null,
   period: null,
+  QRCode: null,
 });
 const typeOptions = [
   { value: "totp", label: "TOTP" },
@@ -57,32 +75,28 @@ const periodOptions = [
   { value: 30, label: "30" },
   { value: 60, label: "60" },
 ];
-// prettier-ignore
-const randomOptions = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", 2, 3, 4, 5, 6, 7];
 
-const generateSecret = (randomOptions, length = 16) => {
-  const secret = [];
-  for (let i = 0; i < length; i++) {
-    const random = getRandomInt(0, randomOptions.length);
-    secret.push(randomOptions[random]);
-  }
-  return secret.join("");
-};
+onMounted(() => {
+  state.issuer = "Issuer";
+  state.account = "Account";
+  state.secret = Otp.generateSecret();
+});
 
 const otpUrl = computed(() => {
-  let url = `otpauth://${state.type}`;
-  if (state.issuer && "" !== state.issuer) {
-    const issuer = encodeURIComponent(state.issuer);
-    url += issuer;
-  }
-  if (state.account && "" !== state.account) {
-    const account = encodeURIComponent(state.account);
-    url += `:${account}`;
-  }
-  const params = new URLSearchParams();
-  params.append("secret", state.secret);
-
-  url += `?${params.toString()}`;
-  return url;
+  const otp = new Otp(state.type, state.issuer, state.account, state.secret);
+  return otp.toString();
 });
+watch(
+  () => otpUrl.value,
+  (val) => {
+    if (state.QRCode != null) {
+      state.QRCode.clear();
+    }
+    state.QRCode = new QRCode(document.getElementById("qrcode"), {
+      text: val,
+      width: 300,
+      height: 300,
+    });
+  }
+);
 </script>
