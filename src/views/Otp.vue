@@ -37,7 +37,7 @@
   </div>
 </template>
 <script setup>
-import { reactive, computed, onMounted, watch } from "vue";
+import { reactive, onMounted, watch } from "vue";
 import QRCode from "easyqrcodejs";
 import { TOTP, Secret } from "otpauth";
 const state = reactive({
@@ -79,29 +79,22 @@ onMounted(() => {
 const refreshSecret = () => {
   let secret = new Secret();
   state.secret = secret.base32;
-  refreshTotp();
-};
-const refreshTotp = () => {
-  let totp = new TOTP({
-    issuer: state.issuer,
-    label: state.account,
-    secret: state.secret,
-  });
-  state.totp = totp;
-  state.url = totp.toString();
 };
 
-watch(
-  () => state.url,
-  (val) => {
-    if (state.QRCode != null) {
-      state.QRCode.clear();
-    }
-    state.QRCode = new QRCode(document.getElementById("qrcode"), {
-      text: val,
-      width: 300,
-      height: 300,
-    });
+watch([() => state.issuer, () => state.account, () => state.secret], ([issuer, account, secret]) => {
+  state.totp = new TOTP({
+    issuer: issuer,
+    label: account,
+    secret: secret,
+  });
+  state.url = state.totp.toString();
+  if (state.QRCode != null) {
+    state.QRCode.clear();
   }
-);
+  state.QRCode = new QRCode(document.getElementById("qrcode"), {
+    text: state.url,
+    width: 300,
+    height: 300,
+  });
+});
 </script>
