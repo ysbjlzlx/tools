@@ -36,3 +36,8 @@
 
 * https://github.com/eemeli/yaml
 
+### OTP 二次验证
+
+* https://www.npmjs.com/package/otpauth
+* https://github.com/hectorm/otpauth
+
