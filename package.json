@@ -3,10 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "build": "vite build"
   },
   "dependencies": {
     "2fa": "^0.1.2",
@@ -33,7 +30,6 @@
     "autoprefixer": "^10.3.1",
     "postcss": "^8.3.6",
     "tailwindcss": "^2.2.6",
-    "vite": "^2.4.3",
-    "vitepress": "^0.15.6"
+    "vite": "^2.4.3"
   }
 }
