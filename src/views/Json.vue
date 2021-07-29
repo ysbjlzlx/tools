@@ -34,6 +34,7 @@ import { ElTable, ElTableColumn, ElButtonGroup, ElButton, ElPagination } from "e
 import { onMounted, reactive, ref, watch } from "vue";
 import JSONEditor from "jsoneditor";
 import { remove } from "lodash";
+import db from "../store/db";
 
 const state = reactive({
   plain: null,
@@ -66,6 +67,7 @@ onMounted(() => {
     onValidate(json) {
       const jsonString = JSON.stringify(json);
       if ("" !== jsonString) {
+        save(jsonString);
         state.cache_json.unshift(jsonString);
       }
     },
@@ -116,6 +118,10 @@ const handlePaginationCurrentChange = (val) => {
   const offset = (val - 1) * pagination.pageSize;
   const limit = pagination.pageSize;
   pagination.rows = state.cache_json.slice(offset, offset + limit);
+};
+
+const save = (jsonString) => {
+  db.json.put({ content: jsonString, createdAt: new Date() });
 };
 </script>
 <style src="jsoneditor/dist/jsoneditor.css"></style>
