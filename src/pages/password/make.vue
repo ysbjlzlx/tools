@@ -1,28 +1,29 @@
 <template >
   <div>
-    <div class="form-floating">
-      <label>{{ t("common.password") }}</label>
-      <q-input outlined type="text" v-model="state.password" placeholder="password" counter :maxlength="256" />
+    <div>
+      <div class="form-floating">
+        <label>{{ t("common.password") }}</label>
+        <q-input outlined type="text" v-model="state.password" placeholder="password" counter :maxlength="256" />
+      </div>
+      <q-btn-group class="q-mt-md">
+        <q-btn color="primary" v-on:click="copy()">{{ t("common.copy") }}</q-btn>
+        <q-btn color="primary" v-on:click="refresh()">{{ t("common.refresh") }}</q-btn>
+      </q-btn-group>
     </div>
-    <q-btn-group class="q-mt-md">
-      <q-btn color="primary" v-on:click="copy()">{{ t("common.copy") }}</q-btn>
-      <q-btn color="primary" v-on:click="refresh()">{{ t("common.refresh") }}</q-btn>
-    </q-btn-group>
-  </div>
-  <div class="mt-5">
-    <h2>{{ t("common.option") }}</h2>
-    <el-form label-width="80" label-position="top">
-      <el-form-item>
+    <div class="mt-5">
+      <h2>{{ t("common.option") }}</h2>
+      <div>
         <el-checkbox v-model="option.number">{{ t("password.numeric") }} 0 ~ 9</el-checkbox>
         <el-checkbox v-model="option.lowerCaseChar">{{ t("password.lowercase") }} a ~ z</el-checkbox>
         <el-checkbox v-model="option.upperCaseChar">{{ t("password.captial") }} A ~ Z</el-checkbox>
         <el-checkbox v-model="option.symbolChar">{{ t("password.symbol") }}</el-checkbox>
         <q-input outlined type="text" class="form-control" v-model="state.symbolChar" :readonly="!option.symbolChar" />
-      </el-form-item>
-      <el-form-item :label="t('common.length')">
+      </div>
+      <div>
+        <label>{{ t("common.length") }}</label>
         <el-slider v-model="state.length" :min="6" :max="128" :marks="state.marks" show-input></el-slider>
-      </el-form-item>
-    </el-form>
+      </div>
+    </div>
   </div>
 </template >
 <script setup >
