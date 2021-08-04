@@ -13,21 +13,37 @@
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
+    "2fa": "^0.1.2",
     "@quasar/extras": "^1.0.0",
     "axios": "^0.21.1",
+    "clipboard-polyfill": "^3.0.3",
     "core-js": "^3.6.5",
+    "crypto-js": "^4.1.1",
+    "date-fns": "^2.23.0",
+    "dexie": "^3.0.3",
+    "easyqrcodejs": "^4.4.3",
     "element-plus": "^1.0.2-beta.67",
+    "i": "^0.3.6",
+    "jsoneditor": "^9.5.3",
+    "lodash": "^4.17.21",
+    "nprogress": "^0.2.0",
+    "otpauth": "^7.0.4",
     "quasar": "^2.0.0",
     "vue-i18n": "^9.0.0-beta.0",
-    "vuex": "^4.0.1"
+    "vuex": "^4.0.1",
+    "yaml": "^1.10.2"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.13.14",
+    "@intlify/vite-plugin-vue-i18n": "^2.4.0",
     "@quasar/app": "^3.0.0",
+    "@types/crypto-js": "^4.0.2",
+    "@types/lodash": "^4.14.172",
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^7.0.0",
-    "eslint-webpack-plugin": "^2.4.0"
+    "eslint-webpack-plugin": "^2.4.0",
+    "tailwindcss": "^2.2.7"
   },
   "browserslist": [
     "last 10 Chrome versions",
