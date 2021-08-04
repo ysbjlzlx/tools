@@ -1,5 +1,6 @@
 import { boot } from "quasar/wrappers";
 import ElementPlus from "element-plus";
+import "nprogress/nprogress.css";
 import "element-plus/lib/theme-chalk/index.css";
 import { ElButton, ElSelect } from "element-plus";
 
