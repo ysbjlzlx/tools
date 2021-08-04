@@ -12,8 +12,8 @@
   </el-container>
 </template>
 <script setup>
-import Nav from "/@src/views/layouts/Nav.vue";
-import Footer from "/@src/views/layouts/Footer.vue";
+import Nav from "../pages/layouts/Nav.vue";
+import Footer from "../pages/layouts/Footer.vue";
 </script>
 
 <style>
