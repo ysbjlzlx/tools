@@ -17,9 +17,7 @@
     </div>
     <div class="row q-col-gutter-xs">
       <div class="col">
-        <el-select v-model="state.type" disabled>
-          <el-option v-for="item in typeOptions" :key="item.value" :value="item.value" :label="item.label" />
-        </el-select>
+        <q-select v-model="state.type" :options="typeOptions" disable />
       </div>
       <div class="col"></div>
       <div class="col"></div>
