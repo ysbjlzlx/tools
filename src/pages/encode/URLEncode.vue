@@ -1,7 +1,7 @@
 <template>
   <div>
     <label>URL</label>
-    <el-input type="textarea" :rows="5" v-model="state.plain" placeholder="URL" />
+    <q-input outlined type="textarea" :rows="5" v-model="state.plain" placeholder="URL" />
   </div>
   <div class="q-mt-md">
     <q-btn color="primary" v-on:click="encode" icon="arrow_downward" class="q-mr-xs">{{ t("common.encode") }}</q-btn>
@@ -9,11 +9,11 @@
   </div>
   <div class="q-mt-md">
     <label>encodeURI</label>
-    <el-input type="textarea" :rows="5" v-model="state.encodeURI" placeholder="encodeURI" />
+    <q-input outlined type="textarea" :rows="5" v-model="state.encodeURI" placeholder="encodeURI" />
   </div>
   <div>
     <label>encodeURIComponent</label>
-    <el-input type="textarea" :rows="5" v-model="state.encodeURIComponent" placeholder="encodeURIComponent" />
+    <q-input outlined type="textarea" :rows="5" v-model="state.encodeURIComponent" placeholder="encodeURIComponent" />
   </div>
 </template>
 <script setup>

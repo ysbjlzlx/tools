@@ -1,7 +1,7 @@
 <template>
   <el-row :gutter="5">
     <el-col :span="16">
-      <el-input type="textarea" rows="15" v-model="state.text" :show-word-limit="true" maxlength="250" placeholder="在这里输入文本"></el-input>
+      <q-input outlined counter type="textarea" rows="15" v-model="state.text" maxlength="250" placeholder="在这里输入文本" />
     </el-col>
     <el-col :span="8">
       <div id="qrcode" style="width: 300px; height: 300px"></div>

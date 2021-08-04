@@ -3,17 +3,17 @@
     <el-col :span="8">
       <label>{{ t("common.weight") }}</label>
       <br />
-      <el-input type="number" v-model="state.weight" :placeholder="t('common.weight')" />
+      <q-input type="number" v-model.number="state.weight" :placeholder="t('common.weight')" />
     </el-col>
     <el-col :span="8">
       <label>{{ t("common.height") }}</label>
       <br />
-      <el-input type="number" v-model="state.height" :placeholder="t('common.height')" />
+      <q-input type="number" v-model.number="state.height" :placeholder="t('common.height')" />
     </el-col>
     <el-col :span="8">
       <label>{{ t("common.text") }}</label>
       <br />
-      <el-input v-model="state.text" :placeholder="t('common.text')" />
+      <q-input v-model="state.text" :placeholder="t('common.text')" />
     </el-col>
   </el-row>
   <el-row :gutter="5" class="mt-5">
@@ -42,11 +42,11 @@
           <img class="mx-auto d-block" v-bind:src="generationUrl" v-bind:style="{ wieght: state.weight }" :title="t('placeholder.placeholder_img')" />
         </div>
         <div class="border rounded mt-2 p-2">
-          <el-input v-model="generationUrl">
+          <q-input v-model="generationUrl">
             <template #append>
               <q-btn icon="content_copy" @click="onClickUrl(generationUrl)" />
             </template>
-          </el-input>
+          </q-input>
         </div>
       </div>
     </el-col>
@@ -56,11 +56,11 @@
           <img class="mx-auto d-block" v-bind:src="dummyimageUrl" v-bind:style="{ wieght: state.weight }" :title="t('placeholder.placeholder_img')" />
         </div>
         <div class="border rounded mt-2 p-2">
-          <el-input v-model="dummyimageUrl">
+          <q-input v-model="dummyimageUrl">
             <template #append>
               <q-btn icon="content_copy" @click="onClickUrl(dummyimageUrl)" />
             </template>
-          </el-input>
+          </q-input>
         </div>
       </div>
     </el-col>

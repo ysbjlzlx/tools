@@ -7,11 +7,11 @@
     <el-row :gutter="5" class="q-mt-md">
       <el-col :span="12">
         <label>JSON</label>
-        <el-input type="textarea" rows="20" v-model="state.json" placeholder="JSON" />
+        <q-input outlined type="textarea" rows="20" v-model="state.json" placeholder="JSON" />
       </el-col>
       <el-col :span="12">
         <label>YAML</label>
-        <el-input type="textarea" rows="20" v-model="state.yaml" placeholder="YAML" />
+        <q-input outlined type="textarea" rows="20" v-model="state.yaml" placeholder="YAML" />
       </el-col>
     </el-row>
   </div>

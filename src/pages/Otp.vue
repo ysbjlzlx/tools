@@ -2,17 +2,17 @@
   <div>
     <el-row :gutter="5">
       <el-col :span="8">
-        <el-input v-model="state.issuer" label="Issuer" placeholder="Issuer" />
+        <q-input v-model="state.issuer" label="Issuer" />
       </el-col>
       <el-col :span="8">
-        <el-input v-model="state.account" label="Account" placeholder="Account name" />
+        <q-input v-model="state.account" label="Account" placeholder="Account name" />
       </el-col>
       <el-col :span="8">
-        <el-input v-model="state.secret" label="Secret key" placeholder="Secret key" :maxlength="32" show-word-limit>
+        <q-input v-model="state.secret" label="Secret key" placeholder="Secret key" :maxlength="32" counter>
           <template #append>
             <q-btn icon="refresh" @click="refreshSecret()" size="sm" />
           </template>
-        </el-input>
+        </q-input>
       </el-col>
     </el-row>
     <el-row :gutter="5">
@@ -26,7 +26,7 @@
     </el-row>
     <el-row :gutter="5">
       <el-col :span="24">
-        <el-input v-bind:value="state.url" />
+        <q-input outlined v-model="state.url" />
       </el-col>
     </el-row>
     <el-row :gutter="5">

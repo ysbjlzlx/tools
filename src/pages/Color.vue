@@ -1,10 +1,10 @@
 <template>
   <el-row :gutter="5">
     <el-col :span="12">
-      <el-input v-model="state.plain_rgb" placeholder="RGB" />
+      <q-input v-model="state.plain_rgb" label="RGB" />
     </el-col>
     <el-col :span="12">
-      <el-input v-model="state.plain_hex" placeholder="HEX" />
+      <q-input v-model="state.plain_hex" label="HEX" />
     </el-col>
   </el-row>
   <el-row :gutter="2">
@@ -31,29 +31,25 @@
   </el-row>
   <el-row :gutter="2">
     <el-col :span="6">
-      <label>RGB</label>
-      <el-input v-bind:value="getRgb()" placeholder="RGB" disabled />
+      <q-input v-model="getRgb" label="RGB" placeholder="RGB" readonly />
     </el-col>
     <el-col :span="6">
-      <label>RGBA</label>
-      <el-input v-bind:value="getRgba()" placeholder="RGBA" disabled />
+      <q-input v-model="getRgba" label="RGBA" placeholder="RGBA" readonly />
     </el-col>
     <el-col :span="6">
-      <label>HEX</label>
-      <el-input v-bind:value="getHex()" placeholder="HEX" disabled />
+      <q-input v-model="getHex" label="HEX" placeholder="HEX" readonly />
     </el-col>
     <el-col :span="6">
-      <label>HEX With Alpha</label>
-      <el-input v-bind:value="getHexWithAlpha()" placeholder="HEX With Alpha" disabled />
+      <q-input v-model="getHexWithAlpha" label="HEX With Alpha" readonly />
     </el-col>
   </el-row>
   <div class="mt-5">
-    <div style="height: 200px" :style="{ backgroundColor: getRgba() }"></div>
+    <div style="height: 200px" :style="{ backgroundColor: getRgbaa() }"></div>
   </div>
 </template>
 
 <script setup>
-import { reactive, watch, onMounted } from "vue";
+import { reactive, watch, onMounted, computed } from "vue";
 import * as clipboard from "clipboard-polyfill/text";
 import { useI18n } from "vue-i18n";
 
@@ -116,22 +112,31 @@ function parseHex(hexStr) {
     state.rgb_alpha = rgb(hexArr[3]);
   }
 }
-function getRgb() {
-  const rgbStr = "rgb(" + state.rgb_red + ", " + state.rgb_green + ", " + state.rgb_blue + ")";
-  return rgbStr;
-}
-function getRgba() {
+
+function getRgbaa() {
   let alpha = Number(state.rgb_alpha / 255).toFixed(2);
   alpha = ".00" === alpha.slice(-3) ? parseInt(alpha) : alpha;
   const rgbaStr = "rgba(" + state.rgb_red + ", " + state.rgb_green + ", " + state.rgb_blue + ", " + alpha + ")";
   return rgbaStr;
 }
-function getHex() {
+
+const getRgb = computed(() => {
+  const rgbStr = "rgb(" + state.rgb_red + ", " + state.rgb_green + ", " + state.rgb_blue + ")";
+  return rgbStr;
+});
+const getRgba = computed(() => {
+  let alpha = Number(state.rgb_alpha / 255).toFixed(2);
+  alpha = ".00" === alpha.slice(-3) ? parseInt(alpha) : alpha;
+  const rgbaStr = "rgba(" + state.rgb_red + ", " + state.rgb_green + ", " + state.rgb_blue + ", " + alpha + ")";
+  return rgbaStr;
+});
+const getHex = computed(() => {
   return "#" + hex(state.rgb_red) + hex(state.rgb_green) + hex(state.rgb_blue);
-}
-function getHexWithAlpha() {
+});
+const getHexWithAlpha = computed(() => {
   return "#" + hex(state.rgb_red) + hex(state.rgb_green) + hex(state.rgb_blue) + hex(state.rgb_alpha);
-}
+});
+
 function setClipboard(e) {
   clipboard.writeText(e.target.value);
 }

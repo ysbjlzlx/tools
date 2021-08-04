@@ -2,7 +2,7 @@
   <div>
     <div class="form-floating">
       <label>{{ t("common.password") }}</label>
-      <el-input type="text" v-model="state.password" placeholder="password" :show-word-limit="true" :maxlength="256" />
+      <q-input outlined type="text" v-model="state.password" placeholder="password" counter :maxlength="256" />
     </div>
     <q-btn-group class="q-mt-md">
       <q-btn color="primary" v-on:click="copy()">{{ t("common.copy") }}</q-btn>
@@ -17,7 +17,7 @@
         <el-checkbox v-model="option.lowerCaseChar">{{ t("password.lowercase") }} a ~ z</el-checkbox>
         <el-checkbox v-model="option.upperCaseChar">{{ t("password.captial") }} A ~ Z</el-checkbox>
         <el-checkbox v-model="option.symbolChar">{{ t("password.symbol") }}</el-checkbox>
-        <el-input type="text" class="form-control" v-model="state.symbolChar" :disabled="!option.symbolChar" />
+        <q-input outlined type="text" class="form-control" v-model="state.symbolChar" :readonly="!option.symbolChar" />
       </el-form-item>
       <el-form-item :label="t('common.length')">
         <el-slider v-model="state.length" :min="6" :max="128" :marks="state.marks" show-input></el-slider>

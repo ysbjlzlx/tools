@@ -1,7 +1,7 @@
 <template>
   <div>
     <label>{{ t("common.text_plain") }}</label>
-    <el-input type="textarea" :rows="5" v-model="state.plain" :placeholder="t('common.text_plain')" />
+    <q-input outlined type="textarea" :rows="5" v-model="state.plain" :placeholder="t('common.text_plain')" />
   </div>
   <div class="q-mt-md">
     <q-btn-group>
@@ -11,7 +11,7 @@
   </div>
   <div class="q-mt-md">
     <label>{{ t("common.text_base64") }}</label>
-    <el-input type="textarea" :rows="5" v-model="state.encoded" :placeholder="t('common.text_base64')" />
+    <q-input outlined type="textarea" :rows="5" v-model="state.encoded" :placeholder="t('common.text_base64')" />
   </div>
 </template>
 <script setup>
