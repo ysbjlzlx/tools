@@ -3,11 +3,13 @@
     <label>{{ t("common.text_plain") }}</label>
     <el-input type="textarea" :rows="5" v-model="state.plain" :placeholder="t('common.text_plain')" />
   </div>
-  <div class="mt-5">
-    <el-button type="primary" v-on:click="base64Encode" icon="el-icon-bottom">{{ t("common.encode") }}</el-button>
-    <el-button type="primary" v-on:click="base64Decode" icon="el-icon-top">{{ t("common.decode") }}</el-button>
+  <div class="q-mt-md">
+    <q-btn-group>
+      <q-btn color="primary" v-on:click="base64Encode" icon="arrow_downward">{{ t("common.encode") }}</q-btn>
+      <q-btn color="primary" v-on:click="base64Decode" icon="arrow_upward">{{ t("common.decode") }}</q-btn>
+    </q-btn-group>
   </div>
-  <div class="mt-5">
+  <div class="q-mt-md">
     <label>{{ t("common.text_base64") }}</label>
     <el-input type="textarea" :rows="5" v-model="state.encoded" :placeholder="t('common.text_base64')" />
   </div>

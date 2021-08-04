@@ -2,8 +2,8 @@
   <div>
     <div ref="jsoneditor" id="jsoneditor" style="width: 100%; height: 500px"></div>
   </div>
-  <div class="mt-1" size="mini">
-    <el-button type="primary" v-on:click="clearCacheJson">删除所有</el-button>
+  <div class="q-mt-md">
+    <q-btn color="primary" v-on:click="clearCacheJson">删除所有</q-btn>
   </div>
   <el-table v-bind:data="pagination.rows" type="index" size="mini" height="300">
     <el-table-column>
@@ -13,10 +13,10 @@
     </el-table-column>
     <el-table-column label="操作" width="180" fixed="right">
       <template #default="scope">
-        <el-button-group>
-          <el-button type="primary" icon="el-icon-edit" v-on:click="edit(scope.row)" size="mini">编辑</el-button>
-          <el-button type="danger" icon="el-icon-delete" v-on:click="cache_json_delete(scope.$index)" size="mini">删除</el-button>
-        </el-button-group>
+        <q-btn-group>
+          <q-btn color="primary" icon="edit" v-on:click="edit(scope.row)" size="sm">编辑</q-btn>
+          <q-btn color="warning" icon="delete" v-on:click="cache_json_delete(scope.$index)" size="sm">删除</q-btn>
+        </q-btn-group>
       </template>
     </el-table-column>
   </el-table>

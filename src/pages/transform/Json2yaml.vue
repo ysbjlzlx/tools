@@ -1,10 +1,10 @@
 <template>
   <div>
-    <el-button-group>
-      <el-button v-on:click="json2yaml()">JSON <i class="el el-icon-right"></i> YAML</el-button>
-      <el-button v-on:click="yaml2json()">YAML <i class="el el-icon-right"></i> JSON</el-button>
-    </el-button-group>
-    <el-row :gutter="5">
+    <q-btn-group>
+      <q-btn v-on:click="json2yaml()">JSON <i class="el el-icon-right"></i> YAML</q-btn>
+      <q-btn v-on:click="yaml2json()">YAML <i class="el el-icon-right"></i> JSON</q-btn>
+    </q-btn-group>
+    <el-row :gutter="5" class="q-mt-md">
       <el-col :span="12">
         <label>JSON</label>
         <el-input type="textarea" rows="20" v-model="state.json" placeholder="JSON" />

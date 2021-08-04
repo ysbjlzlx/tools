@@ -3,11 +3,11 @@
     <label>URL</label>
     <el-input type="textarea" :rows="5" v-model="state.plain" placeholder="URL" />
   </div>
-  <div>
-    <el-button type="primary" v-on:click="encode" icon="el-icon-bottom">{{ t("common.encode") }}</el-button>
-    <el-button type="primary" v-on:click="decode" icon="el-icon-top">{{ t("common.decode") }}</el-button>
+  <div class="q-mt-md">
+    <q-btn color="primary" v-on:click="encode" icon="arrow_downward" class="q-mr-xs">{{ t("common.encode") }}</q-btn>
+    <q-btn color="primary" v-on:click="decode" icon="arrow_upward">{{ t("common.decode") }}</q-btn>
   </div>
-  <div>
+  <div class="q-mt-md">
     <label>encodeURI</label>
     <el-input type="textarea" :rows="5" v-model="state.encodeURI" placeholder="encodeURI" />
   </div>

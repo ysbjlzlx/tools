@@ -1,13 +1,13 @@
-<template>
+<template >
   <div>
     <div class="form-floating">
       <label>{{ t("common.password") }}</label>
       <el-input type="text" v-model="state.password" placeholder="password" :show-word-limit="true" :maxlength="256" />
     </div>
-    <el-button-group class="mt-1">
-      <el-button type="primary" v-on:click="copy()">{{ t("common.copy") }}</el-button>
-      <el-button type="info" v-on:click="refresh()">{{ t("common.refresh") }}</el-button>
-    </el-button-group>
+    <q-btn-group class="q-mt-md">
+      <q-btn color="primary" v-on:click="copy()">{{ t("common.copy") }}</q-btn>
+      <q-btn color="primary" v-on:click="refresh()">{{ t("common.refresh") }}</q-btn>
+    </q-btn-group>
   </div>
   <div class="mt-5">
     <h2>{{ t("common.option") }}</h2>
@@ -24,8 +24,8 @@
       </el-form-item>
     </el-form>
   </div>
-</template>
-<script setup>
+</template >
+<script setup >
 import { onMounted, reactive, watch } from "vue";
 import ElMessage from "element-plus/es/el-message";
 import * as clipboard from "clipboard-polyfill/text";
@@ -37,7 +37,7 @@ const { t } = useI18n({ useScope: "global" });
 // prettier-ignore
 const numberChar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 // prettier-ignore
-const lowerCaseChar = [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+const lowerCaseChar = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 // prettier-ignore
 const upperCaseChar = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 // prettier-ignore
@@ -64,6 +64,7 @@ const option = reactive({
 onMounted(() => {
   refresh();
 });
+
 function make() {
   let haystack = [];
   if (option.number) {
@@ -85,6 +86,7 @@ function make() {
   }
   return tmp;
 }
+
 function copy() {
   clipboard.writeText(state.password);
   ElMessage.success({
@@ -92,9 +94,11 @@ function copy() {
     message: "复制成功",
   });
 }
+
 function refresh() {
   state.password = make().join("");
 }
+
 watch(
   [() => option, () => state.length, () => state.symbolChar],
   () => {
@@ -102,4 +106,4 @@ watch(
   },
   { deep: true }
 );
-</script>
+</script >

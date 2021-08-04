@@ -10,7 +10,7 @@
       <el-col :span="8">
         <el-input v-model="state.secret" label="Secret key" placeholder="Secret key" :maxlength="32" show-word-limit>
           <template #append>
-            <el-button icon="el-icon-refresh" @click="refreshSecret()"></el-button>
+            <q-btn icon="refresh" @click="refreshSecret()" size="sm" />
           </template>
         </el-input>
       </el-col>

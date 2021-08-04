@@ -44,7 +44,7 @@
         <div class="border rounded mt-2 p-2">
           <el-input v-model="generationUrl">
             <template #append>
-              <el-button @click="onClickUrl(generationUrl)">{{ t("common.copy") }}</el-button>
+              <q-btn icon="content_copy" @click="onClickUrl(generationUrl)" />
             </template>
           </el-input>
         </div>
@@ -58,7 +58,7 @@
         <div class="border rounded mt-2 p-2">
           <el-input v-model="dummyimageUrl">
             <template #append>
-              <el-button @click="onClickUrl(dummyimageUrl)">{{ t("common.copy") }}</el-button>
+              <q-btn icon="content_copy" @click="onClickUrl(dummyimageUrl)" />
             </template>
           </el-input>
         </div>
