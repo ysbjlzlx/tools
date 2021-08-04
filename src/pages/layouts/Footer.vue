@@ -2,7 +2,7 @@
   <div class="container text-center mt-5">
     <ul>
       <li>
-        <el-link type="info" href="https://github.com/ysbjlzlx/tools" target="_blank">GitHub</el-link>
+        <a href="https://github.com/ysbjlzlx/tools" target="_blank">GitHub</a>
       </li>
     </ul>
   </div>
