@@ -1,39 +1,39 @@
 <template>
   <div>
-    <el-row :gutter="5">
-      <el-col :span="8">
+    <div class="row q-col-gutter-xs">
+      <div class="col">
         <q-input v-model="state.issuer" label="Issuer" />
-      </el-col>
-      <el-col :span="8">
+      </div>
+      <div class="col">
         <q-input v-model="state.account" label="Account" placeholder="Account name" />
-      </el-col>
-      <el-col :span="8">
+      </div>
+      <div class="col">
         <q-input v-model="state.secret" label="Secret key" placeholder="Secret key" :maxlength="32" counter>
           <template #append>
             <q-btn icon="refresh" @click="refreshSecret()" size="sm" />
           </template>
         </q-input>
-      </el-col>
-    </el-row>
-    <el-row :gutter="5">
-      <el-col :span="8">
+      </div>
+    </div>
+    <div class="row q-col-gutter-xs">
+      <div class="col">
         <el-select v-model="state.type" disabled>
           <el-option v-for="item in typeOptions" :key="item.value" :value="item.value" :label="item.label" />
         </el-select>
-      </el-col>
-      <el-col :span="8"> </el-col>
-      <el-col :span="8"> </el-col>
-    </el-row>
-    <el-row :gutter="5">
-      <el-col :span="24">
+      </div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+    <div class="row q-col-gutter-xs">
+      <div class="col">
         <q-input outlined v-model="state.url" />
-      </el-col>
-    </el-row>
-    <el-row :gutter="5">
-      <el-col :span="24">
+      </div>
+    </div>
+    <div class="row q-col-gutter-xs">
+      <div class="col">
         <div id="qrcode" style="width: 300px; height: 300px"></div>
-      </el-col>
-    </el-row>
+      </div>
+    </div>
   </div>
 </template>
 <script setup>

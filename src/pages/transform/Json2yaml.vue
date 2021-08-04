@@ -4,16 +4,16 @@
       <q-btn v-on:click="json2yaml()">JSON <i class="el el-icon-right"></i> YAML</q-btn>
       <q-btn v-on:click="yaml2json()">YAML <i class="el el-icon-right"></i> JSON</q-btn>
     </q-btn-group>
-    <el-row :gutter="5" class="q-mt-md">
-      <el-col :span="12">
+    <div class="row q-col-gutter-xs q-mt-md">
+      <div class="col">
         <label>JSON</label>
         <q-input outlined type="textarea" rows="20" v-model="state.json" placeholder="JSON" />
-      </el-col>
-      <el-col :span="12">
+      </div>
+      <div class="col">
         <label>YAML</label>
         <q-input outlined type="textarea" rows="20" v-model="state.yaml" placeholder="YAML" />
-      </el-col>
-    </el-row>
+      </div>
+    </div>
   </div>
 </template>
 <script setup>

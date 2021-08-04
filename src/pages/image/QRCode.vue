@@ -1,12 +1,12 @@
 <template>
-  <el-row :gutter="5">
-    <el-col :span="16">
+  <div class="row q-col-gutter-xs">
+    <div class="col-9">
       <q-input outlined counter type="textarea" rows="15" v-model="state.text" maxlength="250" placeholder="在这里输入文本" />
-    </el-col>
-    <el-col :span="8">
+    </div>
+    <div class="col-3">
       <div id="qrcode" style="width: 300px; height: 300px"></div>
-    </el-col>
-  </el-row>
+    </div>
+  </div>
 </template>
 <script setup>
 import { onMounted, reactive, watch, computed } from "vue";

@@ -1,24 +1,24 @@
 <template>
-  <el-row>
-    <el-col :span="12">
+  <div class="row q-col-gutter-xs">
+    <div class="col">
       <label>{{ t("datetime.timestamp") }}</label>
       <q-input outlined v-model="state.timestamp" :placeholder="t('datetime.timestamp')" />
-    </el-col>
-    <el-col :span="12">
+    </div>
+    <div class="col">
       <label>{{ t("datetime.datetime") }}</label>
       <q-input outlined v-model="getDatetime" :placeholder="t('datetime.datetime')" />
-    </el-col>
-  </el-row>
-  <el-row>
-    <el-col :span="12">
+    </div>
+  </div>
+  <div class="row q-col-gutter-xs">
+    <div class="col">
       <label>{{ t("datetime.datetime") }}</label>
       <q-input outlined v-model="state.datetime" :placeholder="t('datetime.datetime')" />
-    </el-col>
-    <el-col :span="12">
+    </div>
+    <div class="col">
       <label>{{ t("datetime.timestamp") }}</label>
       <q-input outlined v-model="getTimestamp" :placeholder="t('datetime.timestamp')" />
-    </el-col>
-  </el-row>
+    </div>
+  </div>
 </template>
 <script setup>
 import { onMounted, reactive, computed } from "vue";

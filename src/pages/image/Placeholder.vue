@@ -1,42 +1,58 @@
 <template>
-  <el-row :gutter="5">
-    <el-col :span="8">
+  <div class="row q-col-gutter-xs">
+    <div class="col">
       <label>{{ t("common.weight") }}</label>
       <br />
       <q-input type="number" v-model.number="state.weight" :placeholder="t('common.weight')" />
-    </el-col>
-    <el-col :span="8">
+    </div>
+    <div class="col">
       <label>{{ t("common.height") }}</label>
       <br />
       <q-input type="number" v-model.number="state.height" :placeholder="t('common.height')" />
-    </el-col>
-    <el-col :span="8">
+    </div>
+    <div class="col">
       <label>{{ t("common.text") }}</label>
       <br />
       <q-input v-model="state.text" :placeholder="t('common.text')" />
-    </el-col>
-  </el-row>
-  <el-row :gutter="5" class="mt-5">
-    <el-col :span="8">
+    </div>
+  </div>
+  <div class="row q-col-gutter-xs mt-5">
+    <div class="col">
       <label>{{ t("placeholder.bg_color") }}</label>
       <br />
-      <el-color-picker v-model="state.bgColor" />
-    </el-col>
-    <el-col :span="8">
+      <q-input filled v-model="state.bgColor">
+        <template v-slot:append>
+          <q-icon name="colorize" class="cursor-pointer">
+            <q-popup-proxy transition-show="scale" transition-hide="scale">
+              <q-color v-model="state.bgColor" />
+            </q-popup-proxy>
+          </q-icon>
+        </template>
+      </q-input>
+    </div>
+    <div class="col">
       <label>{{ t("placeholder.text_color") }}</label>
       <br />
-      <el-color-picker v-model="state.textColor" />
-    </el-col>
-    <el-col :span="8">
+      <q-input filled v-model="state.textColor">
+        <template v-slot:append>
+          <q-icon name="colorize" class="cursor-pointer">
+            <q-popup-proxy transition-show="scale" transition-hide="scale">
+              <q-color v-model="state.textColor" />
+            </q-popup-proxy>
+          </q-icon>
+        </template>
+      </q-input>
+    </div>
+    <div class="col">
       <label>{{ t("placeholder.extension") }}</label>
       <br />
       <el-select v-model="state.extension">
         <el-option v-for="item in extensionOptions" :key="item.value" :value="item.value" :label="item.label" />
       </el-select>
-    </el-col>
-  </el-row>
-  <el-row :gutter="5" class="mt-5">
-    <el-col :span="12">
+    </div>
+  </div>
+  <div class="row q-col-gutter-xs mt-5">
+    <div class="col">
       <div class="mt-1">
         <div class="border rounded mt-5">
           <img class="mx-auto d-block" v-bind:src="generationUrl" v-bind:style="{ wieght: state.weight }" :title="t('placeholder.placeholder_img')" />
@@ -49,8 +65,8 @@
           </q-input>
         </div>
       </div>
-    </el-col>
-    <el-col :span="12">
+    </div>
+    <div class="col">
       <div class="mt-1">
         <div class="border rounded mt-5">
           <img class="mx-auto d-block" v-bind:src="dummyimageUrl" v-bind:style="{ wieght: state.weight }" :title="t('placeholder.placeholder_img')" />
@@ -63,8 +79,8 @@
           </q-input>
         </div>
       </div>
-    </el-col>
-  </el-row>
+    </div>
+  </div>
 </template>
 <script setup>
 import { reactive, computed } from "vue";

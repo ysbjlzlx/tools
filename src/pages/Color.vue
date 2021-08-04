@@ -1,48 +1,48 @@
 <template>
-  <el-row :gutter="5">
-    <el-col :span="12">
+  <div class="row q-col-gutter-xs">
+    <div class="col">
       <q-input v-model="state.plain_rgb" label="RGB" />
-    </el-col>
-    <el-col :span="12">
+    </div>
+    <div class="col">
       <q-input v-model="state.plain_hex" label="HEX" />
-    </el-col>
-  </el-row>
-  <el-row :gutter="2">
-    <el-col :span="6">
+    </div>
+  </div>
+  <div class="row q-col-gutter-xs">
+    <div class="col">
       {{ t("color.red") }}
       <el-slider v-model="state.rgb_red" :min="0" :max="255" />
       {{ t("color.red_desc") }}
-    </el-col>
-    <el-col :span="6">
+    </div>
+    <div class="col">
       {{ t("color.green") }}
       <el-slider v-model="state.rgb_green" :min="0" :max="255" />
       {{ t("color.green_desc") }}
-    </el-col>
-    <el-col :span="6">
+    </div>
+    <div class="col">
       {{ t("color.blue") }}
       <el-slider v-model="state.rgb_blue" :min="0" :max="255" />
       {{ t("color.blue_desc") }}
-    </el-col>
-    <el-col :span="6">
+    </div>
+    <div class="col">
       {{ t("color.alpha") }}
       <el-slider v-model="state.rgb_alpha" :min="0" :max="255" />
       {{ t("color.alpha_desc") }}
-    </el-col>
-  </el-row>
-  <el-row :gutter="2">
-    <el-col :span="6">
+    </div>
+  </div>
+  <div class="row q-col-gutter-xs">
+    <div class="col">
       <q-input v-model="getRgb" label="RGB" placeholder="RGB" readonly />
-    </el-col>
-    <el-col :span="6">
+    </div>
+    <div class="col">
       <q-input v-model="getRgba" label="RGBA" placeholder="RGBA" readonly />
-    </el-col>
-    <el-col :span="6">
+    </div>
+    <div class="col">
       <q-input v-model="getHex" label="HEX" placeholder="HEX" readonly />
-    </el-col>
-    <el-col :span="6">
+    </div>
+    <div class="col">
       <q-input v-model="getHexWithAlpha" label="HEX With Alpha" readonly />
-    </el-col>
-  </el-row>
+    </div>
+  </div>
   <div class="mt-5">
     <div style="height: 200px" :style="{ backgroundColor: getRgbaa() }"></div>
   </div>
