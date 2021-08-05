@@ -5,7 +5,7 @@
   <div class="q-mt-md">
     <q-btn color="primary" v-on:click="clearCacheJson">删除所有</q-btn>
   </div>
-  <q-table :columns="state.columns" :rows="state.cache_json">
+  <q-table :columns="state.columns" :rows="state.cache_json" class="my-sticky-column-table">
     <template v-slot:body="props">
       <q-tr :props="props">
         <q-td key="content" :props="props">
@@ -36,6 +36,7 @@ const columns = [
   {
     name: "operate",
     label: "操作",
+    required: true,
   },
 ];
 
@@ -87,11 +88,12 @@ function getCache() {
   if (cache_json_str && "" !== cache_json_str) {
     const tmp = JSON.parse(cache_json_str);
     if ("object" === typeof tmp && Array.isArray(tmp)) {
-      tmp.forEach((item) => {
-        if ("string" === typeof item) {
-          clearCacheJson();
+      for (let i = 0; i < tmp.length; i++) {
+        if ("string" === typeof tmp[i]) {
+          tmp[i] = { content: tmp[i] };
         }
-      });
+      }
+
       return tmp;
     }
   }
@@ -117,3 +119,12 @@ const save = (jsonString) => {
 };
 </script>
 <style src="jsoneditor/dist/jsoneditor.css"></style>
+<style lang="scss" scoped>
+.my-sticky-column-table th:last-child,
+.my-sticky-column-table td:last-child {
+  background-color: white;
+  position: sticky;
+  right: 0;
+  z-index: 1;
+}
+</style>
