@@ -26,16 +26,15 @@
     </div>
   </div>
 </template>
-<script setup >
+<script setup>
 import { onMounted, reactive, watch } from "vue";
 import * as clipboard from "clipboard-polyfill/text";
 import { useI18n } from "vue-i18n";
 import { getRandomInt } from "../../scripts/helper/util";
-import { useQuasar } from 'quasar'
+import { useQuasar } from "quasar";
 
 const { t } = useI18n({ useScope: "global" });
-const $q = useQuasar()
-
+const $q = useQuasar();
 
 // prettier-ignore
 const numberChar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -94,7 +93,7 @@ function copy() {
   clipboard.writeText(state.password);
   $q.notify({
     message: "复制成功",
-    color: "green"
+    color: "green",
   });
 }
 
@@ -109,4 +108,4 @@ watch(
   },
   { deep: true }
 );
-</script >
+</script>
