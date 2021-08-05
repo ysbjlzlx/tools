@@ -5,41 +5,43 @@
   <div class="q-mt-md">
     <q-btn color="primary" v-on:click="clearCacheJson">删除所有</q-btn>
   </div>
-  <el-table v-bind:data="pagination.rows" type="index" size="mini" height="300">
-    <el-table-column>
-      <template #default="scope">
-        {{ scope.row }}
-      </template>
-    </el-table-column>
-    <el-table-column label="操作" width="180" fixed="right">
-      <template #default="scope">
-        <q-btn-group>
-          <q-btn color="primary" icon="edit" v-on:click="edit(scope.row)" size="sm">编辑</q-btn>
-          <q-btn color="warning" icon="delete" v-on:click="cache_json_delete(scope.$index)" size="sm">删除</q-btn>
-        </q-btn-group>
-      </template>
-    </el-table-column>
-  </el-table>
-  <el-pagination
-    layout="total, sizes, prev, pager, next, jumper"
-    :total="state.cache_json.length"
-    :page-size="pagination.pageSize"
-    @size-change="handlePaginationSizeChange"
-    @current-change="handlePaginationCurrentChange"
-  >
-  </el-pagination>
+  <q-table :columns="state.columns" :rows="state.cache_json">
+    <template v-slot:body="props">
+      <q-tr :props="props">
+        <q-td key="content" :props="props">
+          {{ props.row.content }}
+        </q-td>
+        <q-td key="operate" :props="props">
+          <q-btn color="primary" icon="edit" v-on:click="edit(props.row)" size="sm">编辑</q-btn>
+          <q-btn color="warning" icon="delete" v-on:click="cache_json_delete(props.$index)" size="sm">删除</q-btn>
+        </q-td>
+      </q-tr>
+    </template>
+  </q-table>
 </template>
 <script setup>
-import { ElTable, ElTableColumn, ElButtonGroup, ElButton, ElPagination } from "element-plus";
 import { onMounted, reactive, ref, watch } from "vue";
 import JSONEditor from "jsoneditor";
 import { remove } from "lodash";
 import db from "../store/db";
 
+const columns = [
+  {
+    name: "content",
+    label: "Content",
+    field: (row) => row.content,
+  },
+  {
+    name: "operate",
+    label: "操作",
+  },
+];
+
 const state = reactive({
   plain: null,
   cache_json: [],
   editor: null,
+  columns: columns,
 });
 const pagination = reactive({
   data: [],
@@ -54,7 +56,6 @@ const jsoneditor = ref(null);
 watch(
   () => state.cache_json,
   (val) => {
-    initPagination();
     window.localStorage.setItem("cache_json", JSON.stringify(val));
   },
   { deep: true }
@@ -68,7 +69,7 @@ onMounted(() => {
       const jsonString = JSON.stringify(json);
       if ("" !== jsonString) {
         save(jsonString);
-        state.cache_json.unshift(jsonString);
+        state.cache_json.unshift({ content: jsonString });
       }
     },
   };
@@ -76,7 +77,7 @@ onMounted(() => {
 
   state.cache_json = getCache();
   if (state.cache_json[0]) {
-    state.editor.setText(state.cache_json[0]);
+    state.editor.setText(state.cache_json[0].content);
   }
 });
 function getCache() {
@@ -84,6 +85,11 @@ function getCache() {
   if (cache_json_str && "" !== cache_json_str) {
     const tmp = JSON.parse(cache_json_str);
     if ("object" === typeof tmp && Array.isArray(tmp)) {
+      tmp.forEach((item) => {
+        if ("string" === typeof item) {
+          clearCacheJson();
+        }
+      });
       return tmp;
     }
   }
@@ -103,22 +109,6 @@ function cache_json_delete(val) {
     return val === index;
   });
 }
-const initPagination = () => {
-  const offset = (pagination.currentPage - 1) * pagination.pageSize;
-  const limit = pagination.pageSize;
-  pagination.rows = state.cache_json.slice(offset, offset + limit);
-};
-const handlePaginationSizeChange = (val) => {
-  console.log(val);
-  const offset = (pagination.currentPage - 1) * val;
-  const limit = val;
-  pagination.rows = state.cache_json.slice(offset, offset + limit);
-};
-const handlePaginationCurrentChange = (val) => {
-  const offset = (val - 1) * pagination.pageSize;
-  const limit = pagination.pageSize;
-  pagination.rows = state.cache_json.slice(offset, offset + limit);
-};
 
 const save = (jsonString) => {
   db.json.put({ content: jsonString, createdAt: new Date() });

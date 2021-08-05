@@ -19,7 +19,6 @@
 <script setup>
 import { reactive, watch } from "vue";
 import { useI18n } from "vue-i18n";
-import { ElInput, ElButton } from "element-plus";
 
 const { t } = useI18n({ useScope: "global" });
 

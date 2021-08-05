@@ -18,8 +18,10 @@
 </template>
 <script setup>
 import { reactive, watch } from "vue";
-import { ElMessage, ElInput, ElButton, ElButtonGroup, ElRow, ElCol } from "element-plus";
+import { useQuasar } from "quasar";
 import YAML from "yaml";
+
+const $q = useQuasar();
 
 const state = reactive({
   json: "",
@@ -31,8 +33,7 @@ const json2yaml = () => {
     state.yaml = YAML.stringify(json);
   } catch (e) {
     if (e instanceof SyntaxError) {
-      ElMessage.warning({
-        showClose: true,
+      $q.notify({
         message: "JSON 格式错误",
       });
     } else {

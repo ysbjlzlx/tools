@@ -22,7 +22,6 @@
     "date-fns": "^2.23.0",
     "dexie": "^3.0.3",
     "easyqrcodejs": "^4.4.3",
-    "element-plus": "^1.0.2-beta.67",
     "i": "^0.3.6",
     "jsoneditor": "^9.5.3",
     "lodash": "^4.17.21",
@@ -42,8 +41,7 @@
     "eslint": "^7.14.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^7.0.0",
-    "eslint-webpack-plugin": "^2.4.0",
-    "tailwindcss": "^2.2.7"
+    "eslint-webpack-plugin": "^2.4.0"
   },
   "browserslist": [
     "last 10 Chrome versions",
