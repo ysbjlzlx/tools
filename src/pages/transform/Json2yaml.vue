@@ -1,8 +1,8 @@
 <template>
   <div>
     <q-btn-group>
-      <q-btn v-on:click="json2yaml()">JSON <i class="el el-icon-right"></i> YAML</q-btn>
-      <q-btn v-on:click="yaml2json()">YAML <i class="el el-icon-right"></i> JSON</q-btn>
+      <q-btn v-on:click="json2yaml()">JSON <q-icon name="arrow_right" /> YAML</q-btn>
+      <q-btn v-on:click="yaml2json()">YAML <q-icon name="arrow_right" /> JSON</q-btn>
     </q-btn-group>
     <div class="row q-col-gutter-xs q-mt-md">
       <div class="col">

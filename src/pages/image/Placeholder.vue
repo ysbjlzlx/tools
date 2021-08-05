@@ -84,9 +84,11 @@
 import { reactive, computed } from "vue";
 import * as clipboard from "clipboard-polyfill/text";
 import { useI18n } from "vue-i18n";
-import ElMessage from "element-plus/es/el-message";
+import { useQuasar } from 'quasar'
 
 const { t } = useI18n({ useScope: "global" });
+const $q = useQuasar()
+
 const extensionOptions = [
   { value: ".png", label: ".PNG" },
   { value: ".jpg", label: ".JPG" },
@@ -132,9 +134,9 @@ const dummyimageUrl = computed(() => {
 });
 function onClickUrl(text) {
   clipboard.writeText(text);
-  ElMessage.success({
-    showClose: true,
-    message: "复制成功",
+  $q.notify({
+    message:"复制成功",
+    color:"green"
   });
 }
 </script>

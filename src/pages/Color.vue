@@ -10,22 +10,22 @@
   <div class="row q-col-gutter-xs">
     <div class="col">
       {{ t("color.red") }}
-      <el-slider v-model="state.rgb_red" :min="0" :max="255" />
+      <q-slider v-model="state.rgb_red" :min="0" :max="255" label label-always />
       {{ t("color.red_desc") }}
     </div>
     <div class="col">
       {{ t("color.green") }}
-      <el-slider v-model="state.rgb_green" :min="0" :max="255" />
+      <q-slider v-model="state.rgb_green" :min="0" :max="255" label label-always />
       {{ t("color.green_desc") }}
     </div>
     <div class="col">
       {{ t("color.blue") }}
-      <el-slider v-model="state.rgb_blue" :min="0" :max="255" />
+      <q-slider v-model="state.rgb_blue" :min="0" :max="255" label label-always />
       {{ t("color.blue_desc") }}
     </div>
     <div class="col">
       {{ t("color.alpha") }}
-      <el-slider v-model="state.rgb_alpha" :min="0" :max="255" />
+      <q-slider v-model="state.rgb_alpha" :min="0" :max="255" label label-always />
       {{ t("color.alpha_desc") }}
     </div>
   </div>

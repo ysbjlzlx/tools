@@ -1,4 +1,4 @@
-<template >
+<template>
   <div>
     <div>
       <div class="form-floating">
@@ -13,27 +13,29 @@
     <div class="mt-5">
       <h2>{{ t("common.option") }}</h2>
       <div>
-        <el-checkbox v-model="option.number">{{ t("password.numeric") }} 0 ~ 9</el-checkbox>
-        <el-checkbox v-model="option.lowerCaseChar">{{ t("password.lowercase") }} a ~ z</el-checkbox>
-        <el-checkbox v-model="option.upperCaseChar">{{ t("password.captial") }} A ~ Z</el-checkbox>
-        <el-checkbox v-model="option.symbolChar">{{ t("password.symbol") }}</el-checkbox>
+        <q-checkbox v-model="option.number">{{ t("password.numeric") }} 0 ~ 9</q-checkbox>
+        <q-checkbox v-model="option.lowerCaseChar">{{ t("password.lowercase") }} a ~ z</q-checkbox>
+        <q-checkbox v-model="option.upperCaseChar">{{ t("password.captial") }} A ~ Z</q-checkbox>
+        <q-checkbox v-model="option.symbolChar">{{ t("password.symbol") }}</q-checkbox>
         <q-input outlined type="text" class="form-control" v-model="state.symbolChar" :readonly="!option.symbolChar" />
       </div>
       <div>
         <label>{{ t("common.length") }}</label>
-        <el-slider v-model="state.length" :min="6" :max="128" :marks="state.marks" show-input></el-slider>
+        <q-slider v-model="state.length" :min="6" :max="128" markers label label-always />
       </div>
     </div>
   </div>
-</template >
+</template>
 <script setup >
 import { onMounted, reactive, watch } from "vue";
-import ElMessage from "element-plus/es/el-message";
 import * as clipboard from "clipboard-polyfill/text";
 import { useI18n } from "vue-i18n";
 import { getRandomInt } from "../../scripts/helper/util";
+import { useQuasar } from 'quasar'
 
 const { t } = useI18n({ useScope: "global" });
+const $q = useQuasar()
+
 
 // prettier-ignore
 const numberChar = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -90,9 +92,9 @@ function make() {
 
 function copy() {
   clipboard.writeText(state.password);
-  ElMessage.success({
-    showClose: true,
+  $q.notify({
     message: "复制成功",
+    color: "green"
   });
 }
 
