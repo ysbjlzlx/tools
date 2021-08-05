@@ -1,28 +1,30 @@
 <template>
-  <el-container style="min-height: 100vh">
-    <el-header style="padding: 0">
-      <Nav></Nav>
-    </el-header>
-    <el-main style="flex: 1">
+  <q-layout view="HHh Lpr lFf">
+    <q-header elevated>
+      <q-toolbar>
+        <q-btn flat round dense icon="menu" class="q-mr-sm" />
+        <q-avatar>
+          <img src="/apple-touch-icon.png" />
+        </q-avatar>
+
+        <q-toolbar-title>Tools</q-toolbar-title>
+
+      </q-toolbar>
+    </q-header>
+    <q-drawer v-bind:value="true" :width="200" :breakpoint="700" show-if-above elevated>
+      <q-scroll-area class="fit">
+        <SideBar />
+      </q-scroll-area>
+    </q-drawer>
+    <q-page-container class="q-pt-md q-pd-md q-ml-md q-mr-md">
       <router-view></router-view>
-    </el-main>
-    <el-footer style="padding: 0">
-      <Footer></Footer>
-    </el-footer>
-  </el-container>
+    </q-page-container>
+    <q-footer elevated>
+      <Footer />
+    </q-footer>
+  </q-layout>
 </template>
 <script setup>
-import Nav from "../pages/layouts/Nav.vue";
-import Footer from "../pages/layouts/Footer.vue";
+import Footer from "./Footer.vue";
+import SideBar from "./SideBar.vue";
 </script>
-
-<style>
-body {
-  display: flex;
-  flex-flow: column;
-  min-height: 100vh;
-}
-#app {
-  min-height: 100vh;
-}
-</style>
