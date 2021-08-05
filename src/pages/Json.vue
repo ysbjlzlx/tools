@@ -12,8 +12,10 @@
           {{ props.row.content }}
         </q-td>
         <q-td key="operate" :props="props">
-          <q-btn color="primary" icon="edit" v-on:click="edit(props.row)" size="sm">编辑</q-btn>
-          <q-btn color="warning" icon="delete" v-on:click="cache_json_delete(props.$index)" size="sm">删除</q-btn>
+          <q-btn-group>
+            <q-btn color="primary" icon="edit" v-on:click="edit(props.row.content)" size="sm">编辑</q-btn>
+            <q-btn color="warning" icon="delete" v-on:click="cache_json_delete(props.row)" size="sm">删除</q-btn>
+          </q-btn-group>
         </q-td>
       </q-tr>
     </template>
@@ -105,8 +107,8 @@ function edit(jsonString) {
 }
 function cache_json_delete(val) {
   console.log(val);
-  remove(state.cache_json, function (value, index) {
-    return val === index;
+  remove(state.cache_json, (value, index) => {
+    return val === value;
   });
 }
 
