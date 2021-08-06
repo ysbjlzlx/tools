@@ -1,86 +1,30 @@
-import { createRouter, createWebHistory } from "vue-router";
-import NProgress from "nprogress";
-import i18n from "../locales";
+import { route } from 'quasar/wrappers'
+import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
+import routes from './routes'
 
-const routes = [
-  {
-    path: "/",
-    name: "Index",
-    component: () => import("../views/Index.vue"),
-  },
-  {
-    path: "/hash",
-    name: "Hash",
-    component: () => import("../views/Hash.vue"),
-  },
-  {
-    path: "/color",
-    name: "Color",
-    component: () => import("../views/Color.vue"),
-  },
-  {
-    path: "/json",
-    name: "Json",
-    component: () => import("../views/Json.vue"),
-  },
-  {
-    path: "/datetime",
-    name: "Datetime",
-    component: () => import("../views/Datetime.vue"),
-  },
-  {
-    path: "/encode/base64",
-    name: "Base64",
-    component: () => import("../views/encode/Base64.vue"),
-  },
-  {
-    path: "/encode/urlencode",
-    name: "URLEncode",
-    component: () => import("../views/encode/URLEncode.vue"),
-  },
-  {
-    path: "/image/placeholder",
-    name: "ImagePlaceholder",
-    component: () => import("../views/image/Placeholder.vue"),
-  },
-  {
-    path: "/image/qrcode",
-    name: "ImageQRCode",
-    component: () => import("../views/image/QRCode.vue"),
-  },
-  {
-    path: "/transform/json2yaml",
-    name: "Json2yaml",
-    component: () => import("../views/transform/Json2yaml.vue"),
-  },
-  {
-    path: "/password/make",
-    name: "PasswordMake",
-    component: () => import("../views/password/make.vue"),
-  },
-  {
-    path: "/password/otp",
-    name: "PasswordOtp",
-    component: () => import("../views/Otp.vue"),
-  },
-];
+/*
+ * If not building with SSR mode, you can
+ * directly export the Router instantiation;
+ *
+ * The function below can be async too; either use
+ * async/await or return a Promise which resolves
+ * with the Router instance.
+ */
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-});
+export default route(function (/* { store, ssrContext } */) {
+  const createHistory = process.env.SERVER
+    ? createMemoryHistory
+    : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory)
 
-router.beforeEach((to, from, next) => {
-  NProgress.start();
-  next();
-});
+  const Router = createRouter({
+    scrollBehavior: () => ({ left: 0, top: 0 }),
+    routes,
 
-router.afterEach((to, from) => {
-  const lang = window.localStorage.getItem("lang");
-  if (lang && i18n.global.availableLocales.includes(lang)) {
-    i18n.global.locale = lang;
-  }
-  NProgress.done();
-});
+    // Leave this as is and make changes in quasar.conf.js instead!
+    // quasar.conf.js -> build -> vueRouterMode
+    // quasar.conf.js -> build -> publicPath
+    history: createHistory(process.env.MODE === 'ssr' ? void 0 : process.env.VUE_ROUTER_BASE)
+  })
 
-export default router;
+  return Router
+})

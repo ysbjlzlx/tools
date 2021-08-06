@@ -1,28 +1,10 @@
 <template>
-  <el-container style="min-height: 100vh">
-    <el-header style="padding: 0">
-      <Nav></Nav>
-    </el-header>
-    <el-main style="flex: 1">
-      <router-view></router-view>
-    </el-main>
-    <el-footer style="padding: 0">
-      <Footer></Footer>
-    </el-footer>
-  </el-container>
+  <router-view />
 </template>
-<script setup>
-import Nav from "/@src/views/layouts/Nav.vue";
-import Footer from "/@src/views/layouts/Footer.vue";
-</script>
+<script>
+import { defineComponent } from 'vue';
 
-<style>
-body {
-  display: flex;
-  flex-flow: column;
-  min-height: 100vh;
-}
-#app {
-  min-height: 100vh;
-}
-</style>
+export default defineComponent({
+  name: 'App'
+})
+</script>
