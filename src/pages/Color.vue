@@ -60,8 +60,8 @@ const state = reactive({
   plain_rgba: null,
   plain_hex: null,
   rgb_red: 0,
-  rgb_green: 0,
-  rgb_blue: 0,
+  rgb_green: 47,
+  rgb_blue: 167,
   rgb_alpha: 255,
 });
 

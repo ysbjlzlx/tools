@@ -31,6 +31,7 @@ const columns = [
   {
     name: "content",
     label: "Content",
+    align: "left",
     field: (row) => row.content,
   },
   {

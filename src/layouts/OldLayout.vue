@@ -15,7 +15,8 @@
         <SideBar />
       </q-scroll-area>
     </q-drawer>
-    <q-page-container class="q-pt-md q-pd-md q-ml-md q-mr-md">
+    <q-page-container class="q-ml-md q-mr-md">
+      <q-space />
       <router-view></router-view>
     </q-page-container>
     <q-footer elevated>
