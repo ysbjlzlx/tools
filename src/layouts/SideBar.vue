@@ -46,54 +46,18 @@
         </q-item>
       </q-expansion-item>
       <q-item>
-        <q-select v-model="state.lang" :options="langOptions" @select="handleMenuSeclect" dense borderless emit-value map-options options-dense />
+        <q-select v-model="locale" :options="langOptions" dense borderless emit-value map-options options-dense />
       </q-item>
     </q-list>
   </div>
 </template>
 <script setup>
-import { find } from "lodash";
-import { reactive, onMounted, watch, computed } from "vue";
 import { useI18n } from "vue-i18n";
-import { useRouter } from "vue-router";
-const router = useRouter();
 
-const state = reactive({
-  lang: "zh-Hans-CN",
-});
-const { t } = useI18n({ useScope: "global" });
+const { t, locale } = useI18n({ useScope: "global" });
 
 const langOptions = [
-  { lang: "zh-Hans-CN", label: "简体中文" },
-  { lang: "en", label: "English" },
+  { value: "zh-Hans-CN", label: "简体中文" },
+  { value: "en", label: "English" },
 ];
-
-onMounted(() => {
-  const lang = window.localStorage.getItem("lang");
-  if (lang) {
-    state.lang = lang;
-  }
-});
-watch(
-  () => state.lang,
-  (val) => {
-    window.localStorage.setItem("lang", val);
-  }
-);
-function onLangChanged(val) {
-  router.go(0);
-}
-function handleMenuSeclect(index, indexPath, { route }) {
-  if (route) {
-    router.push(route);
-  } else if ("lang" === indexPath.shift()) {
-    state.lang = index;
-    onLangChanged();
-  }
-}
-const lang = computed(() => {
-  return find(langOptions, (item) => {
-    return item.lang == state.lang;
-  });
-});
 </script>
