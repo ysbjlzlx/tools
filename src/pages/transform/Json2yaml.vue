@@ -1,5 +1,6 @@
 <template>
   <div>
+    <q-space />
     <q-btn-group>
       <q-btn v-on:click="json2yaml()">JSON <q-icon name="arrow_right" /> YAML</q-btn>
       <q-btn v-on:click="yaml2json()">YAML <q-icon name="arrow_right" /> JSON</q-btn>

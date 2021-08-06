@@ -6,8 +6,8 @@
         <q-avatar>
           <img src="/apple-touch-icon.png" />
         </q-avatar>
-
         <q-toolbar-title>Tools</q-toolbar-title>
+        <q-btn type="a" href="https://github.com/ysbjlzlx/tools" target="_blank" flat dense label="GitHub" />
       </q-toolbar>
     </q-header>
     <q-drawer :model-value="expand" :width="200" :breakpoint="300" elevated>
@@ -15,18 +15,15 @@
         <SideBar />
       </q-scroll-area>
     </q-drawer>
-    <q-page-container class="q-ml-md q-mr-md">
+    <q-page-container class="q-ml-md q-mr-md q-pt-md">
+      <q-space />
       <q-space />
       <router-view></router-view>
     </q-page-container>
-    <q-footer elevated>
-      <Footer></Footer>
-    </q-footer>
   </q-layout>
 </template>
 <script setup>
 import { computed } from "vue";
-import Footer from "./Footer.vue";
 import SideBar from "./SideBar.vue";
 import { useStore } from "vuex";
 const $store = useStore();

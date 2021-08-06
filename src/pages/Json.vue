@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div ref="jsoneditor" id="jsoneditor" style="width: 100%; height: 500px"></div>
-  </div>
-  <div class="q-mt-md">
-    <q-btn color="primary" v-on:click="clearCacheJson">删除所有</q-btn>
+    <div ref="jsoneditor" id="jsoneditor" style="width: 100%; height: 360px"></div>
   </div>
   <q-table :columns="state.columns" :rows="state.cache_json" class="my-sticky-column-table">
+    <template v-slot:top>
+      <q-btn color="primary" v-on:click="clearCacheJson">删除所有</q-btn>
+    </template>
     <template v-slot:body="props">
       <q-tr :props="props">
         <q-td key="content" :props="props">
@@ -47,14 +47,7 @@ const state = reactive({
   editor: null,
   columns: columns,
 });
-const pagination = reactive({
-  data: [],
-  rows: [],
-  total: 0,
-  pageSize: 10,
-  pageSizes: [10, 20, 50, 100],
-  currentPage: 1,
-});
+
 const jsoneditor = ref(null);
 
 watch(
