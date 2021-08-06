@@ -10,7 +10,7 @@
         <q-btn type="a" href="https://github.com/ysbjlzlx/tools" target="_blank" flat dense label="GitHub" />
       </q-toolbar>
     </q-header>
-    <q-drawer :model-value="nav.expand" :width="200" :breakpoint="300" elevated>
+    <q-drawer v-model="expand" :width="200" show-if-above :breakpoint="700" elevated>
       <q-scroll-area class="fit">
         <SideBar />
       </q-scroll-area>
@@ -27,7 +27,12 @@ import SideBar from "./SideBar.vue";
 import { useStore } from "vuex";
 const $store = useStore();
 
-const nav = computed(() => {
-  return $store.state.app.nav;
+const expand = computed({
+  get() {
+    return $store.state.app.nav.expand;
+  },
+  set(val) {
+    $store.commit("app/switch");
+  },
 });
 </script>

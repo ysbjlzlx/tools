@@ -1,5 +1,5 @@
 export default {
   nav: {
-    expand: true,
+    expand: false,
   },
 };
