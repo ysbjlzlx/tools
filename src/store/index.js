@@ -1,6 +1,6 @@
 import { store } from "quasar/wrappers";
 import { createStore } from "vuex";
-import nav from "./nav";
+import app from "./app";
 
 // import example from './module-example'
 
@@ -16,7 +16,7 @@ import nav from "./nav";
 export default store(function (/* { ssrContext } */) {
   const Store = createStore({
     modules: {
-      nav: nav,
+      app: app
     },
 
     // enable strict mode (adds overhead!)

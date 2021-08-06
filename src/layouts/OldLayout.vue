@@ -2,7 +2,7 @@
   <q-layout view="HHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn flat round dense icon="menu" class="q-mr-sm" @click="$store.commit('switch')" />
+        <q-btn flat round dense icon="menu" class="q-mr-sm" @click="$store.commit('app/switch')" />
         <q-avatar>
           <img src="/apple-touch-icon.png" />
         </q-avatar>
@@ -10,14 +10,12 @@
         <q-btn type="a" href="https://github.com/ysbjlzlx/tools" target="_blank" flat dense label="GitHub" />
       </q-toolbar>
     </q-header>
-    <q-drawer :model-value="expand" :width="200" :breakpoint="300" elevated>
+    <q-drawer :model-value="nav.expand" :width="200" :breakpoint="300" elevated>
       <q-scroll-area class="fit">
         <SideBar />
       </q-scroll-area>
     </q-drawer>
-    <q-page-container class="q-ml-md q-mr-md q-pt-md">
-      <q-space />
-      <q-space />
+    <q-page-container class="q-ml-md q-mr-md">
       <router-view></router-view>
     </q-page-container>
   </q-layout>
@@ -28,7 +26,7 @@ import SideBar from "./SideBar.vue";
 import { useStore } from "vuex";
 const $store = useStore();
 
-const expand = computed(() => {
-  return $store.state.nav.expand;
+const nav = computed(() => {
+  return $store.state.app.nav;
 });
 </script>
