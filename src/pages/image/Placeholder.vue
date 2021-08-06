@@ -46,7 +46,7 @@
     <div class="col">
       <label>{{ t("placeholder.extension") }}</label>
       <br />
-      <q-select filled v-model="state.extension" :options="extensionOptions" />
+      <q-select filled v-model="state.extension" :options="extensionOptions" emit-value />
     </div>
   </div>
   <div class="row q-col-gutter-xs mt-5">
