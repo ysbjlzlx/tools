@@ -1,24 +1,26 @@
 <template>
-  <div class="row q-col-gutter-xs">
-    <div class="col">
-      <label>{{ t("datetime.timestamp") }}</label>
-      <q-input outlined v-model="state.timestamp" :placeholder="t('datetime.timestamp')" />
+  <q-page padding>
+    <div class="row q-col-gutter-xs">
+      <div class="col">
+        <label>{{ t("datetime.timestamp") }}</label>
+        <q-input outlined v-model="state.timestamp" :placeholder="t('datetime.timestamp')" />
+      </div>
+      <div class="col">
+        <label>{{ t("datetime.datetime") }}</label>
+        <q-input outlined v-model="getDatetime" :placeholder="t('datetime.datetime')" />
+      </div>
     </div>
-    <div class="col">
-      <label>{{ t("datetime.datetime") }}</label>
-      <q-input outlined v-model="getDatetime" :placeholder="t('datetime.datetime')" />
+    <div class="row q-col-gutter-xs">
+      <div class="col">
+        <label>{{ t("datetime.datetime") }}</label>
+        <q-input outlined v-model="state.datetime" :placeholder="t('datetime.datetime')" />
+      </div>
+      <div class="col">
+        <label>{{ t("datetime.timestamp") }}</label>
+        <q-input outlined v-model="getTimestamp" :placeholder="t('datetime.timestamp')" />
+      </div>
     </div>
-  </div>
-  <div class="row q-col-gutter-xs">
-    <div class="col">
-      <label>{{ t("datetime.datetime") }}</label>
-      <q-input outlined v-model="state.datetime" :placeholder="t('datetime.datetime')" />
-    </div>
-    <div class="col">
-      <label>{{ t("datetime.timestamp") }}</label>
-      <q-input outlined v-model="getTimestamp" :placeholder="t('datetime.timestamp')" />
-    </div>
-  </div>
+  </q-page>
 </template>
 <script setup>
 import { onMounted, reactive, computed } from "vue";

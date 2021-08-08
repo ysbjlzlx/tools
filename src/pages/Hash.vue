@@ -1,14 +1,16 @@
 <template>
-  <div>
-    <label>{{ t("common.text_plain") }}</label>
-    <q-input outlined v-model="state.plain" :placeholder="t('common.text_plain')" />
-  </div>
-  <div>
-    <q-input outlined class="q-mt-xs" v-model="md5" label="MD5" readonly />
-    <q-input outlined class="q-mt-xs" v-model="sha1" label="SHA1" readonly />
-    <q-input outlined class="q-mt-xs" v-model="sha256" label="SHA256" readonly />
-    <q-input outlined class="q-mt-xs" v-model="sha512" label="SHA512" readonly />
-  </div>
+  <q-page padding>
+    <div>
+      <label>{{ t("common.text_plain") }}</label>
+      <q-input outlined v-model="state.plain" :placeholder="t('common.text_plain')" />
+    </div>
+    <div>
+      <q-input outlined class="q-mt-xs" v-model="md5" label="MD5" readonly />
+      <q-input outlined class="q-mt-xs" v-model="sha1" label="SHA1" readonly />
+      <q-input outlined class="q-mt-xs" v-model="sha256" label="SHA256" readonly />
+      <q-input outlined class="q-mt-xs" v-model="sha512" label="SHA512" readonly />
+    </div>
+  </q-page>
 </template>
 
 <script setup>
@@ -33,7 +35,7 @@ const sha256 = computed(() => {
 const sha512 = computed(() => {
   return empty(state.plain) ? "" : SHA512(state.plain);
 });
-function getSha512() {}
+
 function empty(val) {
   if ("undefined" === typeof val || null == val || "" === val) {
     return true;

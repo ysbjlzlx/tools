@@ -42,7 +42,7 @@ export default {
     blue_desc:
       "An integer between 0 and 255, representing the blue component of the color",
     alpha_desc:
-      "An integer between 0 and 255, representing the transparency of the color, defined as 0 (completely transparent) ~ 255 (completely opaque)",
+      "An integer between 0 and 100, representing the transparency of the color, defined as 0 (completely transparent) ~ 100 (completely opaque)",
   },
   datetime: {
     timestamp: "Timestamp",
