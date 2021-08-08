@@ -1,18 +1,20 @@
 <template>
-  <div>
-    <label>{{ t("common.text_plain") }}</label>
-    <q-input outlined type="textarea" :rows="5" v-model="state.plain" :placeholder="t('common.text_plain')" />
-  </div>
-  <div class="q-mt-md">
-    <q-btn-group>
-      <q-btn color="primary" v-on:click="base64Encode" icon="arrow_downward">{{ t("common.encode") }}</q-btn>
-      <q-btn color="primary" v-on:click="base64Decode" icon="arrow_upward">{{ t("common.decode") }}</q-btn>
-    </q-btn-group>
-  </div>
-  <div class="q-mt-md">
-    <label>{{ t("common.text_base64") }}</label>
-    <q-input outlined type="textarea" :rows="5" v-model="state.encoded" :placeholder="t('common.text_base64')" />
-  </div>
+  <q-page padding>
+    <div>
+      <label>{{ t("common.text_plain") }}</label>
+      <q-input outlined type="textarea" :rows="5" v-model="state.plain" :placeholder="t('common.text_plain')" />
+    </div>
+    <div class="q-mt-md">
+      <q-btn-group>
+        <q-btn color="primary" v-on:click="base64Encode" icon="arrow_downward">{{ t("common.encode") }}</q-btn>
+        <q-btn color="primary" v-on:click="base64Decode" icon="arrow_upward">{{ t("common.decode") }}</q-btn>
+      </q-btn-group>
+    </div>
+    <div class="q-mt-md">
+      <label>{{ t("common.text_base64") }}</label>
+      <q-input outlined type="textarea" :rows="5" v-model="state.encoded" :placeholder="t('common.text_base64')" />
+    </div>
+  </q-page>
 </template>
 <script setup>
 import { reactive } from "vue";

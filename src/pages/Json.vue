@@ -1,25 +1,27 @@
 <template>
-  <div>
-    <div ref="jsoneditor" id="jsoneditor" style="width: 100%; height: 360px"></div>
-  </div>
-  <q-table :columns="state.columns" :rows="state.cache_json" class="my-sticky-column-table">
-    <template v-slot:top>
-      <q-btn color="primary" v-on:click="clearCacheJson">删除所有</q-btn>
-    </template>
-    <template v-slot:body="props">
-      <q-tr :props="props">
-        <q-td key="content" :props="props">
-          {{ props.row.content }}
-        </q-td>
-        <q-td key="operate" :props="props">
-          <q-btn-group>
-            <q-btn color="primary" icon="edit" v-on:click="edit(props.row.content)" size="sm">编辑</q-btn>
-            <q-btn color="warning" icon="delete" v-on:click="cache_json_delete(props.row)" size="sm">删除</q-btn>
-          </q-btn-group>
-        </q-td>
-      </q-tr>
-    </template>
-  </q-table>
+  <q-page padding>
+    <div>
+      <div ref="jsoneditor" id="jsoneditor" style="width: 100%; height: 360px"></div>
+    </div>
+    <q-table :columns="state.columns" :rows="state.cache_json" class="my-sticky-column-table q-mt-md">
+      <template v-slot:top>
+        <q-btn color="primary" v-on:click="clearCacheJson">删除所有</q-btn>
+      </template>
+      <template v-slot:body="props">
+        <q-tr :props="props">
+          <q-td key="content" :props="props">
+            {{ props.row.content }}
+          </q-td>
+          <q-td key="operate" :props="props">
+            <q-btn-group>
+              <q-btn color="primary" icon="edit" v-on:click="edit(props.row.content)" size="sm">编辑</q-btn>
+              <q-btn color="warning" icon="delete" v-on:click="cache_json_delete(props.row)" size="sm">删除</q-btn>
+            </q-btn-group>
+          </q-td>
+        </q-tr>
+      </template>
+    </q-table>
+  </q-page>
 </template>
 <script setup>
 import { onMounted, reactive, ref, watch } from "vue";
@@ -37,6 +39,7 @@ const columns = [
   {
     name: "operate",
     label: "操作",
+    align: "left",
     required: true,
   },
 ];
@@ -113,12 +116,16 @@ const save = (jsonString) => {
 };
 </script>
 <style src="jsoneditor/dist/jsoneditor.css"></style>
-<style lang="scss" scoped>
-.my-sticky-column-table th:last-child,
-.my-sticky-column-table td:last-child {
-  background-color: white;
-  position: sticky;
-  right: 0;
-  z-index: 1;
-}
+<style lang="sass" scoped>
+.my-sticky-column-table
+  th:last
+    background-color: white
+    position: sticky
+    right: 0
+    z-index: 1
+  td:last-child
+    background-color: white
+    position: sticky
+    right: 0
+    z-index: 1
 </style>

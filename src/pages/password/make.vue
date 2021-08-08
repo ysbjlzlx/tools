@@ -1,30 +1,27 @@
 <template>
-  <div>
+  <q-page padding>
     <div>
       <div class="form-floating">
-        <label>{{ t("common.password") }}</label>
-        <q-input outlined type="text" v-model="state.password" placeholder="password" counter :maxlength="256" />
+        <q-input outlined type="text" v-model="state.password" :label="t('common.password')" counter :maxlength="256" />
       </div>
       <q-btn-group class="q-mt-md">
         <q-btn color="primary" v-on:click="copy()">{{ t("common.copy") }}</q-btn>
         <q-btn color="primary" v-on:click="refresh()">{{ t("common.refresh") }}</q-btn>
       </q-btn-group>
     </div>
-    <div class="mt-5">
-      <h2>{{ t("common.option") }}</h2>
-      <div>
-        <q-checkbox v-model="option.number">{{ t("password.numeric") }} 0 ~ 9</q-checkbox>
-        <q-checkbox v-model="option.lowerCaseChar">{{ t("password.lowercase") }} a ~ z</q-checkbox>
-        <q-checkbox v-model="option.upperCaseChar">{{ t("password.captial") }} A ~ Z</q-checkbox>
-        <q-checkbox v-model="option.symbolChar">{{ t("password.symbol") }}</q-checkbox>
-        <q-input outlined type="text" class="form-control" v-model="state.symbolChar" :readonly="!option.symbolChar" />
-      </div>
-      <div>
-        <label>{{ t("common.length") }}</label>
-        <q-slider v-model="state.length" :min="6" :max="128" markers label label-always />
-      </div>
+    <h3>{{ t("common.option") }}</h3>
+    <div>
+      <q-checkbox v-model="option.number">{{ t("password.numeric") }} 0 ~ 9</q-checkbox>
+      <q-checkbox v-model="option.lowerCaseChar">{{ t("password.lowercase") }} a ~ z</q-checkbox>
+      <q-checkbox v-model="option.upperCaseChar">{{ t("password.captial") }} A ~ Z</q-checkbox>
+      <q-checkbox v-model="option.symbolChar">{{ t("password.symbol") }}</q-checkbox>
+      <q-input outlined type="text" class="form-control" v-model="state.symbolChar" :readonly="!option.symbolChar" />
     </div>
-  </div>
+    <div>
+      <label>{{ t("common.length") }}</label>
+      <q-slider v-model="state.length" :min="6" :max="128" markers label label-always />
+    </div>
+  </q-page>
 </template>
 <script setup>
 import { onMounted, reactive, watch } from "vue";

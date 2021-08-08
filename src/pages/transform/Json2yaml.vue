@@ -1,21 +1,18 @@
 <template>
-  <div>
-    <q-space />
+  <q-page padding>
     <q-btn-group>
-      <q-btn v-on:click="json2yaml()">JSON <q-icon name="arrow_right" /> YAML</q-btn>
-      <q-btn v-on:click="yaml2json()">YAML <q-icon name="arrow_right" /> JSON</q-btn>
+      <q-btn color="primary" v-on:click="json2yaml()">JSON <q-icon name="arrow_right" /> YAML</q-btn>
+      <q-btn color="primary" v-on:click="yaml2json()">YAML <q-icon name="arrow_right" /> JSON</q-btn>
     </q-btn-group>
     <div class="row q-col-gutter-xs q-mt-md">
-      <div class="col">
-        <label>JSON</label>
-        <q-input outlined type="textarea" rows="20" v-model="state.json" placeholder="JSON" />
+      <div class="col-sm-12 col-md-6">
+        <q-input outlined type="textarea" rows="20" v-model="state.json" label="JSON" />
       </div>
-      <div class="col">
-        <label>YAML</label>
-        <q-input outlined type="textarea" rows="20" v-model="state.yaml" placeholder="YAML" />
+      <div class="col-sm-12 col-md-6">
+        <q-input outlined type="textarea" rows="20" v-model="state.yaml" label="YAML" />
       </div>
     </div>
-  </div>
+  </q-page>
 </template>
 <script setup>
 import { reactive, watch } from "vue";
