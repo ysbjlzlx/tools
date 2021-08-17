@@ -8,19 +8,19 @@
         <q-item-section>{{ t("nav.color") }}</q-item-section>
       </q-item>
       <q-item :to="{ path: '/datetime' }">
-        <q-item-section>Datetime</q-item-section>
+        <q-item-section>{{ t("nav.timestamp") }}</q-item-section>
       </q-item>
-      <q-expansion-item expand-separator :label="t('nav.encode')">
+      <q-expansion-item expand-separator :label="t('nav.string')">
         <q-item :to="{ path: '/encode/base64' }">
           <q-item-section>{{ t("nav.base64") }}</q-item-section>
         </q-item>
         <q-item :to="{ path: '/encode/urlencode' }">
           <q-item-section>{{ t("nav.urlencode") }}</q-item-section>
         </q-item>
+        <q-item :to="{ path: '/hash' }">
+          <q-item-section>{{ t("nav.hash") }}</q-item-section>
+        </q-item>
       </q-expansion-item>
-      <q-item :to="{ path: '/hash' }">
-        <q-item-section>{{ t("nav.hash") }}</q-item-section>
-      </q-item>
       <q-expansion-item expand-separator :label="t('nav.image')">
         <q-item :to="{ path: '/image/placeholder' }">
           {{ t("nav.placeholder") }}

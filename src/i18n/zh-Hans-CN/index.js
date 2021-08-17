@@ -16,16 +16,18 @@ export default {
     options: "选项",
   },
   nav: {
-    color: "Color",
+    color: "颜色 Color",
     encode: "Encode",
     base64: "Base64",
-    urlencode: "URLEncode",
-    hash: "Hash",
-    image: "Image",
+    urlencode: "链接编码 URLEncode",
+    hash: "散列（哈希）Hash",
+    image: "图片 Image",
     placeholder: "Placeholder",
     json: "JSON",
     development: "开发中",
     transform: "格式转换",
+    string: "字符串 String",
+    timestamp: "时间戳 Timestamp"
   },
   color: {
     red: "红 (R)",

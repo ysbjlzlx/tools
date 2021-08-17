@@ -6,36 +6,36 @@
       </div>
     </div>
     <div class="row q-col-gutter-md q-mt-md">
-      <div class="col-sm-12 col-md-3">
+      <div class="col-xs-12 col-sm-3">
         {{ t("color.red") }}
         <q-slider v-model="state.rgb_red" :min="0" :max="255" label />
         {{ t("color.red_desc") }}
       </div>
-      <div class="col-sm-12 col-md-3">
+      <div class="col-xs-12 col-sm-3">
         {{ t("color.green") }}
         <q-slider v-model="state.rgb_green" :min="0" :max="255" label />
         {{ t("color.green_desc") }}
       </div>
-      <div class="col-sm-12 col-md-3">
+      <div class="col-xs-12 col-sm-3">
         {{ t("color.blue") }}
         <q-slider v-model="state.rgb_blue" :min="0" :max="255" label />
         {{ t("color.blue_desc") }}
       </div>
-      <div class="col-sm-12 col-md-3">
+      <div class="col-xs-12 col-sm-3">
         {{ t("color.alpha") }}
         <q-slider v-model="state.rgb_alpha" :min="0" :max="100" label />
         {{ t("color.alpha_desc") }}
       </div>
     </div>
     <div class="row q-col-gutter-md p-mt-md">
-      <div class="col-sm-6">
+      <div class="col-xs-12 col-sm-6">
         <q-input outlined v-model="getRgb" label="RGB" placeholder="RGB" readonly>
           <template v-slot:append>
             <q-btn icon="content_copy" @click="setClipboard(getRgb)" />
           </template>
         </q-input>
       </div>
-      <div class="col-sm-6">
+      <div class="col-xs-12 col-sm-6">
         <q-input outlined :model-value="getHex" label="HEX" placeholder="HEX" readonly>
           <template v-slot:append>
             <q-btn icon="content_copy" @click="setClipboard(getHex)" />
