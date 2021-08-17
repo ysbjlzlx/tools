@@ -1,10 +1,9 @@
 <template>
   <q-page padding>
     <div>
-      <label>{{ t("common.text_plain") }}</label>
-      <q-input outlined v-model="state.plain" :placeholder="t('common.text_plain')" />
+      <q-input outlined v-model="state.plain" :label="t('common.text_plain')" />
     </div>
-    <div>
+    <div class="q-mt-md">
       <q-input outlined class="q-mt-xs" v-model="md5" label="MD5" readonly />
       <q-input outlined class="q-mt-xs" v-model="sha1" label="SHA1" readonly />
       <q-input outlined class="q-mt-xs" v-model="sha256" label="SHA256" readonly />
