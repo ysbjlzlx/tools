@@ -27,7 +27,7 @@ export default {
     development: "开发中",
     transform: "格式转换",
     string: "字符串 String",
-    timestamp: "时间戳 Timestamp"
+    timestamp: "时间戳 Timestamp",
   },
   color: {
     red: "红 (R)",
@@ -41,6 +41,8 @@ export default {
       "0 到 100 间的整数， 代表颜色的透明度，定义 0（完全透明） ~ 100（完全不透明）",
   },
   datetime: {
+    unixTime: "时间戳（秒）",
+    millisecondTime: "时间戳（毫秒）",
     timestamp: "时间戳",
     datetime: "日期时间",
   },
