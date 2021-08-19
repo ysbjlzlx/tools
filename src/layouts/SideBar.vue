@@ -2,6 +2,11 @@
   <div>
     <q-list>
       <q-item :to="{ path: '/' }" exact>
+        <q-item-section avatar>
+          <q-avatar size="32px">
+            <img src="/apple-touch-icon.png" />
+          </q-avatar>
+        </q-item-section>
         <q-item-section>Tools</q-item-section>
       </q-item>
       <q-item :to="{ path: '/color' }">
