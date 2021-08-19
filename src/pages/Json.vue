@@ -3,7 +3,7 @@
     <div>
       <div ref="jsoneditor" id="jsoneditor" style="width: 100%; height: 360px"></div>
     </div>
-    <q-table :columns="state.columns" :rows="state.cache_json" class="my-sticky-column-table q-mt-md">
+    <q-table :columns="state.columns" :rows="state.cache_json" class="my-sticky-column-table q-mt-md" wrap-cells>
       <template v-slot:top>
         <q-btn color="primary" v-on:click="clearCacheJson">删除所有</q-btn>
       </template>
@@ -39,7 +39,7 @@ const columns = [
   {
     name: "operate",
     label: "操作",
-    align: "left",
+    align: "right",
     required: true,
   },
 ];
