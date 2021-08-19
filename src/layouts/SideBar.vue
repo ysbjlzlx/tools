@@ -49,6 +49,14 @@
         <q-item :to="{ path: '/password/otp' }">
           <q-item-section>OTP</q-item-section>
         </q-item>
+        <q-item :to="{ path: '/ffmpeg' }">
+          <q-item-section avatar>
+            <q-avatar rounded size="20px" color="green">
+              <img src="../assets/icon_ffmpeg.png" />
+            </q-avatar>
+          </q-item-section>
+          <q-item-section>FFmpeg</q-item-section>
+        </q-item>
       </q-expansion-item>
       <q-item>
         <q-select v-model="locale" :options="langOptions" dense borderless emit-value map-options options-dense />
