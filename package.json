@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "2fa": "^0.1.2",
-    "@quasar/extras": "^1.10.10",
+    "@quasar/extras": "^1.10.11",
     "axios": "^0.21.1",
     "clipboard-polyfill": "^3.0.3",
     "core-js": "^3.16.2",
@@ -27,14 +27,14 @@
     "lodash": "^4.17.21",
     "nprogress": "^0.2.0",
     "otpauth": "^7.0.5",
-    "quasar": "^2.0.0",
+    "quasar": "^2.0.4",
     "vue-i18n": "^9.0.0-beta.0",
     "vuex": "^4.0.1",
     "yaml": "^1.10.2"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.15.0",
-    "@quasar/app": "^3.0.0",
+    "@quasar/app": "^3.1.0",
     "@types/crypto-js": "^4.0.2",
     "@types/lodash": "^4.14.172",
     "eslint": "^7.14.0",
