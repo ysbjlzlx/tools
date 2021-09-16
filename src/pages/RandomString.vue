@@ -2,7 +2,7 @@
   <q-page padding>
     <div>
       <div class="form-floating">
-        <q-input outlined type="text" v-model="state.password" :label="t('common.password')" counter :maxlength="256" />
+        <q-input outlined type="text" v-model="state.password" :label="t('common.text')" counter :maxlength="256" />
       </div>
       <q-btn-group class="q-mt-md">
         <q-btn color="primary" v-on:click="copy()">{{ t("common.copy") }}</q-btn>
@@ -10,14 +10,14 @@
       </q-btn-group>
     </div>
     <h3>{{ t("common.option") }}</h3>
-    <div>
+    <div class="q-mt-md">
       <q-checkbox v-model="option.number">{{ t("password.numeric") }} 0 ~ 9</q-checkbox>
       <q-checkbox v-model="option.lowerCaseChar">{{ t("password.lowercase") }} a ~ z</q-checkbox>
       <q-checkbox v-model="option.upperCaseChar">{{ t("password.captial") }} A ~ Z</q-checkbox>
       <q-checkbox v-model="option.symbolChar">{{ t("password.symbol") }}</q-checkbox>
       <q-input outlined type="text" class="form-control" v-model="state.symbolChar" :readonly="!option.symbolChar" />
     </div>
-    <div>
+    <div class="q-mt-md">
       <label>{{ t("common.length") }}</label>
       <q-slider v-model="state.length" :min="6" :max="128" markers label label-always />
     </div>
@@ -27,7 +27,7 @@
 import { onMounted, reactive, watch } from "vue";
 import * as clipboard from "clipboard-polyfill/text";
 import { useI18n } from "vue-i18n";
-import { getRandomInt } from "../../scripts/helper/util";
+import { getRandomInt } from "../scripts/helper/util";
 import { useQuasar } from "quasar";
 
 const { t } = useI18n({ useScope: "global" });

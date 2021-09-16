@@ -25,6 +25,9 @@
         <q-item :to="{ path: '/hash' }">
           <q-item-section>{{ t("nav.hash") }}</q-item-section>
         </q-item>
+        <q-item :to="{ path: '/string/random' }">
+          <q-item-section>随机字符串</q-item-section>
+        </q-item>
       </q-expansion-item>
       <q-expansion-item expand-separator :label="t('nav.image')">
         <q-item :to="{ path: '/image/placeholder' }">
@@ -43,9 +46,6 @@
         </q-item>
       </q-expansion-item>
       <q-expansion-item expand-separator :label="t('nav.development')">
-        <q-item :to="{ path: '/password/make' }">
-          <q-item-section>Make Password</q-item-section>
-        </q-item>
         <q-item :to="{ path: '/password/otp' }">
           <q-item-section>OTP</q-item-section>
         </q-item>

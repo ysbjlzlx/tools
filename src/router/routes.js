@@ -55,9 +55,9 @@ const routes = [
         component: () => import("../pages/transform/Json2yaml.vue"),
       },
       {
-        path: "/password/make",
+        path: "/string/random",
         name: "PasswordMake",
-        component: () => import("../pages/password/make.vue"),
+        component: () => import("../pages/RandomString.vue"),
       },
       {
         path: "/password/otp",
