@@ -9,14 +9,16 @@
         </q-item-section>
         <q-item-section>Tools</q-item-section>
       </q-item>
-      <q-item :to="{ path: '/color' }">
-        <q-item-section>{{ t("nav.color") }}</q-item-section>
+      <q-separator />
+      <q-item :to="{ path: '/json' }">
+        <q-item-section>{{ t("nav.json") }}</q-item-section>
+      </q-item>
+      <q-item :to="{ path: '/transform/json2yaml' }">
+        <q-item-section>JSON2YAML</q-item-section>
       </q-item>
       <q-item :to="{ path: '/datetime' }">
         <q-item-section>{{ t("nav.timestamp") }}</q-item-section>
       </q-item>
-      <q-separator />
-
       <q-item :to="{ path: '/encode/base64' }">
         <q-item-section>{{ t("nav.base64") }}</q-item-section>
       </q-item>
@@ -30,18 +32,14 @@
         <q-item-section>随机字符串</q-item-section>
       </q-item>
       <q-separator />
+      <q-item :to="{ path: '/color' }">
+        <q-item-section>{{ t("nav.color") }}</q-item-section>
+      </q-item>
       <q-item :to="{ path: '/image/placeholder' }">
         {{ t("nav.placeholder") }}
       </q-item>
       <q-item :to="{ path: '/image/qrcode' }">
         <q-item-section>二维码</q-item-section>
-      </q-item>
-      <q-item :to="{ path: '/json' }">
-        <q-item-section>{{ t("nav.json") }}</q-item-section>
-      </q-item>
-      <q-separator />
-      <q-item :to="{ path: '/transform/json2yaml' }">
-        <q-item-section>JSON2YAML</q-item-section>
       </q-item>
       <q-separator />
       <q-expansion-item expand-separator :label="t('nav.development')">
