@@ -15,36 +15,35 @@
       <q-item :to="{ path: '/datetime' }">
         <q-item-section>{{ t("nav.timestamp") }}</q-item-section>
       </q-item>
-      <q-expansion-item expand-separator :label="t('nav.string')">
-        <q-item :to="{ path: '/encode/base64' }">
-          <q-item-section>{{ t("nav.base64") }}</q-item-section>
-        </q-item>
-        <q-item :to="{ path: '/encode/urlencode' }">
-          <q-item-section>{{ t("nav.urlencode") }}</q-item-section>
-        </q-item>
-        <q-item :to="{ path: '/hash' }">
-          <q-item-section>{{ t("nav.hash") }}</q-item-section>
-        </q-item>
-        <q-item :to="{ path: '/string/random' }">
-          <q-item-section>随机字符串</q-item-section>
-        </q-item>
-      </q-expansion-item>
-      <q-expansion-item expand-separator :label="t('nav.image')">
-        <q-item :to="{ path: '/image/placeholder' }">
-          {{ t("nav.placeholder") }}
-        </q-item>
-        <q-item :to="{ path: '/image/qrcode' }">
-          <q-item-section>二维码</q-item-section>
-        </q-item>
-      </q-expansion-item>
+      <q-separator />
+
+      <q-item :to="{ path: '/encode/base64' }">
+        <q-item-section>{{ t("nav.base64") }}</q-item-section>
+      </q-item>
+      <q-item :to="{ path: '/encode/urlencode' }">
+        <q-item-section>{{ t("nav.urlencode") }}</q-item-section>
+      </q-item>
+      <q-item :to="{ path: '/hash' }">
+        <q-item-section>{{ t("nav.hash") }}</q-item-section>
+      </q-item>
+      <q-item :to="{ path: '/string/random' }">
+        <q-item-section>随机字符串</q-item-section>
+      </q-item>
+      <q-separator />
+      <q-item :to="{ path: '/image/placeholder' }">
+        {{ t("nav.placeholder") }}
+      </q-item>
+      <q-item :to="{ path: '/image/qrcode' }">
+        <q-item-section>二维码</q-item-section>
+      </q-item>
       <q-item :to="{ path: '/json' }">
         <q-item-section>{{ t("nav.json") }}</q-item-section>
       </q-item>
-      <q-expansion-item expand-separator :label="t('nav.transform')">
-        <q-item :to="{ path: '/transform/json2yaml' }">
-          <q-item-section>JSON2YAML</q-item-section>
-        </q-item>
-      </q-expansion-item>
+      <q-separator />
+      <q-item :to="{ path: '/transform/json2yaml' }">
+        <q-item-section>JSON2YAML</q-item-section>
+      </q-item>
+      <q-separator />
       <q-expansion-item expand-separator :label="t('nav.development')">
         <q-item :to="{ path: '/password/otp' }">
           <q-item-section>OTP</q-item-section>
