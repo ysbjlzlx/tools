@@ -22,7 +22,7 @@ export default {
     urlencode: "链接编码 URLEncode",
     hash: "散列（哈希）Hash",
     image: "图片 Image",
-    placeholder: "Placeholder",
+    placeholder: "占位图 Placeholder",
     json: "JSON",
     development: "开发中",
     transform: "格式转换",
