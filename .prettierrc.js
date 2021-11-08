@@ -1,11 +1,10 @@
 module.exports = {
-  ...require("gts/.prettierrc.json"),
+  ...require('gts/.prettierrc.json'),
   overrides: [
     {
-      files: ["*.html", "*.vue"],
+      files: ['*.html', '*.tsx', '*.vue'],
       options: {
-        printWidth: 150,
-        tabWidth: 2,
+        printWidth: 120,
       },
     },
   ],
