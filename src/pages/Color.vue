@@ -7,24 +7,24 @@
     </div>
     <div class="row q-col-gutter-md q-mt-md">
       <div class="col-xs-12 col-sm-3">
-        {{ t("color.red") }}
+        {{ t('color.red') }}
         <q-slider v-model="state.rgb_red" :min="0" :max="255" label />
-        {{ t("color.red_desc") }}
+        {{ t('color.red_desc') }}
       </div>
       <div class="col-xs-12 col-sm-3">
-        {{ t("color.green") }}
+        {{ t('color.green') }}
         <q-slider v-model="state.rgb_green" :min="0" :max="255" label />
-        {{ t("color.green_desc") }}
+        {{ t('color.green_desc') }}
       </div>
       <div class="col-xs-12 col-sm-3">
-        {{ t("color.blue") }}
+        {{ t('color.blue') }}
         <q-slider v-model="state.rgb_blue" :min="0" :max="255" label />
-        {{ t("color.blue_desc") }}
+        {{ t('color.blue_desc') }}
       </div>
       <div class="col-xs-12 col-sm-3">
-        {{ t("color.alpha") }}
+        {{ t('color.alpha') }}
         <q-slider v-model="state.rgb_alpha" :min="0" :max="100" label />
-        {{ t("color.alpha_desc") }}
+        {{ t('color.alpha_desc') }}
       </div>
     </div>
     <div class="row q-col-gutter-md p-mt-md">
@@ -44,21 +44,21 @@
       </div>
     </div>
     <div class="q-mt-md">
-      <div style="height: 200px" :style="{ backgroundColor: getRgb }"></div>
+      <div style="height: 200px" :style="{backgroundColor: getRgb}"></div>
     </div>
   </q-page>
 </template>
 
 <script setup>
-import { reactive, watch, onMounted, computed } from "vue";
-import * as clipboard from "clipboard-polyfill/text";
-import { useI18n } from "vue-i18n";
-import { colors, useQuasar } from "quasar";
+import {reactive, watch, onMounted, computed} from 'vue';
+import * as clipboard from 'clipboard-polyfill/text';
+import {useI18n} from 'vue-i18n';
+import {colors, useQuasar} from 'quasar';
 
-const { rgbToHex, textToRgb } = colors;
+const {rgbToHex, textToRgb} = colors;
 const $q = useQuasar();
 
-const { t } = useI18n({ useScope: "global" });
+const {t} = useI18n({useScope: 'global'});
 
 const state = reactive({
   plain_text: null,
@@ -70,7 +70,7 @@ const state = reactive({
 
 watch(
   () => state.plain_text,
-  (val) => {
+  val => {
     console.log(val);
     parsePlainText(val);
   }
@@ -95,16 +95,16 @@ const getRgb = computed(() => {
 });
 const getHex = computed(() => {
   if (100 === state.rgb_alpha) {
-    return rgbToHex({ r: state.rgb_red, g: state.rgb_green, b: state.rgb_blue });
+    return rgbToHex({r: state.rgb_red, g: state.rgb_green, b: state.rgb_blue});
   }
-  return rgbToHex({ r: state.rgb_red, g: state.rgb_green, b: state.rgb_blue, a: state.rgb_alpha });
+  return rgbToHex({r: state.rgb_red, g: state.rgb_green, b: state.rgb_blue, a: state.rgb_alpha});
 });
 
 function setClipboard(e) {
   clipboard.writeText(e);
   $q.notify({
-    message: "复制成功",
-    color: "green",
+    message: '复制成功',
+    color: 'green',
   });
 }
 </script>
