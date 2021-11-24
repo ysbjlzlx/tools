@@ -6,7 +6,7 @@
   "author": "Where.LIU",
   "private": true,
   "scripts": {
-    "dev": "quasar dev",
+    "dev": "quasar dev -m pwa",
     "build": "quasar build",
     "build:pwa": "quasar build -m pwa",
     "lint": "eslint --ext .js,.vue ./",

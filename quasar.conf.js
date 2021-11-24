@@ -36,7 +36,7 @@ module.exports = configure(function (ctx) {
       // 'line-awesome',
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
       // "roboto-font", // optional, you are not bound to it
-      
+
       "material-icons", // optional, you are not bound to it
     ],
 
@@ -128,7 +128,10 @@ module.exports = configure(function (ctx) {
     // https://v2.quasar.dev/quasar-cli/developing-pwa/configuring-pwa
     pwa: {
       workboxPluginMode: "GenerateSW", // 'GenerateSW' or 'InjectManifest'
-      workboxOptions: {}, // only for GenerateSW
+      workboxOptions: {
+        skipWaiting: true,
+        clientsClaim: true
+      }, // only for GenerateSW
 
       // for the custom service worker ONLY (/src-pwa/custom-service-worker.[js|ts])
       // if using workbox in InjectManifest mode
@@ -136,12 +139,14 @@ module.exports = configure(function (ctx) {
         chain
           .plugin("eslint-webpack-plugin")
           .use(ESLintPlugin, [{ extensions: ["js"] }]);
+        chain
+          .optimization.splitChunks();
       },
 
       manifest: {
-        name: `Tools`,
-        short_name: `Tools`,
-        description: `Tools`,
+        name: "Tools",
+        short_name: "Tools",
+        description: "Tools",
         display: "standalone",
         orientation: "portrait",
         background_color: "#ffffff",
