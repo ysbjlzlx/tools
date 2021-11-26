@@ -153,13 +153,44 @@ module.exports = configure(function (ctx) {
         theme_color: "#027be3",
         icons: [
           {
-            src: "android-chrome-192x192.png",
-            sizes: "192x192",
+            src: "icons/icon-x48.png",
+            sizes: "48x48",
             type: "image/png",
           },
           {
-            src: "android-chrome-512x512.png",
+            src: "icon/icon-x72.png",
+            sizes: "72x72",
+            type: "image/png",
+          },
+          {
+            src: "icon/icon-x96.png",
+            sizes: "96x96",
+            type: "image/png",
+          },
+          {
+            src: "icon/icon-x128.png",
+            sizes: "128x128",
+            type: "image/png",
+          },
+          {
+            src: "icon/icon-x192.png",
+            sizes: "192x192",
+            type: "image/png",
+            "purpose": "any maskable"
+          },
+          {
+            src: "icon/icon-x384.png",
+            sizes: "384x384",
+            type: "image/png",
+          },
+          {
+            src: "icon/icon-x512.png",
             sizes: "512x512",
+            type: "image/png",
+          },
+          {
+            src: "icon/icon-x787.png",
+            sizes: "787x787",
             type: "image/png",
           },
         ],
