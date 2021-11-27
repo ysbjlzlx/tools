@@ -4,7 +4,7 @@
       <q-toolbar>
         <q-btn flat round dense icon="menu" class="q-mr-sm" @click="$store.commit('app/switch')" />
         <q-avatar>
-          <img src="/apple-touch-icon.png" />
+          <img src="../assets/logo-32x32.png" width="32px" height="32px" />
         </q-avatar>
         <q-toolbar-title>Tools</q-toolbar-title>
         <q-btn type="a" href="https://github.com/ysbjlzlx/tools" target="_blank" flat dense label="GitHub" />

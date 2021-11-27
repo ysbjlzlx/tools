@@ -4,7 +4,7 @@
       <q-item :to="{ path: '/' }" exact>
         <q-item-section avatar>
           <q-avatar size="32px">
-            <img src="/apple-touch-icon.png" />
+            <img src="../assets/logo-32x32.png" width="32px" height="32px" />
           </q-avatar>
         </q-item-section>
         <q-item-section>Tools</q-item-section>
